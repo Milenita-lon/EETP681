@@ -27,15 +27,15 @@ Partial Class Form1
         BtnCerrar = New Button()
         PanelMenu = New Panel()
         Panel1 = New Panel()
-        PictureBox1 = New PictureBox()
+        logomenu = New PictureBox()
         PanelCerrar.SuspendLayout()
         Panel1.SuspendLayout()
-        CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
+        CType(logomenu, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' PanelCerrar
         ' 
-        PanelCerrar.BackColor = Color.FromArgb(CByte(61), CByte(90), CByte(115))
+        PanelCerrar.BackColor = Color.FromArgb(CByte(4), CByte(36), CByte(64))
         PanelCerrar.Controls.Add(BtnCerrar)
         PanelCerrar.Dock = DockStyle.Top
         PanelCerrar.Location = New Point(0, 0)
@@ -45,7 +45,7 @@ Partial Class Form1
         ' 
         ' BtnCerrar
         ' 
-        BtnCerrar.BackColor = Color.FromArgb(CByte(61), CByte(90), CByte(115))
+        BtnCerrar.BackColor = Color.FromArgb(CByte(4), CByte(36), CByte(64))
         BtnCerrar.Dock = DockStyle.Right
         BtnCerrar.FlatAppearance.BorderSize = 0
         BtnCerrar.FlatAppearance.MouseOverBackColor = Color.Silver
@@ -59,7 +59,7 @@ Partial Class Form1
         ' 
         ' PanelMenu
         ' 
-        PanelMenu.BackColor = Color.FromArgb(CByte(61), CByte(90), CByte(115))
+        PanelMenu.BackColor = Color.FromArgb(CByte(4), CByte(36), CByte(64))
         PanelMenu.Dock = DockStyle.Left
         PanelMenu.Location = New Point(0, 40)
         PanelMenu.Name = "PanelMenu"
@@ -68,23 +68,25 @@ Partial Class Form1
         ' 
         ' Panel1
         ' 
-        Panel1.Controls.Add(PictureBox1)
+        Panel1.BackColor = Color.FromArgb(CByte(22), CByte(71), CByte(115))
+        Panel1.Controls.Add(logomenu)
         Panel1.Dock = DockStyle.Fill
         Panel1.Location = New Point(234, 40)
         Panel1.Name = "Panel1"
         Panel1.Size = New Size(742, 543)
         Panel1.TabIndex = 2
         ' 
-        ' PictureBox1
+        ' logomenu
         ' 
-        PictureBox1.Anchor = AnchorStyles.None
-        PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), Image)
-        PictureBox1.Location = New Point(195, 127)
-        PictureBox1.Name = "PictureBox1"
-        PictureBox1.Size = New Size(361, 285)
-        PictureBox1.SizeMode = PictureBoxSizeMode.Zoom
-        PictureBox1.TabIndex = 0
-        PictureBox1.TabStop = False
+        logomenu.Anchor = AnchorStyles.None
+        logomenu.BackColor = Color.Transparent
+        logomenu.Image = My.Resources.Resources.logo_sin_fondo
+        logomenu.Location = New Point(268, 157)
+        logomenu.Name = "logomenu"
+        logomenu.Size = New Size(229, 229)
+        logomenu.SizeMode = PictureBoxSizeMode.Zoom
+        logomenu.TabIndex = 0
+        logomenu.TabStop = False
         ' 
         ' Form1
         ' 
@@ -101,7 +103,7 @@ Partial Class Form1
         WindowState = FormWindowState.Maximized
         PanelCerrar.ResumeLayout(False)
         Panel1.ResumeLayout(False)
-        CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
+        CType(logomenu, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
     End Sub
 
@@ -109,6 +111,6 @@ Partial Class Form1
     Friend WithEvents BtnCerrar As Button
     Friend WithEvents PanelMenu As Panel
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents logomenu As PictureBox
 
 End Class
