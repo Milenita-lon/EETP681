@@ -49,6 +49,7 @@ Public Class Form1
     End Sub
 
     Private Sub ShowSubMenu(submenu As Panel)
+
         If submenu.Visible = False Then
             hideSubMenu()
             submenu.Visible = True
@@ -66,7 +67,7 @@ Public Class Form1
         ShowSubMenu(submenuAG)
     End Sub
 
-    Private Sub botonPD_Click_1(sender As Object, e As EventArgs) Handles botonPD.Click
+    Private Sub botonPD_Click(sender As Object, e As EventArgs) Handles botonPD.Click
         ShowSubMenu(submenuPD)
     End Sub
 
@@ -77,4 +78,9 @@ Public Class Form1
     Private Sub botonGA_Click(sender As Object, e As EventArgs) Handles botonGA.Click
         ShowSubMenu(submenuGA)
     End Sub
+
+    Private Sub submenuGA_Paint(sender As Object, e As PaintEventArgs) Handles submenuGA.Paint
+
+    End Sub
+
 End Class
