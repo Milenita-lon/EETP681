@@ -78,7 +78,6 @@ Partial Class login
         usuariologin.Name = "usuariologin"
         usuariologin.Size = New Size(300, 16)
         usuariologin.TabIndex = 2
-        usuariologin.Text = "USUARIO"
         usuariologin.TextAlign = HorizontalAlignment.Center
         ' 
         ' passwordlogin
@@ -92,7 +91,6 @@ Partial Class login
         passwordlogin.Name = "passwordlogin"
         passwordlogin.Size = New Size(300, 16)
         passwordlogin.TabIndex = 3
-        passwordlogin.Text = "CONTRASEÑA"
         passwordlogin.TextAlign = HorizontalAlignment.Center
         ' 
         ' Panel1

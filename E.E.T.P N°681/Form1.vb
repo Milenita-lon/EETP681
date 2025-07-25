@@ -37,6 +37,24 @@ Public Class Form1
         logomenu.Image = imgTransparente
         logomenu.SizeMode = PictureBoxSizeMode.StretchImage
 
+        hideSubMenu()
+
+    End Sub
+
+    Private Sub hideSubMenu()
+        submenuAG.Visible = False
+        submenuPD.Visible = False
+        submenuAU.Visible = False
+        submenuGA.Visible = False
+    End Sub
+
+    Private Sub ShowSubMenu(submenu As Panel)
+        If submenu.Visible = False Then
+            hideSubMenu()
+            submenu.Visible = True
+        Else
+            submenu.Visible = False
+        End If
     End Sub
 
     Private Sub BtnCerrar_Click(sender As Object, e As EventArgs) Handles BtnCerrar.Click
@@ -44,5 +62,19 @@ Public Class Form1
         Dispose()
     End Sub
 
+    Private Sub botonAG_Click(sender As Object, e As EventArgs) Handles botonAG.Click
+        ShowSubMenu(submenuAG)
+    End Sub
 
+    Private Sub botonPD_Click_1(sender As Object, e As EventArgs) Handles botonPD.Click
+        ShowSubMenu(submenuPD)
+    End Sub
+
+    Private Sub botonAU_Click(sender As Object, e As EventArgs) Handles botonAU.Click
+        ShowSubMenu(submenuAU)
+    End Sub
+
+    Private Sub botonGA_Click(sender As Object, e As EventArgs) Handles botonGA.Click
+        ShowSubMenu(submenuGA)
+    End Sub
 End Class
