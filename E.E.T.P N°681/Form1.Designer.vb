@@ -51,9 +51,9 @@ Partial Class Form1
         Panel4 = New Panel()
         botonAG = New Button()
         Panel2 = New Panel()
+        PictureBox1 = New PictureBox()
         Panel1 = New Panel()
         logomenu = New PictureBox()
-        PictureBox1 = New PictureBox()
         PanelCerrar.SuspendLayout()
         PanelMenu.SuspendLayout()
         submenuGA.SuspendLayout()
@@ -65,9 +65,9 @@ Partial Class Form1
         submenuAG.SuspendLayout()
         PanelAG.SuspendLayout()
         Panel2.SuspendLayout()
+        CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         Panel1.SuspendLayout()
         CType(logomenu, ComponentModel.ISupportInitialize).BeginInit()
-        CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' PanelCerrar
@@ -109,7 +109,7 @@ Partial Class Form1
         PanelMenu.Dock = DockStyle.Left
         PanelMenu.Location = New Point(0, 40)
         PanelMenu.Name = "PanelMenu"
-        PanelMenu.Size = New Size(234, 741)
+        PanelMenu.Size = New Size(234, 596)
         PanelMenu.TabIndex = 1
         ' 
         ' submenuGA
@@ -478,30 +478,6 @@ Partial Class Form1
         Panel2.Size = New Size(234, 110)
         Panel2.TabIndex = 1
         ' 
-        ' Panel1
-        ' 
-        Panel1.BackColor = Color.FromArgb(CByte(22), CByte(71), CByte(115))
-        Panel1.Controls.Add(logomenu)
-        Panel1.Dock = DockStyle.Fill
-        Panel1.Location = New Point(234, 40)
-        Panel1.Margin = New Padding(40, 3, 3, 3)
-        Panel1.Name = "Panel1"
-        Panel1.Size = New Size(742, 741)
-        Panel1.TabIndex = 2
-        ' 
-        ' logomenu
-        ' 
-        logomenu.Anchor = AnchorStyles.None
-        logomenu.BackColor = Color.Transparent
-        logomenu.Image = My.Resources.Resources.logo_sin_fondo
-        logomenu.Location = New Point(268, 256)
-        logomenu.Margin = New Padding(3, 6, 3, 3)
-        logomenu.Name = "logomenu"
-        logomenu.Size = New Size(229, 229)
-        logomenu.SizeMode = PictureBoxSizeMode.Zoom
-        logomenu.TabIndex = 0
-        logomenu.TabStop = False
-        ' 
         ' PictureBox1
         ' 
         PictureBox1.Dock = DockStyle.Fill
@@ -513,11 +489,35 @@ Partial Class Form1
         PictureBox1.TabIndex = 0
         PictureBox1.TabStop = False
         ' 
+        ' Panel1
+        ' 
+        Panel1.BackColor = Color.FromArgb(CByte(22), CByte(71), CByte(115))
+        Panel1.Controls.Add(logomenu)
+        Panel1.Dock = DockStyle.Fill
+        Panel1.Location = New Point(234, 40)
+        Panel1.Margin = New Padding(40, 3, 3, 3)
+        Panel1.Name = "Panel1"
+        Panel1.Size = New Size(742, 596)
+        Panel1.TabIndex = 2
+        ' 
+        ' logomenu
+        ' 
+        logomenu.Anchor = AnchorStyles.None
+        logomenu.BackColor = Color.Transparent
+        logomenu.Image = My.Resources.Resources.logo_sin_fondo1
+        logomenu.Location = New Point(268, 184)
+        logomenu.Margin = New Padding(3, 6, 3, 3)
+        logomenu.Name = "logomenu"
+        logomenu.Size = New Size(229, 229)
+        logomenu.SizeMode = PictureBoxSizeMode.Zoom
+        logomenu.TabIndex = 0
+        logomenu.TabStop = False
+        ' 
         ' Form1
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(976, 781)
+        ClientSize = New Size(976, 636)
         Controls.Add(Panel1)
         Controls.Add(PanelMenu)
         Controls.Add(PanelCerrar)
@@ -537,9 +537,9 @@ Partial Class Form1
         submenuAG.ResumeLayout(False)
         PanelAG.ResumeLayout(False)
         Panel2.ResumeLayout(False)
+        CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
         Panel1.ResumeLayout(False)
         CType(logomenu, ComponentModel.ISupportInitialize).EndInit()
-        CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
     End Sub
 

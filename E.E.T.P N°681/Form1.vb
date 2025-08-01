@@ -27,8 +27,8 @@ Public Class Form1
     End Function
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ' Cargar imagen desde archivo
-        Dim img As Image = Image.FromFile("D:\Usuarios\Usuario\Escritorio\E.E.T.P N°681\E.E.T.P N°681\Resources\logo sin fondo1.png")
+        ' Cargar imagen "logo sin fondo1.png" desde la carpeta de recursos del proyecto
+        Dim img As Image = My.Resources.logo_sin_fondo1
 
         ' Aplicar opacidad del 50%
         Dim imgTransparente As Image = AjustarOpacidad(img, 0.3F)
@@ -77,10 +77,6 @@ Public Class Form1
 
     Private Sub botonGA_Click(sender As Object, e As EventArgs) Handles botonGA.Click
         ShowSubMenu(submenuGA)
-    End Sub
-
-    Private Sub submenuGA_Paint(sender As Object, e As PaintEventArgs) Handles submenuGA.Paint
-
     End Sub
 
 End Class
