@@ -46,7 +46,6 @@ Partial Class Form1
         botonPD = New Button()
         submenuAG = New Panel()
         botonSecre = New Button()
-        botonAcceso = New Button()
         PanelAG = New Panel()
         Panel4 = New Panel()
         botonAG = New Button()
@@ -77,7 +76,7 @@ Partial Class Form1
         PanelCerrar.Dock = DockStyle.Top
         PanelCerrar.Location = New Point(0, 0)
         PanelCerrar.Name = "PanelCerrar"
-        PanelCerrar.Size = New Size(976, 40)
+        PanelCerrar.Size = New Size(1080, 40)
         PanelCerrar.TabIndex = 0
         ' 
         ' BtnCerrar
@@ -88,7 +87,7 @@ Partial Class Form1
         BtnCerrar.FlatAppearance.MouseOverBackColor = Color.Silver
         BtnCerrar.FlatStyle = FlatStyle.Flat
         BtnCerrar.Image = CType(resources.GetObject("BtnCerrar.Image"), Image)
-        BtnCerrar.Location = New Point(936, 0)
+        BtnCerrar.Location = New Point(1040, 0)
         BtnCerrar.Name = "BtnCerrar"
         BtnCerrar.Size = New Size(40, 40)
         BtnCerrar.TabIndex = 1
@@ -109,7 +108,7 @@ Partial Class Form1
         PanelMenu.Dock = DockStyle.Left
         PanelMenu.Location = New Point(0, 40)
         PanelMenu.Name = "PanelMenu"
-        PanelMenu.Size = New Size(234, 596)
+        PanelMenu.Size = New Size(234, 680)
         PanelMenu.TabIndex = 1
         ' 
         ' submenuGA
@@ -119,7 +118,7 @@ Partial Class Form1
         submenuGA.Controls.Add(botonCurs)
         submenuGA.Controls.Add(botonAlum)
         submenuGA.Dock = DockStyle.Top
-        submenuGA.Location = New Point(0, 485)
+        submenuGA.Location = New Point(0, 450)
         submenuGA.Name = "submenuGA"
         submenuGA.Size = New Size(234, 105)
         submenuGA.TabIndex = 9
@@ -190,7 +189,7 @@ Partial Class Form1
         PanelGA.Controls.Add(Panel8)
         PanelGA.Controls.Add(botonGA)
         PanelGA.Dock = DockStyle.Top
-        PanelGA.Location = New Point(0, 435)
+        PanelGA.Location = New Point(0, 400)
         PanelGA.Name = "PanelGA"
         PanelGA.Padding = New Padding(0, 0, 0, 5)
         PanelGA.Size = New Size(234, 50)
@@ -227,7 +226,7 @@ Partial Class Form1
         submenuAU.BackColor = Color.FromArgb(CByte(6), CByte(46), CByte(98))
         submenuAU.Controls.Add(botonDirec)
         submenuAU.Dock = DockStyle.Top
-        submenuAU.Location = New Point(0, 400)
+        submenuAU.Location = New Point(0, 365)
         submenuAU.Name = "submenuAU"
         submenuAU.Size = New Size(234, 35)
         submenuAU.TabIndex = 7
@@ -258,7 +257,7 @@ Partial Class Form1
         PanelAU.Controls.Add(Panel7)
         PanelAU.Controls.Add(botonAU)
         PanelAU.Dock = DockStyle.Top
-        PanelAU.Location = New Point(0, 350)
+        PanelAU.Location = New Point(0, 315)
         PanelAU.Name = "PanelAU"
         PanelAU.Padding = New Padding(0, 0, 0, 5)
         PanelAU.Size = New Size(234, 50)
@@ -296,7 +295,7 @@ Partial Class Form1
         submenuPD.Controls.Add(botonPrecep)
         submenuPD.Controls.Add(botonProfes)
         submenuPD.Dock = DockStyle.Top
-        submenuPD.Location = New Point(0, 280)
+        submenuPD.Location = New Point(0, 245)
         submenuPD.Name = "submenuPD"
         submenuPD.Size = New Size(234, 70)
         submenuPD.TabIndex = 5
@@ -347,7 +346,7 @@ Partial Class Form1
         PanelPD.Controls.Add(Panel6)
         PanelPD.Controls.Add(botonPD)
         PanelPD.Dock = DockStyle.Top
-        PanelPD.Location = New Point(0, 230)
+        PanelPD.Location = New Point(0, 195)
         PanelPD.Name = "PanelPD"
         PanelPD.Padding = New Padding(0, 0, 0, 5)
         PanelPD.Size = New Size(234, 50)
@@ -383,11 +382,10 @@ Partial Class Form1
         ' 
         submenuAG.BackColor = Color.FromArgb(CByte(6), CByte(46), CByte(98))
         submenuAG.Controls.Add(botonSecre)
-        submenuAG.Controls.Add(botonAcceso)
         submenuAG.Dock = DockStyle.Top
         submenuAG.Location = New Point(0, 160)
         submenuAG.Name = "submenuAG"
-        submenuAG.Size = New Size(234, 70)
+        submenuAG.Size = New Size(234, 35)
         submenuAG.TabIndex = 3
         ' 
         ' botonSecre
@@ -400,7 +398,7 @@ Partial Class Form1
         botonSecre.Font = New Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         botonSecre.ForeColor = SystemColors.Control
         botonSecre.ImageAlign = ContentAlignment.MiddleRight
-        botonSecre.Location = New Point(0, 35)
+        botonSecre.Location = New Point(0, 0)
         botonSecre.Margin = New Padding(0)
         botonSecre.Name = "botonSecre"
         botonSecre.Padding = New Padding(30, 0, 0, 0)
@@ -409,26 +407,6 @@ Partial Class Form1
         botonSecre.Text = "SECRETARIOS"
         botonSecre.TextAlign = ContentAlignment.MiddleLeft
         botonSecre.UseVisualStyleBackColor = False
-        ' 
-        ' botonAcceso
-        ' 
-        botonAcceso.BackColor = Color.Transparent
-        botonAcceso.Dock = DockStyle.Top
-        botonAcceso.FlatAppearance.BorderSize = 0
-        botonAcceso.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(22), CByte(71), CByte(115))
-        botonAcceso.FlatStyle = FlatStyle.Flat
-        botonAcceso.Font = New Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        botonAcceso.ForeColor = SystemColors.Control
-        botonAcceso.ImageAlign = ContentAlignment.MiddleRight
-        botonAcceso.Location = New Point(0, 0)
-        botonAcceso.Margin = New Padding(0)
-        botonAcceso.Name = "botonAcceso"
-        botonAcceso.Padding = New Padding(30, 0, 0, 0)
-        botonAcceso.Size = New Size(234, 35)
-        botonAcceso.TabIndex = 3
-        botonAcceso.Text = "ACCESO"
-        botonAcceso.TextAlign = ContentAlignment.MiddleLeft
-        botonAcceso.UseVisualStyleBackColor = False
         ' 
         ' PanelAG
         ' 
@@ -497,7 +475,7 @@ Partial Class Form1
         Panel1.Location = New Point(234, 40)
         Panel1.Margin = New Padding(40, 3, 3, 3)
         Panel1.Name = "Panel1"
-        Panel1.Size = New Size(742, 596)
+        Panel1.Size = New Size(846, 680)
         Panel1.TabIndex = 2
         ' 
         ' logomenu
@@ -505,7 +483,7 @@ Partial Class Form1
         logomenu.Anchor = AnchorStyles.None
         logomenu.BackColor = Color.Transparent
         logomenu.Image = My.Resources.Resources.logo_sin_fondo1
-        logomenu.Location = New Point(268, 184)
+        logomenu.Location = New Point(320, 226)
         logomenu.Margin = New Padding(3, 6, 3, 3)
         logomenu.Name = "logomenu"
         logomenu.Size = New Size(229, 229)
@@ -517,7 +495,7 @@ Partial Class Form1
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(976, 636)
+        ClientSize = New Size(1080, 720)
         Controls.Add(Panel1)
         Controls.Add(PanelMenu)
         Controls.Add(PanelCerrar)
@@ -565,7 +543,6 @@ Partial Class Form1
     Friend WithEvents PanelGA As Panel
     Friend WithEvents Panel8 As Panel
     Friend WithEvents botonGA As Button
-    Friend WithEvents botonAcceso As Button
     Friend WithEvents botonProfes As Button
     Friend WithEvents botonSecre As Button
     Friend WithEvents botonMate As Button
