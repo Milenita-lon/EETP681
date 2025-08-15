@@ -79,4 +79,23 @@ Public Class Form1
         ShowSubMenu(submenuGA)
     End Sub
 
+    ' Método para abrir un formulario dentro del PanelPantalla
+    Private Sub AbrirFormEnPanel(formHijo As Form)
+        ' Limpiar el contenido previo
+        PanelPantalla.Controls.Clear()
+
+        ' Configurar el formulario hijo
+        formHijo.TopLevel = False
+        formHijo.FormBorderStyle = FormBorderStyle.None
+        formHijo.Dock = DockStyle.Fill
+
+        ' Agregarlo al panel y mostrarlo
+        PanelPantalla.Controls.Add(formHijo)
+        formHijo.Show()
+    End Sub
+
+
+    Private Sub botonSecre_Click(sender As Object, e As EventArgs) Handles botonSecre.Click
+        AbrirFormEnPanel(New Secretarios())
+    End Sub
 End Class

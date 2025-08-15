@@ -15,145 +15,187 @@ Partial Class Secretarios
 
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.PanelBase = New Panel()
-        Me.PanelContenido = New Panel()
-        Me.btnEliminar = New Button()
-        Me.btnEditar = New Button()
-        Me.btnAgregar = New Button()
-        Me.txtCorreo = New TextBox()
-        Me.txtTelefono = New TextBox()
-        Me.txtDireccion = New TextBox()
-        Me.txtDni = New TextBox()
-        Me.txtApellido = New TextBox()
-        Me.txtNombre = New TextBox()
-        Me.DataGridViewSecretarios = New DataGridView()
-        Me.PanelTitulo = New Panel()
-        Me.LabelTitulo = New Label()
-        Me.PanelBase.SuspendLayout()
-        Me.PanelContenido.SuspendLayout()
-        CType(Me.DataGridViewSecretarios, ComponentModel.ISupportInitialize).BeginInit()
-        Me.PanelTitulo.SuspendLayout()
-        Me.SuspendLayout()
-        '
+        PanelBase = New Panel()
+        PanelContenido = New Panel()
+        btnEliminar = New Button()
+        btnEditar = New Button()
+        btnAgregar = New Button()
+        txtCorreo = New TextBox()
+        txtTelefono = New TextBox()
+        txtDireccion = New TextBox()
+        txtDni = New TextBox()
+        txtApellido = New TextBox()
+        txtNombre = New TextBox()
+        DataGridViewSecretarios = New DataGridView()
+        PanelTitulo = New Panel()
+        LabelTitulo = New Label()
+        PanelBase.SuspendLayout()
+        PanelContenido.SuspendLayout()
+        CType(DataGridViewSecretarios, ComponentModel.ISupportInitialize).BeginInit()
+        PanelTitulo.SuspendLayout()
+        SuspendLayout()
+        ' 
         ' PanelBase
-        '
-        Me.PanelBase.BackColor = Color.FromArgb(22, 71, 115)
-        Me.PanelBase.Controls.Add(Me.PanelContenido)
-        Me.PanelBase.Controls.Add(Me.PanelTitulo)
-        Me.PanelBase.Dock = DockStyle.Fill
-        Me.PanelBase.Name = "PanelBase"
-        Me.PanelBase.Size = New Size(846, 680)
-        '
+        ' 
+        PanelBase.BackColor = Color.FromArgb(CByte(22), CByte(71), CByte(115))
+        PanelBase.Controls.Add(PanelContenido)
+        PanelBase.Controls.Add(PanelTitulo)
+        PanelBase.Dock = DockStyle.Fill
+        PanelBase.Location = New Point(0, 0)
+        PanelBase.Name = "PanelBase"
+        PanelBase.Size = New Size(846, 680)
+        PanelBase.TabIndex = 0
+        ' 
         ' PanelContenido
-        '
-        Me.PanelContenido.BackColor = Color.FromArgb(244, 244, 244)
-        Me.PanelContenido.Controls.Add(Me.btnEliminar)
-        Me.PanelContenido.Controls.Add(Me.btnEditar)
-        Me.PanelContenido.Controls.Add(Me.btnAgregar)
-        Me.PanelContenido.Controls.Add(Me.txtCorreo)
-        Me.PanelContenido.Controls.Add(Me.txtTelefono)
-        Me.PanelContenido.Controls.Add(Me.txtDireccion)
-        Me.PanelContenido.Controls.Add(Me.txtDni)
-        Me.PanelContenido.Controls.Add(Me.txtApellido)
-        Me.PanelContenido.Controls.Add(Me.txtNombre)
-        Me.PanelContenido.Controls.Add(Me.DataGridViewSecretarios)
-        Me.PanelContenido.Dock = DockStyle.Fill
-        Me.PanelContenido.Location = New Point(0, 100)
-        Me.PanelContenido.Size = New Size(846, 580)
-        '
-        ' DataGridViewSecretarios
-        '
-        Me.DataGridViewSecretarios.AllowUserToAddRows = False
-        Me.DataGridViewSecretarios.AllowUserToDeleteRows = False
-        Me.DataGridViewSecretarios.ReadOnly = True
-        Me.DataGridViewSecretarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridViewSecretarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridViewSecretarios.Location = New Point(101, 130)
-        Me.DataGridViewSecretarios.Size = New Size(645, 374)
-        '
-        ' txtNombre
-        '
-        Me.txtNombre.Location = New Point(101, 44)
-        Me.txtNombre.Size = New Size(100, 23)
-        Me.txtNombre.PlaceholderText = "Nombre"
-        '
-        ' txtApellido
-        '
-        Me.txtApellido.Location = New Point(207, 44)
-        Me.txtApellido.Size = New Size(100, 23)
-        Me.txtApellido.PlaceholderText = "Apellido"
-        '
-        ' txtDni
-        '
-        Me.txtDni.Location = New Point(313, 44)
-        Me.txtDni.Size = New Size(100, 23)
-        Me.txtDni.PlaceholderText = "DNI"
-        '
-        ' txtDireccion
-        '
-        Me.txtDireccion.Location = New Point(419, 44)
-        Me.txtDireccion.Size = New Size(100, 23)
-        Me.txtDireccion.PlaceholderText = "Dirección"
-        '
-        ' txtTelefono
-        '
-        Me.txtTelefono.Location = New Point(525, 44)
-        Me.txtTelefono.Size = New Size(100, 23)
-        Me.txtTelefono.PlaceholderText = "Teléfono"
-        '
-        ' txtCorreo
-        '
-        Me.txtCorreo.Location = New Point(631, 44)
-        Me.txtCorreo.Size = New Size(115, 23)
-        Me.txtCorreo.PlaceholderText = "Correo"
-        '
-        ' btnAgregar
-        '
-        Me.btnAgregar.Location = New Point(101, 82)
-        Me.btnAgregar.Size = New Size(75, 23)
-        Me.btnAgregar.Text = "Agregar"
-        '
-        ' btnEditar
-        '
-        Me.btnEditar.Location = New Point(182, 82)
-        Me.btnEditar.Size = New Size(75, 23)
-        Me.btnEditar.Text = "Editar"
-        '
+        ' 
+        PanelContenido.BackColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
+        PanelContenido.Controls.Add(btnEliminar)
+        PanelContenido.Controls.Add(btnEditar)
+        PanelContenido.Controls.Add(btnAgregar)
+        PanelContenido.Controls.Add(txtCorreo)
+        PanelContenido.Controls.Add(txtTelefono)
+        PanelContenido.Controls.Add(txtDireccion)
+        PanelContenido.Controls.Add(txtDni)
+        PanelContenido.Controls.Add(txtApellido)
+        PanelContenido.Controls.Add(txtNombre)
+        PanelContenido.Controls.Add(DataGridViewSecretarios)
+        PanelContenido.Dock = DockStyle.Fill
+        PanelContenido.Location = New Point(0, 100)
+        PanelContenido.Name = "PanelContenido"
+        PanelContenido.Size = New Size(846, 580)
+        PanelContenido.TabIndex = 0
+        ' 
         ' btnEliminar
-        '
-        Me.btnEliminar.Location = New Point(263, 82)
-        Me.btnEliminar.Size = New Size(75, 23)
-        Me.btnEliminar.Text = "Eliminar"
-        '
+        ' 
+        btnEliminar.Anchor = AnchorStyles.None
+        btnEliminar.Location = New Point(263, 82)
+        btnEliminar.Name = "btnEliminar"
+        btnEliminar.Size = New Size(75, 23)
+        btnEliminar.TabIndex = 0
+        btnEliminar.Text = "Eliminar"
+        ' 
+        ' btnEditar
+        ' 
+        btnEditar.Anchor = AnchorStyles.None
+        btnEditar.Location = New Point(182, 82)
+        btnEditar.Name = "btnEditar"
+        btnEditar.Size = New Size(75, 23)
+        btnEditar.TabIndex = 1
+        btnEditar.Text = "Editar"
+        ' 
+        ' btnAgregar
+        ' 
+        btnAgregar.Anchor = AnchorStyles.None
+        btnAgregar.Location = New Point(101, 82)
+        btnAgregar.Name = "btnAgregar"
+        btnAgregar.Size = New Size(75, 23)
+        btnAgregar.TabIndex = 2
+        btnAgregar.Text = "Agregar"
+        ' 
+        ' txtCorreo
+        ' 
+        txtCorreo.Anchor = AnchorStyles.None
+        txtCorreo.Location = New Point(631, 44)
+        txtCorreo.Name = "txtCorreo"
+        txtCorreo.PlaceholderText = "Correo"
+        txtCorreo.Size = New Size(115, 23)
+        txtCorreo.TabIndex = 3
+        ' 
+        ' txtTelefono
+        ' 
+        txtTelefono.Anchor = AnchorStyles.None
+        txtTelefono.Location = New Point(525, 44)
+        txtTelefono.Name = "txtTelefono"
+        txtTelefono.PlaceholderText = "Teléfono"
+        txtTelefono.Size = New Size(100, 23)
+        txtTelefono.TabIndex = 4
+        ' 
+        ' txtDireccion
+        ' 
+        txtDireccion.Anchor = AnchorStyles.None
+        txtDireccion.Location = New Point(419, 44)
+        txtDireccion.Name = "txtDireccion"
+        txtDireccion.PlaceholderText = "Dirección"
+        txtDireccion.Size = New Size(100, 23)
+        txtDireccion.TabIndex = 5
+        ' 
+        ' txtDni
+        ' 
+        txtDni.Anchor = AnchorStyles.None
+        txtDni.Location = New Point(313, 44)
+        txtDni.Name = "txtDni"
+        txtDni.PlaceholderText = "DNI"
+        txtDni.Size = New Size(100, 23)
+        txtDni.TabIndex = 6
+        ' 
+        ' txtApellido
+        ' 
+        txtApellido.Anchor = AnchorStyles.None
+        txtApellido.Location = New Point(207, 44)
+        txtApellido.Name = "txtApellido"
+        txtApellido.PlaceholderText = "Apellido"
+        txtApellido.Size = New Size(100, 23)
+        txtApellido.TabIndex = 7
+        ' 
+        ' txtNombre
+        ' 
+        txtNombre.Anchor = AnchorStyles.None
+        txtNombre.Location = New Point(101, 44)
+        txtNombre.Name = "txtNombre"
+        txtNombre.PlaceholderText = "Nombre"
+        txtNombre.Size = New Size(100, 23)
+        txtNombre.TabIndex = 8
+        ' 
+        ' DataGridViewSecretarios
+        ' 
+        DataGridViewSecretarios.AllowUserToAddRows = False
+        DataGridViewSecretarios.AllowUserToDeleteRows = False
+        DataGridViewSecretarios.Anchor = AnchorStyles.None
+        DataGridViewSecretarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DataGridViewSecretarios.Location = New Point(101, 130)
+        DataGridViewSecretarios.Name = "DataGridViewSecretarios"
+        DataGridViewSecretarios.ReadOnly = True
+        DataGridViewSecretarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect
+        DataGridViewSecretarios.Size = New Size(645, 374)
+        DataGridViewSecretarios.TabIndex = 9
+        ' 
         ' PanelTitulo
-        '
-        Me.PanelTitulo.BackColor = Color.FromArgb(4, 36, 64)
-        Me.PanelTitulo.Controls.Add(Me.LabelTitulo)
-        Me.PanelTitulo.Dock = DockStyle.Top
-        Me.PanelTitulo.Size = New Size(846, 100)
-        '
+        ' 
+        PanelTitulo.BackColor = Color.FromArgb(CByte(4), CByte(36), CByte(64))
+        PanelTitulo.Controls.Add(LabelTitulo)
+        PanelTitulo.Dock = DockStyle.Top
+        PanelTitulo.Location = New Point(0, 0)
+        PanelTitulo.Name = "PanelTitulo"
+        PanelTitulo.Size = New Size(846, 100)
+        PanelTitulo.TabIndex = 1
+        ' 
         ' LabelTitulo
-        '
-        Me.LabelTitulo.Dock = DockStyle.Fill
-        Me.LabelTitulo.Font = New Font("Segoe UI", 32.0!, FontStyle.Bold)
-        Me.LabelTitulo.ForeColor = Color.White
-        Me.LabelTitulo.Text = "SECRETARIOS"
-        Me.LabelTitulo.TextAlign = ContentAlignment.MiddleCenter
-        '
+        ' 
+        LabelTitulo.Dock = DockStyle.Fill
+        LabelTitulo.Font = New Font("Segoe UI", 32F, FontStyle.Bold)
+        LabelTitulo.ForeColor = Color.White
+        LabelTitulo.Location = New Point(0, 0)
+        LabelTitulo.Name = "LabelTitulo"
+        LabelTitulo.Size = New Size(846, 100)
+        LabelTitulo.TabIndex = 0
+        LabelTitulo.Text = "SECRETARIOS"
+        LabelTitulo.TextAlign = ContentAlignment.MiddleCenter
+        ' 
         ' Secretarios
-        '
-        Me.AutoScaleDimensions = New SizeF(7.0!, 15.0!)
-        Me.AutoScaleMode = AutoScaleMode.Font
-        Me.ClientSize = New Size(846, 680)
-        Me.Controls.Add(Me.PanelBase)
-        Me.FormBorderStyle = FormBorderStyle.None
-        Me.Text = "Secretarios"
-        Me.PanelBase.ResumeLayout(False)
-        Me.PanelContenido.ResumeLayout(False)
-        Me.PanelContenido.PerformLayout()
-        CType(Me.DataGridViewSecretarios, ComponentModel.ISupportInitialize).EndInit()
-        Me.PanelTitulo.ResumeLayout(False)
-        Me.ResumeLayout(False)
+        ' 
+        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleMode = AutoScaleMode.Font
+        ClientSize = New Size(846, 680)
+        Controls.Add(PanelBase)
+        FormBorderStyle = FormBorderStyle.None
+        Name = "Secretarios"
+        Text = "Secretarios"
+        PanelBase.ResumeLayout(False)
+        PanelContenido.ResumeLayout(False)
+        PanelContenido.PerformLayout()
+        CType(DataGridViewSecretarios, ComponentModel.ISupportInitialize).EndInit()
+        PanelTitulo.ResumeLayout(False)
+        ResumeLayout(False)
     End Sub
 
     Friend WithEvents PanelBase As Panel
