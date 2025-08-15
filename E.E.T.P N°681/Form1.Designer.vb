@@ -51,7 +51,7 @@ Partial Class Form1
         botonAG = New Button()
         Panel2 = New Panel()
         PictureBox1 = New PictureBox()
-        Panel1 = New Panel()
+        PanelPantalla = New Panel()
         logomenu = New PictureBox()
         PanelCerrar.SuspendLayout()
         PanelMenu.SuspendLayout()
@@ -65,7 +65,7 @@ Partial Class Form1
         PanelAG.SuspendLayout()
         Panel2.SuspendLayout()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
-        Panel1.SuspendLayout()
+        PanelPantalla.SuspendLayout()
         CType(logomenu, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -467,16 +467,16 @@ Partial Class Form1
         PictureBox1.TabIndex = 0
         PictureBox1.TabStop = False
         ' 
-        ' Panel1
+        ' PanelPantalla
         ' 
-        Panel1.BackColor = Color.FromArgb(CByte(22), CByte(71), CByte(115))
-        Panel1.Controls.Add(logomenu)
-        Panel1.Dock = DockStyle.Fill
-        Panel1.Location = New Point(234, 40)
-        Panel1.Margin = New Padding(40, 3, 3, 3)
-        Panel1.Name = "Panel1"
-        Panel1.Size = New Size(846, 680)
-        Panel1.TabIndex = 2
+        PanelPantalla.BackColor = Color.FromArgb(CByte(22), CByte(71), CByte(115))
+        PanelPantalla.Controls.Add(logomenu)
+        PanelPantalla.Dock = DockStyle.Fill
+        PanelPantalla.Location = New Point(234, 40)
+        PanelPantalla.Margin = New Padding(40, 3, 3, 3)
+        PanelPantalla.Name = "PanelPantalla"
+        PanelPantalla.Size = New Size(846, 680)
+        PanelPantalla.TabIndex = 2
         ' 
         ' logomenu
         ' 
@@ -496,7 +496,7 @@ Partial Class Form1
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(1080, 720)
-        Controls.Add(Panel1)
+        Controls.Add(PanelPantalla)
         Controls.Add(PanelMenu)
         Controls.Add(PanelCerrar)
         FormBorderStyle = FormBorderStyle.None
@@ -516,7 +516,7 @@ Partial Class Form1
         PanelAG.ResumeLayout(False)
         Panel2.ResumeLayout(False)
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
-        Panel1.ResumeLayout(False)
+        PanelPantalla.ResumeLayout(False)
         CType(logomenu, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
     End Sub
@@ -524,7 +524,7 @@ Partial Class Form1
     Friend WithEvents PanelCerrar As Panel
     Friend WithEvents BtnCerrar As Button
     Friend WithEvents PanelMenu As Panel
-    Friend WithEvents Panel1 As Panel
+    Friend WithEvents PanelPantalla As Panel
     Friend WithEvents logomenu As PictureBox
     Friend WithEvents Panel2 As Panel
     Friend WithEvents botonAG As Button

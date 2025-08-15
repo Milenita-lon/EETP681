@@ -1,7 +1,6 @@
 
 Imports MySql.Data.MySqlClient
 
-<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Secretarios
     Inherits System.Windows.Forms.Form
 
