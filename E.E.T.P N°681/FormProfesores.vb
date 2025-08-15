@@ -1,6 +1,6 @@
 ﻿Imports System.Drawing.Imaging
 
-Public Class Form1
+Public Class FormProfesores
 
     ' Función que devuelve una nueva imagen con la opacidad ajustada
     Function AjustarOpacidad(logomenu As Image, opacidad As Single) As Image
