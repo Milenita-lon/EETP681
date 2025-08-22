@@ -24,6 +24,16 @@ Partial Class Alumnos
     Private Sub InitializeComponent()
         PanelBase = New Panel()
         PanelContenido = New Panel()
+        btnEliminar = New Button()
+        btnEditar = New Button()
+        btnAgregar = New Button()
+        txtCorreo = New TextBox()
+        txtTelefono = New TextBox()
+        txtDireccion = New TextBox()
+        txtDni = New TextBox()
+        txtApellido = New TextBox()
+        txtNombre = New TextBox()
+        LabelCursos = New Label()
         DataGridView1 = New DataGridView()
         ComboBox1 = New ComboBox()
         PanelTitulo = New Panel()
@@ -46,6 +56,16 @@ Partial Class Alumnos
         ' 
         ' PanelContenido
         ' 
+        PanelContenido.Controls.Add(btnEliminar)
+        PanelContenido.Controls.Add(btnEditar)
+        PanelContenido.Controls.Add(btnAgregar)
+        PanelContenido.Controls.Add(txtCorreo)
+        PanelContenido.Controls.Add(txtTelefono)
+        PanelContenido.Controls.Add(txtDireccion)
+        PanelContenido.Controls.Add(txtDni)
+        PanelContenido.Controls.Add(txtApellido)
+        PanelContenido.Controls.Add(txtNombre)
+        PanelContenido.Controls.Add(LabelCursos)
         PanelContenido.Controls.Add(DataGridView1)
         PanelContenido.Controls.Add(ComboBox1)
         PanelContenido.Dock = DockStyle.Fill
@@ -54,20 +74,129 @@ Partial Class Alumnos
         PanelContenido.Size = New Size(846, 580)
         PanelContenido.TabIndex = 1
         ' 
+        ' btnEliminar
+        ' 
+        btnEliminar.Anchor = AnchorStyles.None
+        btnEliminar.BackColor = Color.FromArgb(CByte(4), CByte(36), CByte(64))
+        btnEliminar.FlatStyle = FlatStyle.Flat
+        btnEliminar.Font = New Font("Segoe UI", 9F, FontStyle.Bold)
+        btnEliminar.ForeColor = Color.White
+        btnEliminar.Location = New Point(255, 121)
+        btnEliminar.Name = "btnEliminar"
+        btnEliminar.Size = New Size(75, 25)
+        btnEliminar.TabIndex = 15
+        btnEliminar.Text = "Eliminar"
+        btnEliminar.UseVisualStyleBackColor = False
+        ' 
+        ' btnEditar
+        ' 
+        btnEditar.Anchor = AnchorStyles.None
+        btnEditar.BackColor = Color.FromArgb(CByte(4), CByte(36), CByte(64))
+        btnEditar.FlatStyle = FlatStyle.Flat
+        btnEditar.Font = New Font("Segoe UI", 9F, FontStyle.Bold)
+        btnEditar.ForeColor = Color.White
+        btnEditar.Location = New Point(174, 121)
+        btnEditar.Name = "btnEditar"
+        btnEditar.Size = New Size(75, 25)
+        btnEditar.TabIndex = 16
+        btnEditar.Text = "Editar"
+        btnEditar.UseVisualStyleBackColor = False
+        ' 
+        ' btnAgregar
+        ' 
+        btnAgregar.Anchor = AnchorStyles.None
+        btnAgregar.BackColor = Color.FromArgb(CByte(4), CByte(36), CByte(64))
+        btnAgregar.FlatStyle = FlatStyle.Flat
+        btnAgregar.Font = New Font("Segoe UI", 9F, FontStyle.Bold)
+        btnAgregar.ForeColor = Color.White
+        btnAgregar.Location = New Point(93, 121)
+        btnAgregar.Name = "btnAgregar"
+        btnAgregar.Size = New Size(75, 25)
+        btnAgregar.TabIndex = 17
+        btnAgregar.Text = "Agregar"
+        btnAgregar.UseVisualStyleBackColor = False
+        ' 
+        ' txtCorreo
+        ' 
+        txtCorreo.Anchor = AnchorStyles.None
+        txtCorreo.Location = New Point(624, 83)
+        txtCorreo.Name = "txtCorreo"
+        txtCorreo.PlaceholderText = "Correo"
+        txtCorreo.Size = New Size(115, 23)
+        txtCorreo.TabIndex = 9
+        ' 
+        ' txtTelefono
+        ' 
+        txtTelefono.Anchor = AnchorStyles.None
+        txtTelefono.Location = New Point(518, 83)
+        txtTelefono.Name = "txtTelefono"
+        txtTelefono.PlaceholderText = "Teléfono"
+        txtTelefono.Size = New Size(100, 23)
+        txtTelefono.TabIndex = 10
+        ' 
+        ' txtDireccion
+        ' 
+        txtDireccion.Anchor = AnchorStyles.None
+        txtDireccion.Location = New Point(412, 83)
+        txtDireccion.Name = "txtDireccion"
+        txtDireccion.PlaceholderText = "Dirección"
+        txtDireccion.Size = New Size(100, 23)
+        txtDireccion.TabIndex = 11
+        ' 
+        ' txtDni
+        ' 
+        txtDni.Anchor = AnchorStyles.None
+        txtDni.Location = New Point(306, 83)
+        txtDni.Name = "txtDni"
+        txtDni.PlaceholderText = "DNI"
+        txtDni.Size = New Size(100, 23)
+        txtDni.TabIndex = 12
+        ' 
+        ' txtApellido
+        ' 
+        txtApellido.Anchor = AnchorStyles.None
+        txtApellido.Location = New Point(200, 83)
+        txtApellido.Name = "txtApellido"
+        txtApellido.PlaceholderText = "Apellido"
+        txtApellido.Size = New Size(100, 23)
+        txtApellido.TabIndex = 13
+        ' 
+        ' txtNombre
+        ' 
+        txtNombre.Anchor = AnchorStyles.None
+        txtNombre.Location = New Point(94, 83)
+        txtNombre.Name = "txtNombre"
+        txtNombre.PlaceholderText = "Nombre"
+        txtNombre.Size = New Size(100, 23)
+        txtNombre.TabIndex = 14
+        ' 
+        ' LabelCursos
+        ' 
+        LabelCursos.Anchor = AnchorStyles.None
+        LabelCursos.AutoSize = True
+        LabelCursos.Font = New Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        LabelCursos.Location = New Point(308, 25)
+        LabelCursos.Name = "LabelCursos"
+        LabelCursos.Size = New Size(86, 25)
+        LabelCursos.TabIndex = 6
+        LabelCursos.Text = "CURSOS"
+        ' 
         ' DataGridView1
         ' 
+        DataGridView1.Anchor = AnchorStyles.None
         DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridView1.Location = New Point(103, 137)
+        DataGridView1.Location = New Point(92, 178)
         DataGridView1.Name = "DataGridView1"
-        DataGridView1.Size = New Size(631, 338)
+        DataGridView1.Size = New Size(664, 374)
         DataGridView1.TabIndex = 5
         ' 
         ' ComboBox1
         ' 
+        ComboBox1.Anchor = AnchorStyles.None
         ComboBox1.FormattingEnabled = True
-        ComboBox1.Location = New Point(101, 44)
+        ComboBox1.Location = New Point(400, 25)
         ComboBox1.Name = "ComboBox1"
-        ComboBox1.Size = New Size(121, 23)
+        ComboBox1.Size = New Size(138, 23)
         ComboBox1.TabIndex = 4
         ' 
         ' PanelTitulo
@@ -103,6 +232,7 @@ Partial Class Alumnos
         Text = "Alumnos"
         PanelBase.ResumeLayout(False)
         PanelContenido.ResumeLayout(False)
+        PanelContenido.PerformLayout()
         CType(DataGridView1, ComponentModel.ISupportInitialize).EndInit()
         PanelTitulo.ResumeLayout(False)
         ResumeLayout(False)
@@ -114,4 +244,14 @@ Partial Class Alumnos
     Friend WithEvents PanelContenido As Panel
     Friend WithEvents ComboBox1 As ComboBox
     Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents LabelCursos As Label
+    Friend WithEvents txtCorreo As TextBox
+    Friend WithEvents txtTelefono As TextBox
+    Friend WithEvents txtDireccion As TextBox
+    Friend WithEvents txtDni As TextBox
+    Friend WithEvents txtApellido As TextBox
+    Friend WithEvents txtNombre As TextBox
+    Friend WithEvents btnEliminar As Button
+    Friend WithEvents btnEditar As Button
+    Friend WithEvents btnAgregar As Button
 End Class
