@@ -108,4 +108,8 @@ Public Class Form1
     Private Sub botonDirec_Click(sender As Object, e As EventArgs) Handles botonDirec.Click
         AbrirFormEnPanel(New Directivos())
     End Sub
+
+    Private Sub botonAlum_Click(sender As Object, e As EventArgs) Handles botonAlum.Click
+        AbrirFormEnPanel(New Alumnos())
+    End Sub
 End Class

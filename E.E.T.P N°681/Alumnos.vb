@@ -11,13 +11,13 @@ Public Class Alumnos
             conexion.Open()
 
             ' Traemos los cursos
-            Dim query As String = "SELECT id_curso, anio, division FROM curso;"
+            Dim query As String = "SELECT id, anio, division FROM curso;"
             Dim comando As New MySqlCommand(query, conexion)
             Dim lector As MySqlDataReader = comando.ExecuteReader()
 
             ComboBox1.DropDownStyle = ComboBoxStyle.DropDownList
             ComboBox1.DisplayMember = "anio" + "division"
-            ComboBox1.ValueMember = "id_curso"
+            ComboBox1.ValueMember = "id"
 
             Dim tablaCursos As New DataTable()
             tablaCursos.Load(lector)
