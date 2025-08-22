@@ -24,14 +24,14 @@ Partial Class Alumnos
     Private Sub InitializeComponent()
         PanelBase = New Panel()
         PanelContenido = New Panel()
+        DataGridView1 = New DataGridView()
         ComboBox1 = New ComboBox()
         PanelTitulo = New Panel()
         LabelTitulo = New Label()
-        DataGridView1 = New DataGridView()
         PanelBase.SuspendLayout()
         PanelContenido.SuspendLayout()
-        PanelTitulo.SuspendLayout()
         CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
+        PanelTitulo.SuspendLayout()
         SuspendLayout()
         ' 
         ' PanelBase
@@ -53,6 +53,14 @@ Partial Class Alumnos
         PanelContenido.Name = "PanelContenido"
         PanelContenido.Size = New Size(846, 580)
         PanelContenido.TabIndex = 1
+        ' 
+        ' DataGridView1
+        ' 
+        DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DataGridView1.Location = New Point(103, 137)
+        DataGridView1.Name = "DataGridView1"
+        DataGridView1.Size = New Size(631, 338)
+        DataGridView1.TabIndex = 5
         ' 
         ' ComboBox1
         ' 
@@ -84,14 +92,6 @@ Partial Class Alumnos
         LabelTitulo.Text = "ALUMNOS"
         LabelTitulo.TextAlign = ContentAlignment.MiddleCenter
         ' 
-        ' DataGridView1
-        ' 
-        DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridView1.Location = New Point(103, 92)
-        DataGridView1.Name = "DataGridView1"
-        DataGridView1.Size = New Size(631, 383)
-        DataGridView1.TabIndex = 5
-        ' 
         ' Alumnos
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -103,8 +103,8 @@ Partial Class Alumnos
         Text = "Alumnos"
         PanelBase.ResumeLayout(False)
         PanelContenido.ResumeLayout(False)
-        PanelTitulo.ResumeLayout(False)
         CType(DataGridView1, ComponentModel.ISupportInitialize).EndInit()
+        PanelTitulo.ResumeLayout(False)
         ResumeLayout(False)
     End Sub
 

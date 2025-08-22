@@ -3,7 +3,7 @@ Imports MySql.Data.MySqlClient
 
 Public Class Alumnos
 
-    Dim conexion As New MySqlConnection("server=localhost; user id=root; password=tu_clave; database=escuela;")
+    Dim conexion As New MySqlConnection("server=localhost; user id=root; password=escuela; database=escuela;")
 
     Private Sub Alumnos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
@@ -12,7 +12,7 @@ Public Class Alumnos
             ' Construimos el texto del curso como "3° Año A"
             Dim query As String = "SELECT id, 
                                           CONCAT(anio, '° Año ', division) AS curso_completo 
-                                   FROM cursos;"
+                                   FROM curso;"
             Dim comando As New MySqlCommand(query, conexion)
             Dim lector As MySqlDataReader = comando.ExecuteReader()
             Dim tablaCursos As New DataTable()
