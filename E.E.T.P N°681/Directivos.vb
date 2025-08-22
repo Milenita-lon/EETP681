@@ -126,8 +126,4 @@ Partial Class Directivos
         txtTelefono.Clear()
         txtCorreo.Clear()
     End Sub
-
-    Private Sub txtNombre_TextChanged(sender As Object, e As EventArgs) Handles txtNombre.TextChanged
-
-    End Sub
 End Class
