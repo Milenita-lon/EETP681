@@ -93,10 +93,19 @@ Public Class Form1
         PanelPantalla.Controls.Add(formHijo)
         formHijo.Show()
     End Sub
-
-
     Private Sub botonSecre_Click(sender As Object, e As EventArgs) Handles botonSecre.Click
         AbrirFormEnPanel(New Secretarios())
     End Sub
 
+    Private Sub botonProfes_Click(sender As Object, e As EventArgs) Handles botonProfes.Click
+        AbrirFormEnPanel(New Profesores())
+    End Sub
+
+    Private Sub botonPrecep_Click(sender As Object, e As EventArgs) Handles botonPrecep.Click
+        AbrirFormEnPanel(New Preceptores())
+    End Sub
+
+    Private Sub botonDirec_Click(sender As Object, e As EventArgs) Handles botonDirec.Click
+        AbrirFormEnPanel(New Directivos())
+    End Sub
 End Class

@@ -1,5 +1,5 @@
 <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class Secretarios
+Partial Class Directivos
     Inherits System.Windows.Forms.Form
 
     <System.Diagnostics.DebuggerNonUserCode()> _
@@ -26,12 +26,12 @@ Partial Class Secretarios
         txtDni = New TextBox()
         txtApellido = New TextBox()
         txtNombre = New TextBox()
-        DataGridViewSecretarios = New DataGridView()
+        DataGridViewDirectivos = New DataGridView()
         PanelTitulo = New Panel()
         LabelTitulo = New Label()
         PanelBase.SuspendLayout()
         PanelContenido.SuspendLayout()
-        CType(DataGridViewSecretarios, ComponentModel.ISupportInitialize).BeginInit()
+        CType(DataGridViewDirectivos, ComponentModel.ISupportInitialize).BeginInit()
         PanelTitulo.SuspendLayout()
         SuspendLayout()
         ' 
@@ -58,7 +58,7 @@ Partial Class Secretarios
         PanelContenido.Controls.Add(txtDni)
         PanelContenido.Controls.Add(txtApellido)
         PanelContenido.Controls.Add(txtNombre)
-        PanelContenido.Controls.Add(DataGridViewSecretarios)
+        PanelContenido.Controls.Add(DataGridViewDirectivos)
         PanelContenido.Dock = DockStyle.Fill
         PanelContenido.Location = New Point(0, 100)
         PanelContenido.Name = "PanelContenido"
@@ -161,18 +161,18 @@ Partial Class Secretarios
         txtNombre.Size = New Size(100, 23)
         txtNombre.TabIndex = 8
         ' 
-        ' DataGridViewSecretarios
+        ' DataGridViewDirectivos
         ' 
-        DataGridViewSecretarios.AllowUserToAddRows = False
-        DataGridViewSecretarios.AllowUserToDeleteRows = False
-        DataGridViewSecretarios.Anchor = AnchorStyles.None
-        DataGridViewSecretarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewSecretarios.Location = New Point(101, 130)
-        DataGridViewSecretarios.Name = "DataGridViewSecretarios"
-        DataGridViewSecretarios.ReadOnly = True
-        DataGridViewSecretarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        DataGridViewSecretarios.Size = New Size(645, 374)
-        DataGridViewSecretarios.TabIndex = 9
+        DataGridViewDirectivos.AllowUserToAddRows = False
+        DataGridViewDirectivos.AllowUserToDeleteRows = False
+        DataGridViewDirectivos.Anchor = AnchorStyles.None
+        DataGridViewDirectivos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DataGridViewDirectivos.Location = New Point(101, 130)
+        DataGridViewDirectivos.Name = "DataGridViewDirectivos"
+        DataGridViewDirectivos.ReadOnly = True
+        DataGridViewDirectivos.SelectionMode = DataGridViewSelectionMode.FullRowSelect
+        DataGridViewDirectivos.Size = New Size(645, 374)
+        DataGridViewDirectivos.TabIndex = 9
         ' 
         ' PanelTitulo
         ' 
@@ -193,22 +193,22 @@ Partial Class Secretarios
         LabelTitulo.Name = "LabelTitulo"
         LabelTitulo.Size = New Size(846, 100)
         LabelTitulo.TabIndex = 0
-        LabelTitulo.Text = "SECRETARIOS"
+        LabelTitulo.Text = "DIRECTIVOS"
         LabelTitulo.TextAlign = ContentAlignment.MiddleCenter
         ' 
-        ' Secretarios
+        ' Directivos
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(846, 680)
         Controls.Add(PanelBase)
         FormBorderStyle = FormBorderStyle.None
-        Name = "Secretarios"
-        Text = "Secretarios"
+        Name = "Directivos"
+        Text = "Directivos"
         PanelBase.ResumeLayout(False)
         PanelContenido.ResumeLayout(False)
         PanelContenido.PerformLayout()
-        CType(DataGridViewSecretarios, ComponentModel.ISupportInitialize).EndInit()
+        CType(DataGridViewDirectivos, ComponentModel.ISupportInitialize).EndInit()
         PanelTitulo.ResumeLayout(False)
         ResumeLayout(False)
     End Sub
@@ -217,7 +217,7 @@ Partial Class Secretarios
     Friend WithEvents PanelTitulo As Panel
     Friend WithEvents LabelTitulo As Label
     Friend WithEvents PanelContenido As Panel
-    Friend WithEvents DataGridViewSecretarios As DataGridView
+    Friend WithEvents DataGridViewDirectivos As DataGridView
     Friend WithEvents btnEliminar As Button
     Friend WithEvents btnEditar As Button
     Friend WithEvents btnAgregar As Button

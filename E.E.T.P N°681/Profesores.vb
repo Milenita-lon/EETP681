@@ -1,7 +1,7 @@
 
 Imports MySql.Data.MySqlClient
 
-Partial Class Secretarios
+Partial Class Profesores
     Inherits System.Windows.Forms.Form
 
     '========================
@@ -10,20 +10,20 @@ Partial Class Secretarios
 
     Dim conexion As New MySqlConnection("server=localhost;user id=root;password=escuela;database=escuela")
 
-    Private Sub Secretarios_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        CargarSecretarios()
+    Private Sub Profesores_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        CargarProfesores()
     End Sub
 
-    Private Sub CargarSecretarios()
+    Private Sub CargarProfesores()
         Try
             conexion.Open()
-            Dim consulta As String = "SELECT id, nombre, apellido, dni, direccion, telefono, correo FROM secretarios"
+            Dim consulta As String = "SELECT id, nombre, apellido, dni, direccion, telefono, correo FROM profesores"
             Dim adaptador As New MySqlDataAdapter(consulta, conexion)
             Dim tabla As New DataTable()
             adaptador.Fill(tabla)
-            DataGridViewSecretarios.DataSource = tabla
+            DataGridViewProfesores.DataSource = tabla
         Catch ex As Exception
-            MessageBox.Show("Error al cargar secretarios: " & ex.Message)
+            MessageBox.Show("Error al cargar profesores: " & ex.Message)
         Finally
             conexion.Close()
         End Try
@@ -32,7 +32,7 @@ Partial Class Secretarios
     Private Sub btnAgregar_Click(sender As Object, e As EventArgs) Handles btnAgregar.Click
         Try
             conexion.Open()
-            Dim consulta As String = "INSERT INTO secretarios (nombre, apellido, dni, direccion, telefono, correo) VALUES (@nombre, @apellido, @dni, @direccion, @telefono, @correo)"
+            Dim consulta As String = "INSERT INTO profesores (nombre, apellido, dni, direccion, telefono, correo) VALUES (@nombre, @apellido, @dni, @direccion, @telefono, @correo)"
             Dim comando As New MySqlCommand(consulta, conexion)
             comando.Parameters.AddWithValue("@nombre", txtNombre.Text)
             comando.Parameters.AddWithValue("@apellido", txtApellido.Text)
@@ -41,23 +41,23 @@ Partial Class Secretarios
             comando.Parameters.AddWithValue("@telefono", txtTelefono.Text)
             comando.Parameters.AddWithValue("@correo", txtCorreo.Text)
             comando.ExecuteNonQuery()
-            MessageBox.Show("Secretario agregado correctamente.")
+            MessageBox.Show("Profesor agregado correctamente.")
             LimpiarCampos()
         Catch ex As Exception
-            MessageBox.Show("Error al agregar secretario: " & ex.Message)
+            MessageBox.Show("Error al agregar profesor: " & ex.Message)
         Finally
             conexion.Close()
         End Try
 
-        CargarSecretarios()
+        CargarProfesores()
     End Sub
 
     Private Sub btnEditar_Click(sender As Object, e As EventArgs) Handles btnEditar.Click
-        If DataGridViewSecretarios.SelectedRows.Count > 0 Then
-            Dim id As Integer = DataGridViewSecretarios.CurrentRow.Cells("id").Value
+        If DataGridViewProfesores.SelectedRows.Count > 0 Then
+            Dim id As Integer = DataGridViewProfesores.CurrentRow.Cells("id").Value
             Try
                 conexion.Open()
-                Dim consulta As String = "UPDATE secretarios SET nombre=@nombre, apellido=@apellido, dni=@dni, direccion=@direccion, telefono=@telefono, correo=@correo WHERE id=@id"
+                Dim consulta As String = "UPDATE profesores SET nombre=@nombre, apellido=@apellido, dni=@dni, direccion=@direccion, telefono=@telefono, correo=@correo WHERE id=@id"
                 Dim comando As New MySqlCommand(consulta, conexion)
                 comando.Parameters.AddWithValue("@nombre", txtNombre.Text)
                 comando.Parameters.AddWithValue("@apellido", txtApellido.Text)
@@ -67,48 +67,48 @@ Partial Class Secretarios
                 comando.Parameters.AddWithValue("@correo", txtCorreo.Text)
                 comando.Parameters.AddWithValue("@id", id)
                 comando.ExecuteNonQuery()
-                MessageBox.Show("Secretario actualizado correctamente.")
+                MessageBox.Show("Profesor actualizado correctamente.")
                 LimpiarCampos()
             Catch ex As Exception
-                MessageBox.Show("Error al actualizar secretario: " & ex.Message)
+                MessageBox.Show("Error al actualizar profesor: " & ex.Message)
             Finally
                 conexion.Close()
             End Try
         Else
-            MessageBox.Show("Seleccione un secretario para editar.")
+            MessageBox.Show("Seleccione un profesores para editar.")
         End If
 
-        CargarSecretarios()
+        CargarProfesores()
     End Sub
 
     Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
-        If DataGridViewSecretarios.SelectedRows.Count > 0 Then
-            Dim id As Integer = DataGridViewSecretarios.CurrentRow.Cells("id").Value
-            If MessageBox.Show("¿Está seguro de eliminar este secretario?", "Confirmar", MessageBoxButtons.YesNo) = DialogResult.Yes Then
+        If DataGridViewProfesores.SelectedRows.Count > 0 Then
+            Dim id As Integer = DataGridViewProfesores.CurrentRow.Cells("id").Value
+            If MessageBox.Show("¿Está seguro de eliminar este profesor?", "Confirmar", MessageBoxButtons.YesNo) = DialogResult.Yes Then
                 Try
                     conexion.Open()
-                    Dim consulta As String = "DELETE FROM secretarios WHERE id=@id"
+                    Dim consulta As String = "DELETE FROM profesores WHERE id=@id"
                     Dim comando As New MySqlCommand(consulta, conexion)
                     comando.Parameters.AddWithValue("@id", id)
                     comando.ExecuteNonQuery()
-                    MessageBox.Show("Secretario eliminado correctamente.")
+                    MessageBox.Show("Profesor eliminado correctamente.")
                     LimpiarCampos()
                 Catch ex As Exception
-                    MessageBox.Show("Error al eliminar secretario: " & ex.Message)
+                    MessageBox.Show("Error al eliminar profesor: " & ex.Message)
                 Finally
                     conexion.Close()
                 End Try
             End If
         Else
-            MessageBox.Show("Seleccione un secretario para eliminar.")
+            MessageBox.Show("Seleccione un profesor para eliminar.")
         End If
 
-        CargarSecretarios()
+        CargarProfesores()
     End Sub
 
-    Private Sub DataGridViewSecretarios_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridViewSecretarios.CellClick
+    Private Sub DataGridViewProfesores_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridViewProfesores.CellClick
         If e.RowIndex >= 0 Then
-            Dim fila As DataGridViewRow = DataGridViewSecretarios.Rows(e.RowIndex)
+            Dim fila As DataGridViewRow = DataGridViewProfesores.Rows(e.RowIndex)
             txtNombre.Text = fila.Cells("nombre").Value.ToString()
             txtApellido.Text = fila.Cells("apellido").Value.ToString()
             txtDni.Text = fila.Cells("dni").Value.ToString()

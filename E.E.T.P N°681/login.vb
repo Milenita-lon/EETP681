@@ -45,7 +45,7 @@
 
 
     Private Sub cerralogin_Click(sender As Object, e As EventArgs) Handles cerralogin.Click
-        Close()
+        Me.Close()
     End Sub
 
 
