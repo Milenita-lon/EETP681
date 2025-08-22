@@ -23,13 +23,15 @@ Partial Class Alumnos
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         PanelBase = New Panel()
-        PanelTitulo = New Panel()
-        LabelTitulo = New Label()
         PanelContenido = New Panel()
         ComboBox1 = New ComboBox()
+        PanelTitulo = New Panel()
+        LabelTitulo = New Label()
+        DataGridView1 = New DataGridView()
         PanelBase.SuspendLayout()
-        PanelTitulo.SuspendLayout()
         PanelContenido.SuspendLayout()
+        PanelTitulo.SuspendLayout()
+        CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' PanelBase
@@ -41,6 +43,24 @@ Partial Class Alumnos
         PanelBase.Name = "PanelBase"
         PanelBase.Size = New Size(846, 680)
         PanelBase.TabIndex = 0
+        ' 
+        ' PanelContenido
+        ' 
+        PanelContenido.Controls.Add(DataGridView1)
+        PanelContenido.Controls.Add(ComboBox1)
+        PanelContenido.Dock = DockStyle.Fill
+        PanelContenido.Location = New Point(0, 100)
+        PanelContenido.Name = "PanelContenido"
+        PanelContenido.Size = New Size(846, 580)
+        PanelContenido.TabIndex = 1
+        ' 
+        ' ComboBox1
+        ' 
+        ComboBox1.FormattingEnabled = True
+        ComboBox1.Location = New Point(101, 44)
+        ComboBox1.Name = "ComboBox1"
+        ComboBox1.Size = New Size(121, 23)
+        ComboBox1.TabIndex = 4
         ' 
         ' PanelTitulo
         ' 
@@ -64,22 +84,13 @@ Partial Class Alumnos
         LabelTitulo.Text = "ALUMNOS"
         LabelTitulo.TextAlign = ContentAlignment.MiddleCenter
         ' 
-        ' PanelContenido
+        ' DataGridView1
         ' 
-        PanelContenido.Controls.Add(ComboBox1)
-        PanelContenido.Dock = DockStyle.Fill
-        PanelContenido.Location = New Point(0, 100)
-        PanelContenido.Name = "PanelContenido"
-        PanelContenido.Size = New Size(846, 580)
-        PanelContenido.TabIndex = 1
-        ' 
-        ' ComboBox1
-        ' 
-        ComboBox1.FormattingEnabled = True
-        ComboBox1.Location = New Point(101, 44)
-        ComboBox1.Name = "ComboBox1"
-        ComboBox1.Size = New Size(121, 23)
-        ComboBox1.TabIndex = 4
+        DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DataGridView1.Location = New Point(103, 92)
+        DataGridView1.Name = "DataGridView1"
+        DataGridView1.Size = New Size(631, 383)
+        DataGridView1.TabIndex = 5
         ' 
         ' Alumnos
         ' 
@@ -91,8 +102,9 @@ Partial Class Alumnos
         Name = "Alumnos"
         Text = "Alumnos"
         PanelBase.ResumeLayout(False)
-        PanelTitulo.ResumeLayout(False)
         PanelContenido.ResumeLayout(False)
+        PanelTitulo.ResumeLayout(False)
+        CType(DataGridView1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
     End Sub
 
@@ -101,4 +113,5 @@ Partial Class Alumnos
     Friend WithEvents LabelTitulo As Label
     Friend WithEvents PanelContenido As Panel
     Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents DataGridView1 As DataGridView
 End Class
