@@ -55,7 +55,6 @@ Public Class Curso
             lblPreceptor.Text = "Sin preceptor"
         End If
     End Sub
-
 End Class
 
 

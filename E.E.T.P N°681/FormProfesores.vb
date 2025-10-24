@@ -98,5 +98,4 @@ Public Class FormProfesores
     Private Sub botonSecre_Click(sender As Object, e As EventArgs) Handles botonSecre.Click
         AbrirFormEnPanel(New Secretarios())
     End Sub
-
 End Class

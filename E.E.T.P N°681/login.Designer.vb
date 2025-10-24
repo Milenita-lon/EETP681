@@ -40,9 +40,10 @@ Partial Class login
         ' 
         cerralogin.Cursor = Cursors.Hand
         cerralogin.Image = My.Resources.Resources.x
-        cerralogin.Location = New Point(736, 12)
+        cerralogin.Location = New Point(841, 16)
+        cerralogin.Margin = New Padding(3, 4, 3, 4)
         cerralogin.Name = "cerralogin"
-        cerralogin.Size = New Size(37, 36)
+        cerralogin.Size = New Size(42, 48)
         cerralogin.SizeMode = PictureBoxSizeMode.Zoom
         cerralogin.TabIndex = 0
         cerralogin.TabStop = False
@@ -53,16 +54,18 @@ Partial Class login
         panelleftlogin.Controls.Add(logologin)
         panelleftlogin.Dock = DockStyle.Left
         panelleftlogin.Location = New Point(0, 0)
+        panelleftlogin.Margin = New Padding(3, 4, 3, 4)
         panelleftlogin.Name = "panelleftlogin"
-        panelleftlogin.Size = New Size(253, 345)
+        panelleftlogin.Size = New Size(289, 460)
         panelleftlogin.TabIndex = 1
         ' 
         ' logologin
         ' 
         logologin.Image = My.Resources.Resources.logo_sin_fondo1
-        logologin.Location = New Point(32, 60)
+        logologin.Location = New Point(37, 80)
+        logologin.Margin = New Padding(3, 4, 3, 4)
         logologin.Name = "logologin"
-        logologin.Size = New Size(191, 196)
+        logologin.Size = New Size(218, 261)
         logologin.SizeMode = PictureBoxSizeMode.Zoom
         logologin.TabIndex = 2
         logologin.TabStop = False
@@ -74,9 +77,10 @@ Partial Class login
         usuariologin.Cursor = Cursors.IBeam
         usuariologin.Font = New Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         usuariologin.ForeColor = Color.Silver
-        usuariologin.Location = New Point(368, 107)
+        usuariologin.Location = New Point(421, 143)
+        usuariologin.Margin = New Padding(3, 4, 3, 4)
         usuariologin.Name = "usuariologin"
-        usuariologin.Size = New Size(300, 16)
+        usuariologin.Size = New Size(343, 20)
         usuariologin.TabIndex = 2
         usuariologin.TextAlign = HorizontalAlignment.Center
         ' 
@@ -87,26 +91,29 @@ Partial Class login
         passwordlogin.Cursor = Cursors.IBeam
         passwordlogin.Font = New Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         passwordlogin.ForeColor = Color.Silver
-        passwordlogin.Location = New Point(368, 192)
+        passwordlogin.Location = New Point(421, 256)
+        passwordlogin.Margin = New Padding(3, 4, 3, 4)
         passwordlogin.Name = "passwordlogin"
-        passwordlogin.Size = New Size(300, 16)
+        passwordlogin.Size = New Size(343, 20)
         passwordlogin.TabIndex = 3
         passwordlogin.TextAlign = HorizontalAlignment.Center
         ' 
         ' Panel1
         ' 
         Panel1.BackColor = Color.FromArgb(CByte(4), CByte(36), CByte(64))
-        Panel1.Location = New Point(368, 214)
+        Panel1.Location = New Point(421, 285)
+        Panel1.Margin = New Padding(3, 4, 3, 4)
         Panel1.Name = "Panel1"
-        Panel1.Size = New Size(300, 4)
+        Panel1.Size = New Size(343, 5)
         Panel1.TabIndex = 4
         ' 
         ' Panel2
         ' 
         Panel2.BackColor = Color.FromArgb(CByte(4), CByte(36), CByte(64))
-        Panel2.Location = New Point(368, 129)
+        Panel2.Location = New Point(421, 172)
+        Panel2.Margin = New Padding(3, 4, 3, 4)
         Panel2.Name = "Panel2"
-        Panel2.Size = New Size(300, 4)
+        Panel2.Size = New Size(343, 5)
         Panel2.TabIndex = 5
         ' 
         ' textingreso
@@ -114,9 +121,9 @@ Partial Class login
         textingreso.AutoSize = True
         textingreso.Font = New Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         textingreso.ForeColor = Color.Silver
-        textingreso.Location = New Point(451, 22)
+        textingreso.Location = New Point(515, 29)
         textingreso.Name = "textingreso"
-        textingreso.Size = New Size(142, 40)
+        textingreso.Size = New Size(182, 50)
         textingreso.TabIndex = 6
         textingreso.Text = "INGRESO"
         ' 
@@ -126,19 +133,20 @@ Partial Class login
         accederlogin.FlatStyle = FlatStyle.Flat
         accederlogin.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         accederlogin.ForeColor = Color.Silver
-        accederlogin.Location = New Point(467, 264)
+        accederlogin.Location = New Point(534, 352)
+        accederlogin.Margin = New Padding(3, 4, 3, 4)
         accederlogin.Name = "accederlogin"
-        accederlogin.Size = New Size(107, 37)
+        accederlogin.Size = New Size(122, 49)
         accederlogin.TabIndex = 7
         accederlogin.Text = "ACCEDER"
         accederlogin.UseVisualStyleBackColor = False
         ' 
         ' login
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(22), CByte(71), CByte(115))
-        ClientSize = New Size(785, 345)
+        ClientSize = New Size(897, 460)
         Controls.Add(accederlogin)
         Controls.Add(textingreso)
         Controls.Add(Panel2)
@@ -148,6 +156,7 @@ Partial Class login
         Controls.Add(panelleftlogin)
         Controls.Add(cerralogin)
         FormBorderStyle = FormBorderStyle.None
+        Margin = New Padding(3, 4, 3, 4)
         Name = "login"
         StartPosition = FormStartPosition.CenterScreen
         Text = "login"

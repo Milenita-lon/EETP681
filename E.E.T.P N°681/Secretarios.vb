@@ -4,10 +4,6 @@ Imports MySql.Data.MySqlClient
 Partial Class Secretarios
     Inherits System.Windows.Forms.Form
 
-    '========================
-    ' LÓGICA DEL FORMULARIO
-    '========================
-
     Dim conexion As New MySqlConnection("server=localhost;user id=root;password=escuela;database=escuela")
 
     Private Sub Secretarios_Load(sender As Object, e As EventArgs) Handles MyBase.Load
