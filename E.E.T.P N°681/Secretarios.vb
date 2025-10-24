@@ -127,4 +127,5 @@ Partial Class Secretarios
         txtCorreo.Clear()
     End Sub
 
+
 End Class
