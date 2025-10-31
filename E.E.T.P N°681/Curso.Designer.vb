@@ -27,10 +27,10 @@ Partial Class Curso
         cbmCurso = New ComboBox()
         lblEspecialidad = New Label()
         lblPreceptor = New Label()
-        DataGridView1 = New DataGridView()
+        DataGridViewCursos = New DataGridView()
         btndescargapdf = New Button()
         Panelsuperiorcurso.SuspendLayout()
-        CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
+        CType(DataGridViewCursos, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' Panelsuperiorcurso
@@ -39,9 +39,8 @@ Partial Class Curso
         Panelsuperiorcurso.Controls.Add(Label1)
         Panelsuperiorcurso.Dock = DockStyle.Top
         Panelsuperiorcurso.Location = New Point(0, 0)
-        Panelsuperiorcurso.Margin = New Padding(3, 4, 3, 4)
         Panelsuperiorcurso.Name = "Panelsuperiorcurso"
-        Panelsuperiorcurso.Size = New Size(949, 133)
+        Panelsuperiorcurso.Size = New Size(830, 100)
         Panelsuperiorcurso.TabIndex = 0
         ' 
         ' Label1
@@ -50,9 +49,9 @@ Partial Class Curso
         Label1.AutoSize = True
         Label1.Font = New Font("Segoe UI", 32.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Label1.ForeColor = Color.White
-        Label1.Location = New Point(373, 27)
+        Label1.Location = New Point(326, 20)
         Label1.Name = "Label1"
-        Label1.Size = New Size(239, 72)
+        Label1.Size = New Size(192, 59)
         Label1.TabIndex = 0
         Label1.Text = "CURSOS"
         Label1.TextAlign = ContentAlignment.MiddleCenter
@@ -61,10 +60,9 @@ Partial Class Curso
         ' 
         cbmCurso.Anchor = AnchorStyles.None
         cbmCurso.FormattingEnabled = True
-        cbmCurso.Location = New Point(128, 215)
-        cbmCurso.Margin = New Padding(3, 4, 3, 4)
+        cbmCurso.Location = New Point(112, 161)
         cbmCurso.Name = "cbmCurso"
-        cbmCurso.Size = New Size(138, 28)
+        cbmCurso.Size = New Size(121, 23)
         cbmCurso.TabIndex = 1
         ' 
         ' lblEspecialidad
@@ -74,9 +72,9 @@ Partial Class Curso
         lblEspecialidad.BackColor = SystemColors.Control
         lblEspecialidad.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lblEspecialidad.ForeColor = Color.Black
-        lblEspecialidad.Location = New Point(408, 212)
+        lblEspecialidad.Location = New Point(357, 159)
         lblEspecialidad.Name = "lblEspecialidad"
-        lblEspecialidad.Size = New Size(139, 28)
+        lblEspecialidad.Size = New Size(112, 21)
         lblEspecialidad.TabIndex = 2
         lblEspecialidad.Text = "ESPECIALIDAD"
         ' 
@@ -85,22 +83,21 @@ Partial Class Curso
         lblPreceptor.Anchor = AnchorStyles.None
         lblPreceptor.AutoSize = True
         lblPreceptor.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        lblPreceptor.Location = New Point(659, 212)
+        lblPreceptor.Location = New Point(577, 159)
         lblPreceptor.Name = "lblPreceptor"
-        lblPreceptor.Size = New Size(114, 28)
+        lblPreceptor.Size = New Size(93, 21)
         lblPreceptor.TabIndex = 3
         lblPreceptor.Text = "PRECEPTOR"
         ' 
-        ' DataGridView1
+        ' DataGridViewCursos
         ' 
-        DataGridView1.Anchor = AnchorStyles.None
-        DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridView1.Location = New Point(101, 273)
-        DataGridView1.Margin = New Padding(3, 4, 3, 4)
-        DataGridView1.Name = "DataGridView1"
-        DataGridView1.RowHeadersWidth = 51
-        DataGridView1.Size = New Size(750, 460)
-        DataGridView1.TabIndex = 4
+        DataGridViewCursos.Anchor = AnchorStyles.None
+        DataGridViewCursos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DataGridViewCursos.Location = New Point(88, 205)
+        DataGridViewCursos.Name = "DataGridViewCursos"
+        DataGridViewCursos.RowHeadersWidth = 51
+        DataGridViewCursos.Size = New Size(656, 345)
+        DataGridViewCursos.TabIndex = 4
         ' 
         ' btndescargapdf
         ' 
@@ -109,32 +106,30 @@ Partial Class Curso
         btndescargapdf.FlatStyle = FlatStyle.Flat
         btndescargapdf.Font = New Font("Segoe UI", 9F, FontStyle.Bold)
         btndescargapdf.ForeColor = Color.White
-        btndescargapdf.Location = New Point(408, 769)
-        btndescargapdf.Margin = New Padding(3, 4, 3, 4)
+        btndescargapdf.Location = New Point(357, 577)
         btndescargapdf.Name = "btndescargapdf"
-        btndescargapdf.Size = New Size(158, 33)
+        btndescargapdf.Size = New Size(138, 25)
         btndescargapdf.TabIndex = 5
         btndescargapdf.Text = "Descargar PDF"
         btndescargapdf.UseVisualStyleBackColor = False
         ' 
         ' Curso
         ' 
-        AutoScaleDimensions = New SizeF(8F, 20F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(949, 855)
+        ClientSize = New Size(830, 591)
         Controls.Add(btndescargapdf)
-        Controls.Add(DataGridView1)
+        Controls.Add(DataGridViewCursos)
         Controls.Add(lblPreceptor)
         Controls.Add(lblEspecialidad)
         Controls.Add(cbmCurso)
         Controls.Add(Panelsuperiorcurso)
         FormBorderStyle = FormBorderStyle.None
-        Margin = New Padding(3, 4, 3, 4)
         Name = "Curso"
         Text = "Curso"
         Panelsuperiorcurso.ResumeLayout(False)
         Panelsuperiorcurso.PerformLayout()
-        CType(DataGridView1, ComponentModel.ISupportInitialize).EndInit()
+        CType(DataGridViewCursos, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -144,6 +139,6 @@ Partial Class Curso
     Friend WithEvents cbmCurso As ComboBox
     Friend WithEvents lblEspecialidad As Label
     Friend WithEvents lblPreceptor As Label
-    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents DataGridViewCursos As DataGridView
     Friend WithEvents btndescargapdf As Button
 End Class

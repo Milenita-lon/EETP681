@@ -34,13 +34,13 @@ Partial Class Alumnos
         txtApellido = New TextBox()
         txtNombre = New TextBox()
         LabelCursos = New Label()
-        DataGridView1 = New DataGridView()
+        DataGridViewAlumnos = New DataGridView()
         ComboBox1 = New ComboBox()
         PanelTitulo = New Panel()
         LabelTitulo = New Label()
         PanelBase.SuspendLayout()
         PanelContenido.SuspendLayout()
-        CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
+        CType(DataGridViewAlumnos, ComponentModel.ISupportInitialize).BeginInit()
         PanelTitulo.SuspendLayout()
         SuspendLayout()
         ' 
@@ -50,9 +50,8 @@ Partial Class Alumnos
         PanelBase.Controls.Add(PanelTitulo)
         PanelBase.Dock = DockStyle.Fill
         PanelBase.Location = New Point(0, 0)
-        PanelBase.Margin = New Padding(3, 4, 3, 4)
         PanelBase.Name = "PanelBase"
-        PanelBase.Size = New Size(967, 907)
+        PanelBase.Size = New Size(846, 591)
         PanelBase.TabIndex = 0
         ' 
         ' PanelContenido
@@ -67,13 +66,12 @@ Partial Class Alumnos
         PanelContenido.Controls.Add(txtApellido)
         PanelContenido.Controls.Add(txtNombre)
         PanelContenido.Controls.Add(LabelCursos)
-        PanelContenido.Controls.Add(DataGridView1)
+        PanelContenido.Controls.Add(DataGridViewAlumnos)
         PanelContenido.Controls.Add(ComboBox1)
         PanelContenido.Dock = DockStyle.Fill
-        PanelContenido.Location = New Point(0, 133)
-        PanelContenido.Margin = New Padding(3, 4, 3, 4)
+        PanelContenido.Location = New Point(0, 100)
         PanelContenido.Name = "PanelContenido"
-        PanelContenido.Size = New Size(967, 774)
+        PanelContenido.Size = New Size(846, 491)
         PanelContenido.TabIndex = 1
         ' 
         ' btnEliminar
@@ -83,10 +81,9 @@ Partial Class Alumnos
         btnEliminar.FlatStyle = FlatStyle.Flat
         btnEliminar.Font = New Font("Segoe UI", 9F, FontStyle.Bold)
         btnEliminar.ForeColor = Color.White
-        btnEliminar.Location = New Point(291, 162)
-        btnEliminar.Margin = New Padding(3, 4, 3, 4)
+        btnEliminar.Location = New Point(255, 77)
         btnEliminar.Name = "btnEliminar"
-        btnEliminar.Size = New Size(86, 33)
+        btnEliminar.Size = New Size(75, 25)
         btnEliminar.TabIndex = 15
         btnEliminar.Text = "Eliminar"
         btnEliminar.UseVisualStyleBackColor = False
@@ -98,10 +95,9 @@ Partial Class Alumnos
         btnEditar.FlatStyle = FlatStyle.Flat
         btnEditar.Font = New Font("Segoe UI", 9F, FontStyle.Bold)
         btnEditar.ForeColor = Color.White
-        btnEditar.Location = New Point(199, 162)
-        btnEditar.Margin = New Padding(3, 4, 3, 4)
+        btnEditar.Location = New Point(174, 77)
         btnEditar.Name = "btnEditar"
-        btnEditar.Size = New Size(86, 33)
+        btnEditar.Size = New Size(75, 25)
         btnEditar.TabIndex = 16
         btnEditar.Text = "Editar"
         btnEditar.UseVisualStyleBackColor = False
@@ -113,10 +109,9 @@ Partial Class Alumnos
         btnAgregar.FlatStyle = FlatStyle.Flat
         btnAgregar.Font = New Font("Segoe UI", 9F, FontStyle.Bold)
         btnAgregar.ForeColor = Color.White
-        btnAgregar.Location = New Point(106, 162)
-        btnAgregar.Margin = New Padding(3, 4, 3, 4)
+        btnAgregar.Location = New Point(93, 77)
         btnAgregar.Name = "btnAgregar"
-        btnAgregar.Size = New Size(86, 33)
+        btnAgregar.Size = New Size(75, 25)
         btnAgregar.TabIndex = 17
         btnAgregar.Text = "Agregar"
         btnAgregar.UseVisualStyleBackColor = False
@@ -124,61 +119,55 @@ Partial Class Alumnos
         ' txtCorreo
         ' 
         txtCorreo.Anchor = AnchorStyles.None
-        txtCorreo.Location = New Point(713, 112)
-        txtCorreo.Margin = New Padding(3, 4, 3, 4)
+        txtCorreo.Location = New Point(624, 39)
         txtCorreo.Name = "txtCorreo"
         txtCorreo.PlaceholderText = "Correo"
-        txtCorreo.Size = New Size(131, 27)
+        txtCorreo.Size = New Size(115, 23)
         txtCorreo.TabIndex = 9
         ' 
         ' txtTelefono
         ' 
         txtTelefono.Anchor = AnchorStyles.None
-        txtTelefono.Location = New Point(592, 112)
-        txtTelefono.Margin = New Padding(3, 4, 3, 4)
+        txtTelefono.Location = New Point(518, 39)
         txtTelefono.Name = "txtTelefono"
         txtTelefono.PlaceholderText = "Teléfono"
-        txtTelefono.Size = New Size(114, 27)
+        txtTelefono.Size = New Size(100, 23)
         txtTelefono.TabIndex = 10
         ' 
         ' txtDireccion
         ' 
         txtDireccion.Anchor = AnchorStyles.None
-        txtDireccion.Location = New Point(471, 112)
-        txtDireccion.Margin = New Padding(3, 4, 3, 4)
+        txtDireccion.Location = New Point(412, 39)
         txtDireccion.Name = "txtDireccion"
         txtDireccion.PlaceholderText = "Dirección"
-        txtDireccion.Size = New Size(114, 27)
+        txtDireccion.Size = New Size(100, 23)
         txtDireccion.TabIndex = 11
         ' 
         ' txtDni
         ' 
         txtDni.Anchor = AnchorStyles.None
-        txtDni.Location = New Point(350, 112)
-        txtDni.Margin = New Padding(3, 4, 3, 4)
+        txtDni.Location = New Point(306, 39)
         txtDni.Name = "txtDni"
         txtDni.PlaceholderText = "DNI"
-        txtDni.Size = New Size(114, 27)
+        txtDni.Size = New Size(100, 23)
         txtDni.TabIndex = 12
         ' 
         ' txtApellido
         ' 
         txtApellido.Anchor = AnchorStyles.None
-        txtApellido.Location = New Point(229, 112)
-        txtApellido.Margin = New Padding(3, 4, 3, 4)
+        txtApellido.Location = New Point(200, 39)
         txtApellido.Name = "txtApellido"
         txtApellido.PlaceholderText = "Apellido"
-        txtApellido.Size = New Size(114, 27)
+        txtApellido.Size = New Size(100, 23)
         txtApellido.TabIndex = 13
         ' 
         ' txtNombre
         ' 
         txtNombre.Anchor = AnchorStyles.None
-        txtNombre.Location = New Point(107, 112)
-        txtNombre.Margin = New Padding(3, 4, 3, 4)
+        txtNombre.Location = New Point(94, 39)
         txtNombre.Name = "txtNombre"
         txtNombre.PlaceholderText = "Nombre"
-        txtNombre.Size = New Size(114, 27)
+        txtNombre.Size = New Size(100, 23)
         txtNombre.TabIndex = 14
         ' 
         ' LabelCursos
@@ -186,31 +175,29 @@ Partial Class Alumnos
         LabelCursos.Anchor = AnchorStyles.None
         LabelCursos.AutoSize = True
         LabelCursos.Font = New Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        LabelCursos.Location = New Point(352, 34)
+        LabelCursos.Location = New Point(308, -19)
         LabelCursos.Name = "LabelCursos"
-        LabelCursos.Size = New Size(106, 32)
+        LabelCursos.Size = New Size(86, 25)
         LabelCursos.TabIndex = 6
         LabelCursos.Text = "CURSOS"
         ' 
-        ' DataGridView1
+        ' DataGridViewAlumnos
         ' 
-        DataGridView1.Anchor = AnchorStyles.None
-        DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridView1.Location = New Point(105, 238)
-        DataGridView1.Margin = New Padding(3, 4, 3, 4)
-        DataGridView1.Name = "DataGridView1"
-        DataGridView1.RowHeadersWidth = 51
-        DataGridView1.Size = New Size(759, 499)
-        DataGridView1.TabIndex = 5
+        DataGridViewAlumnos.Anchor = AnchorStyles.None
+        DataGridViewAlumnos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DataGridViewAlumnos.Location = New Point(92, 133)
+        DataGridViewAlumnos.Name = "DataGridViewAlumnos"
+        DataGridViewAlumnos.RowHeadersWidth = 51
+        DataGridViewAlumnos.Size = New Size(664, 374)
+        DataGridViewAlumnos.TabIndex = 5
         ' 
         ' ComboBox1
         ' 
         ComboBox1.Anchor = AnchorStyles.None
         ComboBox1.FormattingEnabled = True
-        ComboBox1.Location = New Point(457, 34)
-        ComboBox1.Margin = New Padding(3, 4, 3, 4)
+        ComboBox1.Location = New Point(400, -19)
         ComboBox1.Name = "ComboBox1"
-        ComboBox1.Size = New Size(157, 28)
+        ComboBox1.Size = New Size(138, 23)
         ComboBox1.TabIndex = 4
         ' 
         ' PanelTitulo
@@ -219,9 +206,8 @@ Partial Class Alumnos
         PanelTitulo.Controls.Add(LabelTitulo)
         PanelTitulo.Dock = DockStyle.Top
         PanelTitulo.Location = New Point(0, 0)
-        PanelTitulo.Margin = New Padding(3, 4, 3, 4)
         PanelTitulo.Name = "PanelTitulo"
-        PanelTitulo.Size = New Size(967, 133)
+        PanelTitulo.Size = New Size(846, 100)
         PanelTitulo.TabIndex = 0
         ' 
         ' LabelTitulo
@@ -231,25 +217,24 @@ Partial Class Alumnos
         LabelTitulo.ForeColor = Color.White
         LabelTitulo.Location = New Point(0, 0)
         LabelTitulo.Name = "LabelTitulo"
-        LabelTitulo.Size = New Size(967, 133)
+        LabelTitulo.Size = New Size(846, 100)
         LabelTitulo.TabIndex = 1
         LabelTitulo.Text = "ALUMNOS"
         LabelTitulo.TextAlign = ContentAlignment.MiddleCenter
         ' 
         ' Alumnos
         ' 
-        AutoScaleDimensions = New SizeF(8F, 20F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(967, 907)
+        ClientSize = New Size(846, 591)
         Controls.Add(PanelBase)
         FormBorderStyle = FormBorderStyle.None
-        Margin = New Padding(3, 4, 3, 4)
         Name = "Alumnos"
         Text = "Alumnos"
         PanelBase.ResumeLayout(False)
         PanelContenido.ResumeLayout(False)
         PanelContenido.PerformLayout()
-        CType(DataGridView1, ComponentModel.ISupportInitialize).EndInit()
+        CType(DataGridViewAlumnos, ComponentModel.ISupportInitialize).EndInit()
         PanelTitulo.ResumeLayout(False)
         ResumeLayout(False)
     End Sub
@@ -259,7 +244,7 @@ Partial Class Alumnos
     Friend WithEvents LabelTitulo As Label
     Friend WithEvents PanelContenido As Panel
     Friend WithEvents ComboBox1 As ComboBox
-    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents DataGridViewAlumnos As DataGridView
     Friend WithEvents LabelCursos As Label
     Friend WithEvents txtCorreo As TextBox
     Friend WithEvents txtTelefono As TextBox

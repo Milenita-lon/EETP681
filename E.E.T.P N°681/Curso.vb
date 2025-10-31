@@ -1,5 +1,9 @@
-﻿Imports MySql.Data.MySqlClient
+﻿Imports System.Windows.Forms.VisualStyles.VisualStyleElement
+Imports MySql.Data.MySqlClient
 Public Class Curso
+
+    Dim conexion As New MySqlConnection("server=localhost; user id=root; password=escuela; database=escuela;")
+
 
     ' Diccionario de especialidades por curso
     Dim especialidades As New Dictionary(Of String, String) From {
@@ -36,9 +40,33 @@ Public Class Curso
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Cargar cursos en el ComboBox
         cbmCurso.Items.AddRange(especialidades.Keys.ToArray())
+
     End Sub
 
-    Private Sub cmbCurso_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbmCurso.SelectedIndexChanged
+    Private Sub Curso_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        CargarCursos()
+    End Sub
+
+    ' 🔹 Carga los cursos en el ComboBox
+    Private Sub CargarCursos()
+        Try
+            conexion.Open()
+            Dim cmd As New MySqlCommand("SELECT id_curso, nombre_curso FROM curso", conexion)
+            Dim reader As MySqlDataReader = cmd.ExecuteReader()
+
+            While reader.Read()
+                cbmCurso.Items.Add(reader("nombre_curso").ToString())
+            End While
+
+        Catch ex As Exception
+            MessageBox.Show("Error al cargar cursos: " & ex.Message)
+        Finally
+            conexion.Close()
+        End Try
+    End Sub
+
+
+    Private Sub cbmCurso_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbmCurso.SelectedIndexChanged
         Dim cursoSeleccionado As String = cbmCurso.SelectedItem.ToString()
 
         ' Mostrar especialidad
@@ -54,8 +82,46 @@ Public Class Curso
         Else
             lblPreceptor.Text = "Sin preceptor"
         End If
+
+        CargarAlumnosDelCurso()
+
     End Sub
+
+    Private Sub DataGridViewCursos_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridViewCursos.CellClick
+        If e.RowIndex >= 0 Then
+            Dim fila As DataGridViewRow = DataGridViewCursos.Rows(e.RowIndex)
+        End If
+    End Sub
+
+    ' 🔹 Carga los alumnos del curso seleccionado en el DataGridView
+    Private Sub CargarAlumnosDelCurso()
+        Try
+            conexion.Open()
+
+            ' Obtener el ID del curso seleccionado
+            Dim cursoSeleccionado = cbmCurso.SelectedItem
+            Dim nombreCurso As String = cbmCurso.SelectedItem.ToString()
+            Dim consulta As String = "SELECT a.id, a.nombre, a.apellido , a.dni, a.direccion, a.telefono, a.correo
+                          FROM alumnos a
+                          INNER JOIN curso c ON a.id_curso = c.id
+                          WHERE c.anio = @nombreCurso"
+
+            Dim adaptador As New MySqlDataAdapter(consulta, conexion)
+            adaptador.SelectCommand.Parameters.AddWithValue("@nombreCurso", nombreCurso)
+
+            Dim tabla As New DataTable()
+            adaptador.Fill(tabla)
+            DataGridViewCursos.DataSource = tabla
+
+        Catch ex As Exception
+            MessageBox.Show("Error al cargar alumnos: " & ex.Message)
+        Finally
+            conexion.Close()
+        End Try
+    End Sub
+
 End Class
+
 
 
 

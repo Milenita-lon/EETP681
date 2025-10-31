@@ -53,7 +53,7 @@ Public Class Alumnos
             Dim tablaAlumnos As New DataTable()
             adaptador.Fill(tablaAlumnos)
 
-            DataGridView1.DataSource = tablaAlumnos
+            DataGridViewAlumnos.DataSource = tablaAlumnos
 
         Catch ex As Exception
             MessageBox.Show("Error al cargar alumnos: " & ex.Message)
@@ -87,7 +87,7 @@ Public Class Alumnos
     End Sub
 
     Private Sub btnEditar_Click(sender As Object, e As EventArgs) Handles btnEditar.Click
-        If DataGridView1.SelectedRows.Count > 0 Then
+        If DataGridViewAlumnos.SelectedRows.Count > 0 Then
             Try
                 conexion.Open()
                 Dim consulta As String = "UPDATE alumnos SET nombre=@nombre, apellido=@apellido, dni=@dni, direccion=@direccion, telefono=@telefono, correo=@correo WHERE id_curso=@id_curso"
@@ -115,7 +115,7 @@ Public Class Alumnos
     End Sub
 
     Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
-        If DataGridView1.SelectedRows.Count > 0 Then
+        If DataGridViewAlumnos.SelectedRows.Count > 0 Then
             If MessageBox.Show("¿Está seguro de eliminar este alumno?", "Confirmar", MessageBoxButtons.YesNo) = DialogResult.Yes Then
                 Try
                     conexion.Open()
@@ -138,9 +138,9 @@ Public Class Alumnos
         CargarAlumnos(CInt(ComboBox1.SelectedValue))
     End Sub
 
-    Private Sub DataGridViewDirectivos_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellClick
+    Private Sub DataGridViewAlumnos_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridViewAlumnos.CellClick
         If e.RowIndex >= 0 Then
-            Dim fila As DataGridViewRow = DataGridView1.Rows(e.RowIndex)
+            Dim fila As DataGridViewRow = DataGridViewAlumnos.Rows(e.RowIndex)
             txtNombre.Text = fila.Cells("nombre").Value.ToString()
             txtApellido.Text = fila.Cells("apellido").Value.ToString()
             txtDni.Text = fila.Cells("dni").Value.ToString()
