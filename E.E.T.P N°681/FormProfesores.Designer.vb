@@ -22,7 +22,9 @@ Partial Class FormProfesores
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FormProfesores))
         PanelCerrar = New Panel()
+        LabelBienvenida = New Label()
         BtnCerrar = New Button()
         PanelMenu = New Panel()
         submenuGA = New Panel()
@@ -71,6 +73,7 @@ Partial Class FormProfesores
         ' PanelCerrar
         ' 
         PanelCerrar.BackColor = Color.FromArgb(CByte(4), CByte(36), CByte(64))
+        PanelCerrar.Controls.Add(LabelBienvenida)
         PanelCerrar.Controls.Add(BtnCerrar)
         PanelCerrar.Dock = DockStyle.Top
         PanelCerrar.Location = New Point(0, 0)
@@ -79,6 +82,18 @@ Partial Class FormProfesores
         PanelCerrar.Size = New Size(1234, 53)
         PanelCerrar.TabIndex = 0
         ' 
+        ' LabelBienvenida
+        ' 
+        LabelBienvenida.Anchor = AnchorStyles.None
+        LabelBienvenida.AutoSize = True
+        LabelBienvenida.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
+        LabelBienvenida.ForeColor = Color.White
+        LabelBienvenida.Location = New Point(580, 13)
+        LabelBienvenida.Name = "LabelBienvenida"
+        LabelBienvenida.Size = New Size(74, 28)
+        LabelBienvenida.TabIndex = 3
+        LabelBienvenida.Text = "Label1"
+        ' 
         ' BtnCerrar
         ' 
         BtnCerrar.BackColor = Color.FromArgb(CByte(4), CByte(36), CByte(64))
@@ -86,11 +101,12 @@ Partial Class FormProfesores
         BtnCerrar.FlatAppearance.BorderSize = 0
         BtnCerrar.FlatAppearance.MouseOverBackColor = Color.Silver
         BtnCerrar.FlatStyle = FlatStyle.Flat
+        BtnCerrar.Image = CType(resources.GetObject("BtnCerrar.Image"), Image)
         BtnCerrar.Location = New Point(1188, 0)
         BtnCerrar.Margin = New Padding(3, 4, 3, 4)
         BtnCerrar.Name = "BtnCerrar"
         BtnCerrar.Size = New Size(46, 53)
-        BtnCerrar.TabIndex = 1
+        BtnCerrar.TabIndex = 2
         BtnCerrar.UseVisualStyleBackColor = False
         ' 
         ' PanelMenu
@@ -521,6 +537,7 @@ Partial Class FormProfesores
         Text = "Form1"
         WindowState = FormWindowState.Maximized
         PanelCerrar.ResumeLayout(False)
+        PanelCerrar.PerformLayout()
         PanelMenu.ResumeLayout(False)
         submenuGA.ResumeLayout(False)
         PanelGA.ResumeLayout(False)
@@ -538,7 +555,6 @@ Partial Class FormProfesores
     End Sub
 
     Friend WithEvents PanelCerrar As Panel
-    Friend WithEvents BtnCerrar As Button
     Friend WithEvents PanelMenu As Panel
     Friend WithEvents PanelPantalla As Panel
     Friend WithEvents logomenu As PictureBox
@@ -567,5 +583,7 @@ Partial Class FormProfesores
     Friend WithEvents botonDirec As Button
     Friend WithEvents botonPrecep As Button
     Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents BtnCerrar As Button
+    Friend WithEvents LabelBienvenida As Label
 
 End Class

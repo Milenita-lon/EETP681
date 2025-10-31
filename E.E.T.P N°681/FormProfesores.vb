@@ -27,6 +27,8 @@ Public Class FormProfesores
     End Function
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        LabelBienvenida.Text = "Bienvenido, " & login.profesorApellido
+
         ' Cargar imagen "logo sin fondo1.png" desde la carpeta de recursos del proyecto
         Dim img As Image = My.Resources.logo_sin_fondo1
 
@@ -56,11 +58,6 @@ Public Class FormProfesores
         Else
             submenu.Visible = False
         End If
-    End Sub
-
-    Private Sub BtnCerrar_Click(sender As Object, e As EventArgs) Handles BtnCerrar.Click
-        login.Close()
-        Dispose()
     End Sub
 
     Private Sub botonAG_Click(sender As Object, e As EventArgs) Handles botonAG.Click
@@ -97,5 +94,10 @@ Public Class FormProfesores
 
     Private Sub botonSecre_Click(sender As Object, e As EventArgs) Handles botonSecre.Click
         AbrirFormEnPanel(New Secretarios())
+    End Sub
+
+    Private Sub BtnCerrar_Click(sender As Object, e As EventArgs) Handles BtnCerrar.Click
+        login.Close()
+        Dispose()
     End Sub
 End Class

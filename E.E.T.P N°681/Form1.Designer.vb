@@ -24,6 +24,7 @@ Partial Class Form1
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         PanelCerrar = New Panel()
+        LabelBienvenida = New Label()
         BtnCerrar = New Button()
         PanelMenu = New Panel()
         submenuGA = New Panel()
@@ -72,6 +73,7 @@ Partial Class Form1
         ' PanelCerrar
         ' 
         PanelCerrar.BackColor = Color.FromArgb(CByte(4), CByte(36), CByte(64))
+        PanelCerrar.Controls.Add(LabelBienvenida)
         PanelCerrar.Controls.Add(BtnCerrar)
         PanelCerrar.Dock = DockStyle.Top
         PanelCerrar.Location = New Point(0, 0)
@@ -79,6 +81,18 @@ Partial Class Form1
         PanelCerrar.Name = "PanelCerrar"
         PanelCerrar.Size = New Size(1234, 53)
         PanelCerrar.TabIndex = 0
+        ' 
+        ' LabelBienvenida
+        ' 
+        LabelBienvenida.Anchor = AnchorStyles.None
+        LabelBienvenida.AutoSize = True
+        LabelBienvenida.Font = New Font("Segoe UI", 16F, FontStyle.Bold)
+        LabelBienvenida.ForeColor = Color.White
+        LabelBienvenida.Location = New Point(580, 12)
+        LabelBienvenida.Name = "LabelBienvenida"
+        LabelBienvenida.Size = New Size(112, 37)
+        LabelBienvenida.TabIndex = 4
+        LabelBienvenida.Text = "ADMIN"
         ' 
         ' BtnCerrar
         ' 
@@ -523,6 +537,7 @@ Partial Class Form1
         Text = "Form1"
         WindowState = FormWindowState.Maximized
         PanelCerrar.ResumeLayout(False)
+        PanelCerrar.PerformLayout()
         PanelMenu.ResumeLayout(False)
         submenuGA.ResumeLayout(False)
         PanelGA.ResumeLayout(False)
@@ -569,5 +584,6 @@ Partial Class Form1
     Friend WithEvents botonDirec As Button
     Friend WithEvents botonPrecep As Button
     Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents LabelBienvenida As Label
 
 End Class

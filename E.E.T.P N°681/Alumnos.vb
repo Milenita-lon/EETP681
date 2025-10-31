@@ -158,4 +158,8 @@ Public Class Alumnos
         txtTelefono.Clear()
         txtCorreo.Clear()
     End Sub
+
+    Private Sub LabelTitulo_Click(sender As Object, e As EventArgs) Handles LabelTitulo.Click
+
+    End Sub
 End Class
