@@ -52,6 +52,7 @@ Partial Class Directivos
         If DataGridViewDirectivos.SelectedRows.Count > 0 Then
             Dim id As Integer = DataGridViewDirectivos.CurrentRow.Cells("id").Value
             Try
+                conexion.Close()
                 conexion.Open()
                 Dim consulta As String = "UPDATE directivos SET nombre=@nombre, apellido=@apellido, dni=@dni, direccion=@direccion, telefono=@telefono, correo=@correo WHERE id=@id"
                 Dim comando As New MySqlCommand(consulta, conexion)
@@ -121,5 +122,9 @@ Partial Class Directivos
         txtDireccion.Clear()
         txtTelefono.Clear()
         txtCorreo.Clear()
+    End Sub
+
+    Private Sub txtNombre_TextChanged(sender As Object, e As EventArgs) Handles txtNombre.TextChanged
+
     End Sub
 End Class

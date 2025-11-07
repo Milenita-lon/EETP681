@@ -7,6 +7,7 @@ Public Class Alumnos
 
     Private Sub Alumnos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
+            conexion.Close()
             conexion.Open()
 
             ' Construimos el texto del curso como "3° Año A"
@@ -64,6 +65,7 @@ Public Class Alumnos
 
     Private Sub btnAgregar_Click(sender As Object, e As EventArgs) Handles btnAgregar.Click
         Try
+            conexion.Close()
             conexion.Open()
             Dim consulta As String = "INSERT INTO alumnos (nombre, apellido, dni, direccion, telefono, correo, id_curso) VALUES (@nombre, @apellido, @dni, @direccion, @telefono, @correo, @id_curso)"
             Dim comando As New MySqlCommand(consulta, conexion)

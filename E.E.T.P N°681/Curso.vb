@@ -50,6 +50,7 @@ Public Class Curso
     ' 🔹 Carga los cursos en el ComboBox
     Private Sub CargarCursos()
         Try
+            conexion.Close()
             conexion.Open()
             Dim cmd As New MySqlCommand("SELECT id_curso, nombre_curso FROM curso", conexion)
             Dim reader As MySqlDataReader = cmd.ExecuteReader()

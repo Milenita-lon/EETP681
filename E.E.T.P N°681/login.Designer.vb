@@ -76,7 +76,7 @@ Partial Class login
         usuariologin.BorderStyle = BorderStyle.None
         usuariologin.Cursor = Cursors.IBeam
         usuariologin.Font = New Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        usuariologin.ForeColor = Color.Silver
+        usuariologin.ForeColor = Color.Black
         usuariologin.Location = New Point(421, 143)
         usuariologin.Margin = New Padding(3, 4, 3, 4)
         usuariologin.Name = "usuariologin"
@@ -90,7 +90,7 @@ Partial Class login
         passwordlogin.BorderStyle = BorderStyle.None
         passwordlogin.Cursor = Cursors.IBeam
         passwordlogin.Font = New Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        passwordlogin.ForeColor = Color.Silver
+        passwordlogin.ForeColor = Color.Black
         passwordlogin.Location = New Point(421, 256)
         passwordlogin.Margin = New Padding(3, 4, 3, 4)
         passwordlogin.Name = "passwordlogin"

@@ -12,6 +12,7 @@ Partial Class Profesores
 
     Private Sub CargarProfesores()
         Try
+            conexion.Close()
             conexion.Open()
             Dim consulta As String = "SELECT id, nombre, apellido, dni, direccion, telefono, correo FROM profesores"
             Dim adaptador As New MySqlDataAdapter(consulta, conexion)
@@ -27,6 +28,7 @@ Partial Class Profesores
 
     Private Sub btnAgregar_Click(sender As Object, e As EventArgs) Handles btnAgregar.Click
         Try
+            conexion.Close()
             conexion.Open()
             Dim consulta As String = "INSERT INTO profesores (nombre, apellido, dni, direccion, telefono, correo) VALUES (@nombre, @apellido, @dni, @direccion, @telefono, @correo)"
             Dim comando As New MySqlCommand(consulta, conexion)
@@ -52,6 +54,7 @@ Partial Class Profesores
         If DataGridViewProfesores.SelectedRows.Count > 0 Then
             Dim id As Integer = DataGridViewProfesores.CurrentRow.Cells("id").Value
             Try
+                conexion.Close()
                 conexion.Open()
                 Dim consulta As String = "UPDATE profesores SET nombre=@nombre, apellido=@apellido, dni=@dni, direccion=@direccion, telefono=@telefono, correo=@correo WHERE id=@id"
                 Dim comando As New MySqlCommand(consulta, conexion)
@@ -82,6 +85,7 @@ Partial Class Profesores
             Dim id As Integer = DataGridViewProfesores.CurrentRow.Cells("id").Value
             If MessageBox.Show("¿Está seguro de eliminar este profesor?", "Confirmar", MessageBoxButtons.YesNo) = DialogResult.Yes Then
                 Try
+                    conexion.Close()
                     conexion.Open()
                     Dim consulta As String = "DELETE FROM profesores WHERE id=@id"
                     Dim comando As New MySqlCommand(consulta, conexion)

@@ -12,6 +12,7 @@ Partial Class Secretarios
 
     Private Sub CargarSecretarios()
         Try
+            conexion.Close()
             conexion.Open()
             Dim consulta As String = "SELECT id, nombre, apellido, dni, direccion, telefono, correo FROM secretarios"
             Dim adaptador As New MySqlDataAdapter(consulta, conexion)
@@ -27,6 +28,7 @@ Partial Class Secretarios
 
     Private Sub btnAgregar_Click(sender As Object, e As EventArgs) Handles btnAgregar.Click
         Try
+            conexion.Close()
             conexion.Open()
             Dim consulta As String = "INSERT INTO secretarios (nombre, apellido, dni, direccion, telefono, correo) VALUES (@nombre, @apellido, @dni, @direccion, @telefono, @correo)"
             Dim comando As New MySqlCommand(consulta, conexion)
@@ -52,6 +54,7 @@ Partial Class Secretarios
         If DataGridViewSecretarios.SelectedRows.Count > 0 Then
             Dim id As Integer = DataGridViewSecretarios.CurrentRow.Cells("id").Value
             Try
+                conexion.Close()
                 conexion.Open()
                 Dim consulta As String = "UPDATE secretarios SET nombre=@nombre, apellido=@apellido, dni=@dni, direccion=@direccion, telefono=@telefono, correo=@correo WHERE id=@id"
                 Dim comando As New MySqlCommand(consulta, conexion)
@@ -82,6 +85,7 @@ Partial Class Secretarios
             Dim id As Integer = DataGridViewSecretarios.CurrentRow.Cells("id").Value
             If MessageBox.Show("¿Está seguro de eliminar este secretario?", "Confirmar", MessageBoxButtons.YesNo) = DialogResult.Yes Then
                 Try
+                    conexion.Close()
                     conexion.Open()
                     Dim consulta As String = "DELETE FROM secretarios WHERE id=@id"
                     Dim comando As New MySqlCommand(consulta, conexion)

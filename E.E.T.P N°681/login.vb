@@ -62,6 +62,7 @@ Public Class login
         End If
 
         Try
+            conexion.Close()
             conexion.Open()
 
             ' Primero verificamos si es administrador
@@ -105,9 +106,7 @@ Public Class login
         Catch ex As Exception
             MessageBox.Show("Error al conectar con la base de datos: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Finally
-            If conexion.State = ConnectionState.Open Then
-                conexion.Close()
-            End If
+            conexion.Close()
         End Try
     End Sub
 
