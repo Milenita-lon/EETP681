@@ -110,7 +110,7 @@ Public Class Form1
     End Sub
 
     Private Sub botonAlum_Click(sender As Object, e As EventArgs) Handles botonAlum.Click
-        AbrirFormEnPanel(New Alumnos())
+        AbrirFormEnPanel(New Alumnos)
     End Sub
 
     Private Sub botonCurs_Click(sender As Object, e As EventArgs) Handles botonCurs.Click
@@ -119,5 +119,9 @@ Public Class Form1
 
     Private Sub botonMate_Click(sender As Object, e As EventArgs) Handles botonMate.Click
         AbrirFormEnPanel(New Materias())
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnNotassalum.Click
+        AbrirFormEnPanel(New notasalum())
     End Sub
 End Class
