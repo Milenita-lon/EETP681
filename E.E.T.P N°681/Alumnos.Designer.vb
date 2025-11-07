@@ -51,7 +51,7 @@ Partial Class Alumnos
         PanelBase.Dock = DockStyle.Fill
         PanelBase.Location = New Point(0, 0)
         PanelBase.Name = "PanelBase"
-        PanelBase.Size = New Size(846, 591)
+        PanelBase.Size = New Size(910, 652)
         PanelBase.TabIndex = 0
         ' 
         ' PanelContenido
@@ -71,7 +71,7 @@ Partial Class Alumnos
         PanelContenido.Dock = DockStyle.Fill
         PanelContenido.Location = New Point(0, 100)
         PanelContenido.Name = "PanelContenido"
-        PanelContenido.Size = New Size(846, 491)
+        PanelContenido.Size = New Size(910, 552)
         PanelContenido.TabIndex = 1
         ' 
         ' btnEliminar
@@ -81,7 +81,7 @@ Partial Class Alumnos
         btnEliminar.FlatStyle = FlatStyle.Flat
         btnEliminar.Font = New Font("Segoe UI", 9F, FontStyle.Bold)
         btnEliminar.ForeColor = Color.White
-        btnEliminar.Location = New Point(255, 77)
+        btnEliminar.Location = New Point(287, 108)
         btnEliminar.Name = "btnEliminar"
         btnEliminar.Size = New Size(75, 25)
         btnEliminar.TabIndex = 15
@@ -95,7 +95,7 @@ Partial Class Alumnos
         btnEditar.FlatStyle = FlatStyle.Flat
         btnEditar.Font = New Font("Segoe UI", 9F, FontStyle.Bold)
         btnEditar.ForeColor = Color.White
-        btnEditar.Location = New Point(174, 77)
+        btnEditar.Location = New Point(206, 108)
         btnEditar.Name = "btnEditar"
         btnEditar.Size = New Size(75, 25)
         btnEditar.TabIndex = 16
@@ -109,7 +109,7 @@ Partial Class Alumnos
         btnAgregar.FlatStyle = FlatStyle.Flat
         btnAgregar.Font = New Font("Segoe UI", 9F, FontStyle.Bold)
         btnAgregar.ForeColor = Color.White
-        btnAgregar.Location = New Point(93, 77)
+        btnAgregar.Location = New Point(125, 108)
         btnAgregar.Name = "btnAgregar"
         btnAgregar.Size = New Size(75, 25)
         btnAgregar.TabIndex = 17
@@ -119,7 +119,7 @@ Partial Class Alumnos
         ' txtCorreo
         ' 
         txtCorreo.Anchor = AnchorStyles.None
-        txtCorreo.Location = New Point(624, 39)
+        txtCorreo.Location = New Point(656, 70)
         txtCorreo.Name = "txtCorreo"
         txtCorreo.PlaceholderText = "Correo"
         txtCorreo.Size = New Size(115, 23)
@@ -128,7 +128,7 @@ Partial Class Alumnos
         ' txtTelefono
         ' 
         txtTelefono.Anchor = AnchorStyles.None
-        txtTelefono.Location = New Point(518, 39)
+        txtTelefono.Location = New Point(550, 70)
         txtTelefono.Name = "txtTelefono"
         txtTelefono.PlaceholderText = "Teléfono"
         txtTelefono.Size = New Size(100, 23)
@@ -137,7 +137,7 @@ Partial Class Alumnos
         ' txtDireccion
         ' 
         txtDireccion.Anchor = AnchorStyles.None
-        txtDireccion.Location = New Point(412, 39)
+        txtDireccion.Location = New Point(444, 70)
         txtDireccion.Name = "txtDireccion"
         txtDireccion.PlaceholderText = "Dirección"
         txtDireccion.Size = New Size(100, 23)
@@ -146,7 +146,7 @@ Partial Class Alumnos
         ' txtDni
         ' 
         txtDni.Anchor = AnchorStyles.None
-        txtDni.Location = New Point(306, 39)
+        txtDni.Location = New Point(338, 70)
         txtDni.Name = "txtDni"
         txtDni.PlaceholderText = "DNI"
         txtDni.Size = New Size(100, 23)
@@ -155,7 +155,7 @@ Partial Class Alumnos
         ' txtApellido
         ' 
         txtApellido.Anchor = AnchorStyles.None
-        txtApellido.Location = New Point(200, 39)
+        txtApellido.Location = New Point(232, 70)
         txtApellido.Name = "txtApellido"
         txtApellido.PlaceholderText = "Apellido"
         txtApellido.Size = New Size(100, 23)
@@ -164,7 +164,7 @@ Partial Class Alumnos
         ' txtNombre
         ' 
         txtNombre.Anchor = AnchorStyles.None
-        txtNombre.Location = New Point(94, 39)
+        txtNombre.Location = New Point(126, 70)
         txtNombre.Name = "txtNombre"
         txtNombre.PlaceholderText = "Nombre"
         txtNombre.Size = New Size(100, 23)
@@ -175,7 +175,7 @@ Partial Class Alumnos
         LabelCursos.Anchor = AnchorStyles.None
         LabelCursos.AutoSize = True
         LabelCursos.Font = New Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        LabelCursos.Location = New Point(308, -19)
+        LabelCursos.Location = New Point(340, 12)
         LabelCursos.Name = "LabelCursos"
         LabelCursos.Size = New Size(86, 25)
         LabelCursos.TabIndex = 6
@@ -185,7 +185,7 @@ Partial Class Alumnos
         ' 
         DataGridViewAlumnos.Anchor = AnchorStyles.None
         DataGridViewAlumnos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewAlumnos.Location = New Point(92, 133)
+        DataGridViewAlumnos.Location = New Point(124, 164)
         DataGridViewAlumnos.Name = "DataGridViewAlumnos"
         DataGridViewAlumnos.RowHeadersWidth = 51
         DataGridViewAlumnos.Size = New Size(664, 374)
@@ -195,7 +195,7 @@ Partial Class Alumnos
         ' 
         ComboBox1.Anchor = AnchorStyles.None
         ComboBox1.FormattingEnabled = True
-        ComboBox1.Location = New Point(400, -19)
+        ComboBox1.Location = New Point(432, 12)
         ComboBox1.Name = "ComboBox1"
         ComboBox1.Size = New Size(138, 23)
         ComboBox1.TabIndex = 4
@@ -207,7 +207,7 @@ Partial Class Alumnos
         PanelTitulo.Dock = DockStyle.Top
         PanelTitulo.Location = New Point(0, 0)
         PanelTitulo.Name = "PanelTitulo"
-        PanelTitulo.Size = New Size(846, 100)
+        PanelTitulo.Size = New Size(910, 100)
         PanelTitulo.TabIndex = 0
         ' 
         ' LabelTitulo
@@ -217,7 +217,7 @@ Partial Class Alumnos
         LabelTitulo.ForeColor = Color.White
         LabelTitulo.Location = New Point(0, 0)
         LabelTitulo.Name = "LabelTitulo"
-        LabelTitulo.Size = New Size(846, 100)
+        LabelTitulo.Size = New Size(910, 100)
         LabelTitulo.TabIndex = 1
         LabelTitulo.Text = "ALUMNOS"
         LabelTitulo.TextAlign = ContentAlignment.MiddleCenter
@@ -226,7 +226,7 @@ Partial Class Alumnos
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(846, 591)
+        ClientSize = New Size(910, 652)
         Controls.Add(PanelBase)
         FormBorderStyle = FormBorderStyle.None
         Name = "Alumnos"
