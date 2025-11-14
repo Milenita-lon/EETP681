@@ -122,7 +122,7 @@ Public Class Form1
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnNotassalum.Click
-        AbrirFormEnPanel(New notasalum())
+        AbrirFormEnPanel(New Asistencias())
     End Sub
 
     Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
