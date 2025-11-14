@@ -32,6 +32,8 @@ Partial Class notasalum
         LabelCursos = New Label()
         Label2 = New Label()
         cmbMateria = New ComboBox()
+        LabelTri = New Label()
+        cmbTrimestre = New ComboBox()
         Panelsuperiornotasalum.SuspendLayout()
         CType(DataGridViewNotas, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
@@ -85,18 +87,18 @@ Partial Class notasalum
         DataGridViewNotas.DefaultCellStyle = DataGridViewCellStyle2
         DataGridViewNotas.EnableHeadersVisualStyles = False
         DataGridViewNotas.GridColor = SystemColors.ScrollBar
-        DataGridViewNotas.Location = New Point(149, 189)
+        DataGridViewNotas.Location = New Point(124, 218)
         DataGridViewNotas.Name = "DataGridViewNotas"
         DataGridViewNotas.RowHeadersVisible = False
         DataGridViewNotas.SelectionMode = DataGridViewSelectionMode.CellSelect
-        DataGridViewNotas.Size = New Size(537, 314)
+        DataGridViewNotas.Size = New Size(594, 374)
         DataGridViewNotas.TabIndex = 2
         ' 
         ' Cbmnotasalum
         ' 
         Cbmnotasalum.Anchor = AnchorStyles.None
         Cbmnotasalum.FormattingEnabled = True
-        Cbmnotasalum.Location = New Point(241, 139)
+        Cbmnotasalum.Location = New Point(254, 121)
         Cbmnotasalum.Name = "Cbmnotasalum"
         Cbmnotasalum.Size = New Size(121, 23)
         Cbmnotasalum.TabIndex = 3
@@ -104,7 +106,7 @@ Partial Class notasalum
         ' Label1
         ' 
         Label1.AutoSize = True
-        Label1.Location = New Point(324, 144)
+        Label1.Location = New Point(320, 126)
         Label1.Name = "Label1"
         Label1.Size = New Size(0, 15)
         Label1.TabIndex = 4
@@ -114,7 +116,7 @@ Partial Class notasalum
         LabelCursos.Anchor = AnchorStyles.None
         LabelCursos.AutoSize = True
         LabelCursos.Font = New Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        LabelCursos.Location = New Point(149, 139)
+        LabelCursos.Location = New Point(173, 119)
         LabelCursos.Name = "LabelCursos"
         LabelCursos.Size = New Size(75, 25)
         LabelCursos.TabIndex = 7
@@ -125,7 +127,7 @@ Partial Class notasalum
         Label2.Anchor = AnchorStyles.None
         Label2.AutoSize = True
         Label2.Font = New Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label2.Location = New Point(407, 139)
+        Label2.Location = New Point(446, 119)
         Label2.Name = "Label2"
         Label2.Size = New Size(94, 25)
         Label2.TabIndex = 9
@@ -135,10 +137,30 @@ Partial Class notasalum
         ' 
         cmbMateria.Anchor = AnchorStyles.None
         cmbMateria.FormattingEnabled = True
-        cmbMateria.Location = New Point(507, 139)
+        cmbMateria.Location = New Point(542, 121)
         cmbMateria.Name = "cmbMateria"
         cmbMateria.Size = New Size(121, 23)
         cmbMateria.TabIndex = 8
+        ' 
+        ' LabelTri
+        ' 
+        LabelTri.Anchor = AnchorStyles.None
+        LabelTri.AutoSize = True
+        LabelTri.Font = New Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        LabelTri.Location = New Point(300, 174)
+        LabelTri.Name = "LabelTri"
+        LabelTri.Size = New Size(113, 25)
+        LabelTri.TabIndex = 10
+        LabelTri.Text = "TRIMESTRE"
+        ' 
+        ' cmbTrimestre
+        ' 
+        cmbTrimestre.Anchor = AnchorStyles.None
+        cmbTrimestre.FormattingEnabled = True
+        cmbTrimestre.Location = New Point(419, 174)
+        cmbTrimestre.Name = "cmbTrimestre"
+        cmbTrimestre.Size = New Size(121, 23)
+        cmbTrimestre.TabIndex = 11
         ' 
         ' notasalum
         ' 
@@ -146,6 +168,8 @@ Partial Class notasalum
         AutoScaleMode = AutoScaleMode.Font
         BackgroundImageLayout = ImageLayout.None
         ClientSize = New Size(830, 591)
+        Controls.Add(cmbTrimestre)
+        Controls.Add(LabelTri)
         Controls.Add(Label2)
         Controls.Add(cmbMateria)
         Controls.Add(LabelCursos)
@@ -170,4 +194,6 @@ Partial Class notasalum
     Friend WithEvents LabelCursos As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents cmbMateria As ComboBox
+    Friend WithEvents LabelTri As Label
+    Friend WithEvents cmbTrimestre As ComboBox
 End Class

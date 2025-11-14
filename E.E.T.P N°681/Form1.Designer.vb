@@ -22,12 +22,12 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         PanelCerrar = New Panel()
         LabelBienvenida = New Label()
         BtnCerrar = New Button()
         PanelMenu = New Panel()
         submenuGA = New Panel()
+        btnNotassalum = New Button()
         botonMate = New Button()
         botonCurs = New Button()
         botonAlum = New Button()
@@ -54,7 +54,7 @@ Partial Class Form1
         PictureBox1 = New PictureBox()
         PanelPantalla = New Panel()
         logomenu = New PictureBox()
-        btnNotassalum = New Button()
+        Button1 = New Button()
         PanelCerrar.SuspendLayout()
         PanelMenu.SuspendLayout()
         submenuGA.SuspendLayout()
@@ -74,6 +74,7 @@ Partial Class Form1
         ' PanelCerrar
         ' 
         PanelCerrar.BackColor = Color.FromArgb(CByte(4), CByte(36), CByte(64))
+        PanelCerrar.Controls.Add(Button1)
         PanelCerrar.Controls.Add(LabelBienvenida)
         PanelCerrar.Controls.Add(BtnCerrar)
         PanelCerrar.Dock = DockStyle.Top
@@ -101,7 +102,7 @@ Partial Class Form1
         BtnCerrar.FlatAppearance.BorderSize = 0
         BtnCerrar.FlatAppearance.MouseOverBackColor = Color.Silver
         BtnCerrar.FlatStyle = FlatStyle.Flat
-        BtnCerrar.Image = CType(resources.GetObject("BtnCerrar.Image"), Image)
+        BtnCerrar.Image = My.Resources.Resources.cruz
         BtnCerrar.Location = New Point(1040, 0)
         BtnCerrar.Name = "BtnCerrar"
         BtnCerrar.Size = New Size(40, 40)
@@ -138,6 +139,26 @@ Partial Class Form1
         submenuGA.Name = "submenuGA"
         submenuGA.Size = New Size(234, 140)
         submenuGA.TabIndex = 9
+        ' 
+        ' btnNotassalum
+        ' 
+        btnNotassalum.BackColor = Color.Transparent
+        btnNotassalum.Dock = DockStyle.Top
+        btnNotassalum.FlatAppearance.BorderSize = 0
+        btnNotassalum.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(22), CByte(71), CByte(115))
+        btnNotassalum.FlatStyle = FlatStyle.Flat
+        btnNotassalum.Font = New Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        btnNotassalum.ForeColor = SystemColors.Control
+        btnNotassalum.ImageAlign = ContentAlignment.MiddleRight
+        btnNotassalum.Location = New Point(0, 105)
+        btnNotassalum.Margin = New Padding(0)
+        btnNotassalum.Name = "btnNotassalum"
+        btnNotassalum.Padding = New Padding(30, 0, 0, 0)
+        btnNotassalum.Size = New Size(234, 35)
+        btnNotassalum.TabIndex = 8
+        btnNotassalum.Text = "NOTAS"
+        btnNotassalum.TextAlign = ContentAlignment.MiddleLeft
+        btnNotassalum.UseVisualStyleBackColor = False
         ' 
         ' botonMate
         ' 
@@ -507,25 +528,19 @@ Partial Class Form1
         logomenu.TabIndex = 0
         logomenu.TabStop = False
         ' 
-        ' btnNotassalum
+        ' Button1
         ' 
-        btnNotassalum.BackColor = Color.Transparent
-        btnNotassalum.Dock = DockStyle.Top
-        btnNotassalum.FlatAppearance.BorderSize = 0
-        btnNotassalum.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(22), CByte(71), CByte(115))
-        btnNotassalum.FlatStyle = FlatStyle.Flat
-        btnNotassalum.Font = New Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        btnNotassalum.ForeColor = SystemColors.Control
-        btnNotassalum.ImageAlign = ContentAlignment.MiddleRight
-        btnNotassalum.Location = New Point(0, 105)
-        btnNotassalum.Margin = New Padding(0)
-        btnNotassalum.Name = "btnNotassalum"
-        btnNotassalum.Padding = New Padding(30, 0, 0, 0)
-        btnNotassalum.Size = New Size(234, 35)
-        btnNotassalum.TabIndex = 8
-        btnNotassalum.Text = "NOTAS"
-        btnNotassalum.TextAlign = ContentAlignment.MiddleLeft
-        btnNotassalum.UseVisualStyleBackColor = False
+        Button1.BackColor = Color.FromArgb(CByte(4), CByte(36), CByte(64))
+        Button1.Dock = DockStyle.Right
+        Button1.FlatAppearance.BorderSize = 0
+        Button1.FlatAppearance.MouseOverBackColor = Color.Silver
+        Button1.FlatStyle = FlatStyle.Flat
+        Button1.Image = My.Resources.Resources.minimizar_ventana
+        Button1.Location = New Point(1000, 0)
+        Button1.Name = "Button1"
+        Button1.Size = New Size(40, 40)
+        Button1.TabIndex = 5
+        Button1.UseVisualStyleBackColor = False
         ' 
         ' Form1
         ' 
@@ -590,5 +605,6 @@ Partial Class Form1
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents LabelBienvenida As Label
     Friend WithEvents btnNotassalum As Button
+    Friend WithEvents Button1 As Button
 
 End Class
