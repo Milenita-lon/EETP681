@@ -15,6 +15,8 @@ Partial Class Profesores
 
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
         PanelBase = New Panel()
         PanelContenido = New Panel()
         btnEliminar = New Button()
@@ -26,13 +28,13 @@ Partial Class Profesores
         txtDni = New TextBox()
         txtApellido = New TextBox()
         txtNombre = New TextBox()
-        DataGridViewProfesores = New DataGridView()
         PanelTitulo = New Panel()
         LabelTitulo = New Label()
+        DataGridViewProfesores = New DataGridView()
         PanelBase.SuspendLayout()
         PanelContenido.SuspendLayout()
-        CType(DataGridViewProfesores, ComponentModel.ISupportInitialize).BeginInit()
         PanelTitulo.SuspendLayout()
+        CType(DataGridViewProfesores, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' PanelBase
@@ -49,6 +51,7 @@ Partial Class Profesores
         ' PanelContenido
         ' 
         PanelContenido.BackColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
+        PanelContenido.Controls.Add(DataGridViewProfesores)
         PanelContenido.Controls.Add(btnEliminar)
         PanelContenido.Controls.Add(btnEditar)
         PanelContenido.Controls.Add(btnAgregar)
@@ -58,7 +61,6 @@ Partial Class Profesores
         PanelContenido.Controls.Add(txtDni)
         PanelContenido.Controls.Add(txtApellido)
         PanelContenido.Controls.Add(txtNombre)
-        PanelContenido.Controls.Add(DataGridViewProfesores)
         PanelContenido.Dock = DockStyle.Fill
         PanelContenido.Location = New Point(0, 100)
         PanelContenido.Name = "PanelContenido"
@@ -161,19 +163,6 @@ Partial Class Profesores
         txtNombre.Size = New Size(100, 23)
         txtNombre.TabIndex = 8
         ' 
-        ' DataGridViewProfesores
-        ' 
-        DataGridViewProfesores.AllowUserToAddRows = False
-        DataGridViewProfesores.AllowUserToDeleteRows = False
-        DataGridViewProfesores.Anchor = AnchorStyles.None
-        DataGridViewProfesores.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewProfesores.Location = New Point(101, 130)
-        DataGridViewProfesores.Name = "DataGridViewProfesores"
-        DataGridViewProfesores.ReadOnly = True
-        DataGridViewProfesores.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        DataGridViewProfesores.Size = New Size(645, 374)
-        DataGridViewProfesores.TabIndex = 9
-        ' 
         ' PanelTitulo
         ' 
         PanelTitulo.BackColor = Color.FromArgb(CByte(4), CByte(36), CByte(64))
@@ -196,6 +185,39 @@ Partial Class Profesores
         LabelTitulo.Text = "PROFESORES"
         LabelTitulo.TextAlign = ContentAlignment.MiddleCenter
         ' 
+        ' DataGridViewProfesores
+        ' 
+        DataGridViewProfesores.Anchor = AnchorStyles.None
+        DataGridViewProfesores.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+        DataGridViewProfesores.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells
+        DataGridViewProfesores.BackgroundColor = Color.White
+        DataGridViewProfesores.BorderStyle = BorderStyle.None
+        DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = Color.FromArgb(CByte(0), CByte(51), CByte(102))
+        DataGridViewCellStyle3.Font = New Font("Segoe UI", 10F, FontStyle.Bold)
+        DataGridViewCellStyle3.ForeColor = Color.White
+        DataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight
+        DataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = DataGridViewTriState.True
+        DataGridViewProfesores.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewProfesores.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = Color.White
+        DataGridViewCellStyle4.Font = New Font("Segoe UI", 9F)
+        DataGridViewCellStyle4.ForeColor = Color.Black
+        DataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(CByte(230), CByte(240), CByte(255))
+        DataGridViewCellStyle4.SelectionForeColor = Color.Black
+        DataGridViewCellStyle4.WrapMode = DataGridViewTriState.False
+        DataGridViewProfesores.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewProfesores.EnableHeadersVisualStyles = False
+        DataGridViewProfesores.GridColor = SystemColors.ScrollBar
+        DataGridViewProfesores.Location = New Point(101, 130)
+        DataGridViewProfesores.Name = "DataGridViewProfesores"
+        DataGridViewProfesores.RowHeadersVisible = False
+        DataGridViewProfesores.SelectionMode = DataGridViewSelectionMode.CellSelect
+        DataGridViewProfesores.Size = New Size(645, 374)
+        DataGridViewProfesores.TabIndex = 19
+        ' 
         ' Profesores
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -208,8 +230,8 @@ Partial Class Profesores
         PanelBase.ResumeLayout(False)
         PanelContenido.ResumeLayout(False)
         PanelContenido.PerformLayout()
-        CType(DataGridViewProfesores, ComponentModel.ISupportInitialize).EndInit()
         PanelTitulo.ResumeLayout(False)
+        CType(DataGridViewProfesores, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
     End Sub
 

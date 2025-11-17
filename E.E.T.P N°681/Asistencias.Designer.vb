@@ -26,7 +26,6 @@ Partial Class Asistencias
         Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Panelsuperiornotasalum = New Panel()
         titulonotasalum = New Label()
-        DataGridViewAsistencia = New DataGridView()
         Cbmnotasalum = New ComboBox()
         Label1 = New Label()
         LabelCursos = New Label()
@@ -34,6 +33,7 @@ Partial Class Asistencias
         cmbMateria = New ComboBox()
         LabelTri = New Label()
         DateTimePickerFecha = New DateTimePicker()
+        DataGridViewAsistencia = New DataGridView()
         Panelsuperiornotasalum.SuspendLayout()
         CType(DataGridViewAsistencia, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
@@ -61,6 +61,74 @@ Partial Class Asistencias
         titulonotasalum.Text = "ASISTENCIAS"
         titulonotasalum.TextAlign = ContentAlignment.MiddleCenter
         ' 
+        ' Cbmnotasalum
+        ' 
+        Cbmnotasalum.Anchor = AnchorStyles.None
+        Cbmnotasalum.FormattingEnabled = True
+        Cbmnotasalum.Location = New Point(412, 149)
+        Cbmnotasalum.Name = "Cbmnotasalum"
+        Cbmnotasalum.Size = New Size(121, 23)
+        Cbmnotasalum.TabIndex = 3
+        ' 
+        ' Label1
+        ' 
+        Label1.AutoSize = True
+        Label1.Location = New Point(478, 131)
+        Label1.Name = "Label1"
+        Label1.Size = New Size(0, 15)
+        Label1.TabIndex = 4
+        ' 
+        ' LabelCursos
+        ' 
+        LabelCursos.Anchor = AnchorStyles.None
+        LabelCursos.AutoSize = True
+        LabelCursos.Font = New Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        LabelCursos.Location = New Point(331, 147)
+        LabelCursos.Name = "LabelCursos"
+        LabelCursos.Size = New Size(75, 25)
+        LabelCursos.TabIndex = 7
+        LabelCursos.Text = "CURSO"
+        ' 
+        ' Label2
+        ' 
+        Label2.Anchor = AnchorStyles.None
+        Label2.AutoSize = True
+        Label2.Font = New Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label2.Location = New Point(179, 193)
+        Label2.Name = "Label2"
+        Label2.Size = New Size(94, 25)
+        Label2.TabIndex = 9
+        Label2.Text = "MATERIA"
+        ' 
+        ' cmbMateria
+        ' 
+        cmbMateria.Anchor = AnchorStyles.None
+        cmbMateria.FormattingEnabled = True
+        cmbMateria.Location = New Point(275, 195)
+        cmbMateria.Name = "cmbMateria"
+        cmbMateria.Size = New Size(121, 23)
+        cmbMateria.TabIndex = 8
+        ' 
+        ' LabelTri
+        ' 
+        LabelTri.Anchor = AnchorStyles.None
+        LabelTri.AutoSize = True
+        LabelTri.Font = New Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        LabelTri.Location = New Point(442, 193)
+        LabelTri.Name = "LabelTri"
+        LabelTri.Size = New Size(72, 25)
+        LabelTri.TabIndex = 10
+        LabelTri.Text = "FECHA"
+        ' 
+        ' DateTimePickerFecha
+        ' 
+        DateTimePickerFecha.Anchor = AnchorStyles.None
+        DateTimePickerFecha.Format = DateTimePickerFormat.Short
+        DateTimePickerFecha.Location = New Point(529, 195)
+        DateTimePickerFecha.Name = "DateTimePickerFecha"
+        DateTimePickerFecha.Size = New Size(124, 23)
+        DateTimePickerFecha.TabIndex = 11
+        ' 
         ' DataGridViewAsistencia
         ' 
         DataGridViewAsistencia.Anchor = AnchorStyles.None
@@ -87,87 +155,20 @@ Partial Class Asistencias
         DataGridViewAsistencia.DefaultCellStyle = DataGridViewCellStyle4
         DataGridViewAsistencia.EnableHeadersVisualStyles = False
         DataGridViewAsistencia.GridColor = SystemColors.ScrollBar
-        DataGridViewAsistencia.Location = New Point(124, 218)
+        DataGridViewAsistencia.Location = New Point(118, 244)
         DataGridViewAsistencia.Name = "DataGridViewAsistencia"
         DataGridViewAsistencia.RowHeadersVisible = False
         DataGridViewAsistencia.SelectionMode = DataGridViewSelectionMode.CellSelect
         DataGridViewAsistencia.Size = New Size(594, 374)
-        DataGridViewAsistencia.TabIndex = 2
-        ' 
-        ' Cbmnotasalum
-        ' 
-        Cbmnotasalum.Anchor = AnchorStyles.None
-        Cbmnotasalum.FormattingEnabled = True
-        Cbmnotasalum.Location = New Point(412, 126)
-        Cbmnotasalum.Name = "Cbmnotasalum"
-        Cbmnotasalum.Size = New Size(121, 23)
-        Cbmnotasalum.TabIndex = 3
-        ' 
-        ' Label1
-        ' 
-        Label1.AutoSize = True
-        Label1.Location = New Point(478, 131)
-        Label1.Name = "Label1"
-        Label1.Size = New Size(0, 15)
-        Label1.TabIndex = 4
-        ' 
-        ' LabelCursos
-        ' 
-        LabelCursos.Anchor = AnchorStyles.None
-        LabelCursos.AutoSize = True
-        LabelCursos.Font = New Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        LabelCursos.Location = New Point(331, 124)
-        LabelCursos.Name = "LabelCursos"
-        LabelCursos.Size = New Size(75, 25)
-        LabelCursos.TabIndex = 7
-        LabelCursos.Text = "CURSO"
-        ' 
-        ' Label2
-        ' 
-        Label2.Anchor = AnchorStyles.None
-        Label2.AutoSize = True
-        Label2.Font = New Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label2.Location = New Point(179, 170)
-        Label2.Name = "Label2"
-        Label2.Size = New Size(94, 25)
-        Label2.TabIndex = 9
-        Label2.Text = "MATERIA"
-        ' 
-        ' cmbMateria
-        ' 
-        cmbMateria.Anchor = AnchorStyles.None
-        cmbMateria.FormattingEnabled = True
-        cmbMateria.Location = New Point(275, 172)
-        cmbMateria.Name = "cmbMateria"
-        cmbMateria.Size = New Size(121, 23)
-        cmbMateria.TabIndex = 8
-        ' 
-        ' LabelTri
-        ' 
-        LabelTri.Anchor = AnchorStyles.None
-        LabelTri.AutoSize = True
-        LabelTri.Font = New Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        LabelTri.Location = New Point(442, 170)
-        LabelTri.Name = "LabelTri"
-        LabelTri.Size = New Size(72, 25)
-        LabelTri.TabIndex = 10
-        LabelTri.Text = "FECHA"
-        ' 
-        ' DateTimePickerFecha
-        ' 
-        DateTimePickerFecha.Anchor = AnchorStyles.None
-        DateTimePickerFecha.Format = DateTimePickerFormat.Short
-        DateTimePickerFecha.Location = New Point(529, 172)
-        DateTimePickerFecha.Name = "DateTimePickerFecha"
-        DateTimePickerFecha.Size = New Size(124, 23)
-        DateTimePickerFecha.TabIndex = 11
+        DataGridViewAsistencia.TabIndex = 12
         ' 
         ' Asistencias
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackgroundImageLayout = ImageLayout.None
-        ClientSize = New Size(830, 591)
+        ClientSize = New Size(830, 637)
+        Controls.Add(DataGridViewAsistencia)
         Controls.Add(DateTimePickerFecha)
         Controls.Add(LabelTri)
         Controls.Add(Label2)
@@ -175,7 +176,6 @@ Partial Class Asistencias
         Controls.Add(LabelCursos)
         Controls.Add(Label1)
         Controls.Add(Cbmnotasalum)
-        Controls.Add(DataGridViewAsistencia)
         Controls.Add(Panelsuperiornotasalum)
         FormBorderStyle = FormBorderStyle.None
         Name = "Asistencias"
@@ -188,7 +188,6 @@ Partial Class Asistencias
 
     Friend WithEvents Panelsuperiornotasalum As Panel
     Friend WithEvents titulonotasalum As Label
-    Friend WithEvents DataGridViewAsistencia As DataGridView
     Friend WithEvents Cbmnotasalum As ComboBox
     Friend WithEvents Label1 As Label
     Friend WithEvents LabelCursos As Label
@@ -196,4 +195,5 @@ Partial Class Asistencias
     Friend WithEvents cmbMateria As ComboBox
     Friend WithEvents LabelTri As Label
     Friend WithEvents DateTimePickerFecha As DateTimePicker
+    Friend WithEvents DataGridViewAsistencia As DataGridView
 End Class

@@ -22,13 +22,15 @@ Partial Class Curso
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Panelsuperiorcurso = New Panel()
         Label1 = New Label()
         cbmCurso = New ComboBox()
         lblEspecialidad = New Label()
         lblPreceptor = New Label()
-        DataGridViewCursos = New DataGridView()
         btndescargapdf = New Button()
+        DataGridViewCursos = New DataGridView()
         Panelsuperiorcurso.SuspendLayout()
         CType(DataGridViewCursos, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
@@ -89,16 +91,6 @@ Partial Class Curso
         lblPreceptor.TabIndex = 3
         lblPreceptor.Text = "PRECEPTOR"
         ' 
-        ' DataGridViewCursos
-        ' 
-        DataGridViewCursos.Anchor = AnchorStyles.None
-        DataGridViewCursos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCursos.Location = New Point(88, 205)
-        DataGridViewCursos.Name = "DataGridViewCursos"
-        DataGridViewCursos.RowHeadersWidth = 51
-        DataGridViewCursos.Size = New Size(656, 345)
-        DataGridViewCursos.TabIndex = 4
-        ' 
         ' btndescargapdf
         ' 
         btndescargapdf.Anchor = AnchorStyles.None
@@ -113,13 +105,46 @@ Partial Class Curso
         btndescargapdf.Text = "Descargar PDF"
         btndescargapdf.UseVisualStyleBackColor = False
         ' 
+        ' DataGridViewCursos
+        ' 
+        DataGridViewCursos.Anchor = AnchorStyles.None
+        DataGridViewCursos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+        DataGridViewCursos.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells
+        DataGridViewCursos.BackgroundColor = Color.White
+        DataGridViewCursos.BorderStyle = BorderStyle.None
+        DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = Color.FromArgb(CByte(0), CByte(51), CByte(102))
+        DataGridViewCellStyle3.Font = New Font("Segoe UI", 10F, FontStyle.Bold)
+        DataGridViewCellStyle3.ForeColor = Color.White
+        DataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight
+        DataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = DataGridViewTriState.True
+        DataGridViewCursos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCursos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = Color.White
+        DataGridViewCellStyle4.Font = New Font("Segoe UI", 9F)
+        DataGridViewCellStyle4.ForeColor = Color.Black
+        DataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(CByte(230), CByte(240), CByte(255))
+        DataGridViewCellStyle4.SelectionForeColor = Color.Black
+        DataGridViewCellStyle4.WrapMode = DataGridViewTriState.False
+        DataGridViewCursos.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCursos.EnableHeadersVisualStyles = False
+        DataGridViewCursos.GridColor = SystemColors.ScrollBar
+        DataGridViewCursos.Location = New Point(88, 205)
+        DataGridViewCursos.Name = "DataGridViewCursos"
+        DataGridViewCursos.RowHeadersVisible = False
+        DataGridViewCursos.SelectionMode = DataGridViewSelectionMode.CellSelect
+        DataGridViewCursos.Size = New Size(656, 345)
+        DataGridViewCursos.TabIndex = 6
+        ' 
         ' Curso
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(830, 591)
-        Controls.Add(btndescargapdf)
         Controls.Add(DataGridViewCursos)
+        Controls.Add(btndescargapdf)
         Controls.Add(lblPreceptor)
         Controls.Add(lblEspecialidad)
         Controls.Add(cbmCurso)

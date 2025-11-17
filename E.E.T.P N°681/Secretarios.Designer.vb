@@ -15,6 +15,8 @@ Partial Class Secretarios
 
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
         PanelBase = New Panel()
         PanelContenido = New Panel()
         btnEliminar = New Button()
@@ -26,13 +28,13 @@ Partial Class Secretarios
         txtDni = New TextBox()
         txtApellido = New TextBox()
         txtNombre = New TextBox()
-        DataGridViewSecretarios = New DataGridView()
         PanelTitulo = New Panel()
         LabelTitulo = New Label()
+        DataGridViewSecretarios = New DataGridView()
         PanelBase.SuspendLayout()
         PanelContenido.SuspendLayout()
-        CType(DataGridViewSecretarios, ComponentModel.ISupportInitialize).BeginInit()
         PanelTitulo.SuspendLayout()
+        CType(DataGridViewSecretarios, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' PanelBase
@@ -49,6 +51,7 @@ Partial Class Secretarios
         ' PanelContenido
         ' 
         PanelContenido.BackColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
+        PanelContenido.Controls.Add(DataGridViewSecretarios)
         PanelContenido.Controls.Add(btnEliminar)
         PanelContenido.Controls.Add(btnEditar)
         PanelContenido.Controls.Add(btnAgregar)
@@ -58,7 +61,6 @@ Partial Class Secretarios
         PanelContenido.Controls.Add(txtDni)
         PanelContenido.Controls.Add(txtApellido)
         PanelContenido.Controls.Add(txtNombre)
-        PanelContenido.Controls.Add(DataGridViewSecretarios)
         PanelContenido.Dock = DockStyle.Fill
         PanelContenido.Location = New Point(0, 100)
         PanelContenido.Name = "PanelContenido"
@@ -161,19 +163,6 @@ Partial Class Secretarios
         txtNombre.Size = New Size(100, 23)
         txtNombre.TabIndex = 8
         ' 
-        ' DataGridViewSecretarios
-        ' 
-        DataGridViewSecretarios.AllowUserToAddRows = False
-        DataGridViewSecretarios.AllowUserToDeleteRows = False
-        DataGridViewSecretarios.Anchor = AnchorStyles.None
-        DataGridViewSecretarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewSecretarios.Location = New Point(101, 130)
-        DataGridViewSecretarios.Name = "DataGridViewSecretarios"
-        DataGridViewSecretarios.ReadOnly = True
-        DataGridViewSecretarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        DataGridViewSecretarios.Size = New Size(645, 374)
-        DataGridViewSecretarios.TabIndex = 9
-        ' 
         ' PanelTitulo
         ' 
         PanelTitulo.BackColor = Color.FromArgb(CByte(4), CByte(36), CByte(64))
@@ -196,6 +185,39 @@ Partial Class Secretarios
         LabelTitulo.Text = "SECRETARIOS"
         LabelTitulo.TextAlign = ContentAlignment.MiddleCenter
         ' 
+        ' DataGridViewSecretarios
+        ' 
+        DataGridViewSecretarios.Anchor = AnchorStyles.None
+        DataGridViewSecretarios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+        DataGridViewSecretarios.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells
+        DataGridViewSecretarios.BackgroundColor = Color.White
+        DataGridViewSecretarios.BorderStyle = BorderStyle.None
+        DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(0), CByte(51), CByte(102))
+        DataGridViewCellStyle1.Font = New Font("Segoe UI", 10F, FontStyle.Bold)
+        DataGridViewCellStyle1.ForeColor = Color.White
+        DataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = DataGridViewTriState.True
+        DataGridViewSecretarios.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewSecretarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = Color.White
+        DataGridViewCellStyle2.Font = New Font("Segoe UI", 9F)
+        DataGridViewCellStyle2.ForeColor = Color.Black
+        DataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(CByte(230), CByte(240), CByte(255))
+        DataGridViewCellStyle2.SelectionForeColor = Color.Black
+        DataGridViewCellStyle2.WrapMode = DataGridViewTriState.False
+        DataGridViewSecretarios.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewSecretarios.EnableHeadersVisualStyles = False
+        DataGridViewSecretarios.GridColor = SystemColors.ScrollBar
+        DataGridViewSecretarios.Location = New Point(101, 130)
+        DataGridViewSecretarios.Name = "DataGridViewSecretarios"
+        DataGridViewSecretarios.RowHeadersVisible = False
+        DataGridViewSecretarios.SelectionMode = DataGridViewSelectionMode.CellSelect
+        DataGridViewSecretarios.Size = New Size(645, 374)
+        DataGridViewSecretarios.TabIndex = 19
+        ' 
         ' Secretarios
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -208,8 +230,8 @@ Partial Class Secretarios
         PanelBase.ResumeLayout(False)
         PanelContenido.ResumeLayout(False)
         PanelContenido.PerformLayout()
-        CType(DataGridViewSecretarios, ComponentModel.ISupportInitialize).EndInit()
         PanelTitulo.ResumeLayout(False)
+        CType(DataGridViewSecretarios, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
     End Sub
 
@@ -217,7 +239,6 @@ Partial Class Secretarios
     Friend WithEvents PanelTitulo As Panel
     Friend WithEvents LabelTitulo As Label
     Friend WithEvents PanelContenido As Panel
-    Friend WithEvents DataGridViewSecretarios As DataGridView
     Friend WithEvents btnEliminar As Button
     Friend WithEvents btnEditar As Button
     Friend WithEvents btnAgregar As Button
@@ -227,4 +248,5 @@ Partial Class Secretarios
     Friend WithEvents txtDni As TextBox
     Friend WithEvents txtApellido As TextBox
     Friend WithEvents txtNombre As TextBox
+    Friend WithEvents DataGridViewSecretarios As DataGridView
 End Class

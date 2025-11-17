@@ -15,6 +15,8 @@ Partial Class Directivos
 
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
         PanelBase = New Panel()
         PanelContenido = New Panel()
         btnEliminar = New Button()
@@ -26,13 +28,13 @@ Partial Class Directivos
         txtDni = New TextBox()
         txtApellido = New TextBox()
         txtNombre = New TextBox()
-        DataGridViewDirectivos = New DataGridView()
         PanelTitulo = New Panel()
         LabelTitulo = New Label()
+        DataGridViewDirectivos = New DataGridView()
         PanelBase.SuspendLayout()
         PanelContenido.SuspendLayout()
-        CType(DataGridViewDirectivos, ComponentModel.ISupportInitialize).BeginInit()
         PanelTitulo.SuspendLayout()
+        CType(DataGridViewDirectivos, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' PanelBase
@@ -42,14 +44,14 @@ Partial Class Directivos
         PanelBase.Controls.Add(PanelTitulo)
         PanelBase.Dock = DockStyle.Fill
         PanelBase.Location = New Point(0, 0)
-        PanelBase.Margin = New Padding(3, 4, 3, 4)
         PanelBase.Name = "PanelBase"
-        PanelBase.Size = New Size(967, 907)
+        PanelBase.Size = New Size(846, 680)
         PanelBase.TabIndex = 0
         ' 
         ' PanelContenido
         ' 
         PanelContenido.BackColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
+        PanelContenido.Controls.Add(DataGridViewDirectivos)
         PanelContenido.Controls.Add(btnEliminar)
         PanelContenido.Controls.Add(btnEditar)
         PanelContenido.Controls.Add(btnAgregar)
@@ -59,12 +61,10 @@ Partial Class Directivos
         PanelContenido.Controls.Add(txtDni)
         PanelContenido.Controls.Add(txtApellido)
         PanelContenido.Controls.Add(txtNombre)
-        PanelContenido.Controls.Add(DataGridViewDirectivos)
         PanelContenido.Dock = DockStyle.Fill
-        PanelContenido.Location = New Point(0, 133)
-        PanelContenido.Margin = New Padding(3, 4, 3, 4)
+        PanelContenido.Location = New Point(0, 100)
         PanelContenido.Name = "PanelContenido"
-        PanelContenido.Size = New Size(967, 774)
+        PanelContenido.Size = New Size(846, 580)
         PanelContenido.TabIndex = 0
         ' 
         ' btnEliminar
@@ -74,10 +74,9 @@ Partial Class Directivos
         btnEliminar.FlatStyle = FlatStyle.Flat
         btnEliminar.Font = New Font("Segoe UI", 9F, FontStyle.Bold)
         btnEliminar.ForeColor = Color.White
-        btnEliminar.Location = New Point(301, 110)
-        btnEliminar.Margin = New Padding(3, 4, 3, 4)
+        btnEliminar.Location = New Point(263, 82)
         btnEliminar.Name = "btnEliminar"
-        btnEliminar.Size = New Size(86, 33)
+        btnEliminar.Size = New Size(75, 25)
         btnEliminar.TabIndex = 0
         btnEliminar.Text = "Eliminar"
         btnEliminar.UseVisualStyleBackColor = False
@@ -89,10 +88,9 @@ Partial Class Directivos
         btnEditar.FlatStyle = FlatStyle.Flat
         btnEditar.Font = New Font("Segoe UI", 9F, FontStyle.Bold)
         btnEditar.ForeColor = Color.White
-        btnEditar.Location = New Point(208, 110)
-        btnEditar.Margin = New Padding(3, 4, 3, 4)
+        btnEditar.Location = New Point(182, 82)
         btnEditar.Name = "btnEditar"
-        btnEditar.Size = New Size(86, 33)
+        btnEditar.Size = New Size(75, 25)
         btnEditar.TabIndex = 1
         btnEditar.Text = "Editar"
         btnEditar.UseVisualStyleBackColor = False
@@ -104,10 +102,9 @@ Partial Class Directivos
         btnAgregar.FlatStyle = FlatStyle.Flat
         btnAgregar.Font = New Font("Segoe UI", 9F, FontStyle.Bold)
         btnAgregar.ForeColor = Color.White
-        btnAgregar.Location = New Point(115, 110)
-        btnAgregar.Margin = New Padding(3, 4, 3, 4)
+        btnAgregar.Location = New Point(101, 82)
         btnAgregar.Name = "btnAgregar"
-        btnAgregar.Size = New Size(86, 33)
+        btnAgregar.Size = New Size(75, 25)
         btnAgregar.TabIndex = 2
         btnAgregar.Text = "Agregar"
         btnAgregar.UseVisualStyleBackColor = False
@@ -115,77 +112,56 @@ Partial Class Directivos
         ' txtCorreo
         ' 
         txtCorreo.Anchor = AnchorStyles.None
-        txtCorreo.Location = New Point(721, 60)
-        txtCorreo.Margin = New Padding(3, 4, 3, 4)
+        txtCorreo.Location = New Point(631, 45)
         txtCorreo.Name = "txtCorreo"
         txtCorreo.PlaceholderText = "Correo"
-        txtCorreo.Size = New Size(131, 27)
+        txtCorreo.Size = New Size(115, 23)
         txtCorreo.TabIndex = 3
         ' 
         ' txtTelefono
         ' 
         txtTelefono.Anchor = AnchorStyles.None
-        txtTelefono.Location = New Point(600, 60)
-        txtTelefono.Margin = New Padding(3, 4, 3, 4)
+        txtTelefono.Location = New Point(525, 45)
         txtTelefono.Name = "txtTelefono"
         txtTelefono.PlaceholderText = "Teléfono"
-        txtTelefono.Size = New Size(114, 27)
+        txtTelefono.Size = New Size(100, 23)
         txtTelefono.TabIndex = 4
         ' 
         ' txtDireccion
         ' 
         txtDireccion.Anchor = AnchorStyles.None
-        txtDireccion.Location = New Point(479, 60)
-        txtDireccion.Margin = New Padding(3, 4, 3, 4)
+        txtDireccion.Location = New Point(419, 45)
         txtDireccion.Name = "txtDireccion"
         txtDireccion.PlaceholderText = "Dirección"
-        txtDireccion.Size = New Size(114, 27)
+        txtDireccion.Size = New Size(100, 23)
         txtDireccion.TabIndex = 5
         ' 
         ' txtDni
         ' 
         txtDni.Anchor = AnchorStyles.None
-        txtDni.Location = New Point(358, 60)
-        txtDni.Margin = New Padding(3, 4, 3, 4)
+        txtDni.Location = New Point(313, 45)
         txtDni.Name = "txtDni"
         txtDni.PlaceholderText = "DNI"
-        txtDni.Size = New Size(114, 27)
+        txtDni.Size = New Size(100, 23)
         txtDni.TabIndex = 6
         ' 
         ' txtApellido
         ' 
         txtApellido.Anchor = AnchorStyles.None
-        txtApellido.Location = New Point(237, 60)
-        txtApellido.Margin = New Padding(3, 4, 3, 4)
+        txtApellido.Location = New Point(207, 45)
         txtApellido.Name = "txtApellido"
         txtApellido.PlaceholderText = "Apellido"
-        txtApellido.Size = New Size(114, 27)
+        txtApellido.Size = New Size(100, 23)
         txtApellido.TabIndex = 7
         ' 
         ' txtNombre
         ' 
         txtNombre.Anchor = AnchorStyles.None
-        txtNombre.Location = New Point(115, 60)
-        txtNombre.Margin = New Padding(3, 4, 3, 4)
+        txtNombre.Location = New Point(101, 45)
         txtNombre.Name = "txtNombre"
         txtNombre.PlaceholderText = "Nombre"
-        txtNombre.Size = New Size(114, 27)
+        txtNombre.Size = New Size(100, 23)
         txtNombre.TabIndex = 8
-        ' 
-        ' DataGridViewDirectivos
-        ' 
-        DataGridViewDirectivos.AllowUserToAddRows = False
-        DataGridViewDirectivos.AllowUserToDeleteRows = False
-        DataGridViewDirectivos.Anchor = AnchorStyles.None
-        DataGridViewDirectivos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewDirectivos.Location = New Point(115, 174)
-        DataGridViewDirectivos.Margin = New Padding(3, 4, 3, 4)
-        DataGridViewDirectivos.Name = "DataGridViewDirectivos"
-        DataGridViewDirectivos.ReadOnly = True
-        DataGridViewDirectivos.RowHeadersWidth = 51
-        DataGridViewDirectivos.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        DataGridViewDirectivos.Size = New Size(737, 499)
-        DataGridViewDirectivos.TabIndex = 9
         ' 
         ' PanelTitulo
         ' 
@@ -193,9 +169,8 @@ Partial Class Directivos
         PanelTitulo.Controls.Add(LabelTitulo)
         PanelTitulo.Dock = DockStyle.Top
         PanelTitulo.Location = New Point(0, 0)
-        PanelTitulo.Margin = New Padding(3, 4, 3, 4)
         PanelTitulo.Name = "PanelTitulo"
-        PanelTitulo.Size = New Size(967, 133)
+        PanelTitulo.Size = New Size(846, 100)
         PanelTitulo.TabIndex = 1
         ' 
         ' LabelTitulo
@@ -205,26 +180,58 @@ Partial Class Directivos
         LabelTitulo.ForeColor = Color.White
         LabelTitulo.Location = New Point(0, 0)
         LabelTitulo.Name = "LabelTitulo"
-        LabelTitulo.Size = New Size(967, 133)
+        LabelTitulo.Size = New Size(846, 100)
         LabelTitulo.TabIndex = 0
         LabelTitulo.Text = "DIRECTIVOS"
         LabelTitulo.TextAlign = ContentAlignment.MiddleCenter
         ' 
+        ' DataGridViewDirectivos
+        ' 
+        DataGridViewDirectivos.Anchor = AnchorStyles.None
+        DataGridViewDirectivos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+        DataGridViewDirectivos.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells
+        DataGridViewDirectivos.BackgroundColor = Color.White
+        DataGridViewDirectivos.BorderStyle = BorderStyle.None
+        DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(0), CByte(51), CByte(102))
+        DataGridViewCellStyle1.Font = New Font("Segoe UI", 10F, FontStyle.Bold)
+        DataGridViewCellStyle1.ForeColor = Color.White
+        DataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = DataGridViewTriState.True
+        DataGridViewDirectivos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewDirectivos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = Color.White
+        DataGridViewCellStyle2.Font = New Font("Segoe UI", 9F)
+        DataGridViewCellStyle2.ForeColor = Color.Black
+        DataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(CByte(230), CByte(240), CByte(255))
+        DataGridViewCellStyle2.SelectionForeColor = Color.Black
+        DataGridViewCellStyle2.WrapMode = DataGridViewTriState.False
+        DataGridViewDirectivos.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewDirectivos.EnableHeadersVisualStyles = False
+        DataGridViewDirectivos.GridColor = SystemColors.ScrollBar
+        DataGridViewDirectivos.Location = New Point(101, 130)
+        DataGridViewDirectivos.Name = "DataGridViewDirectivos"
+        DataGridViewDirectivos.RowHeadersVisible = False
+        DataGridViewDirectivos.SelectionMode = DataGridViewSelectionMode.CellSelect
+        DataGridViewDirectivos.Size = New Size(645, 374)
+        DataGridViewDirectivos.TabIndex = 19
+        ' 
         ' Directivos
         ' 
-        AutoScaleDimensions = New SizeF(8F, 20F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(967, 907)
+        ClientSize = New Size(846, 680)
         Controls.Add(PanelBase)
         FormBorderStyle = FormBorderStyle.None
-        Margin = New Padding(3, 4, 3, 4)
         Name = "Directivos"
         Text = "Directivos"
         PanelBase.ResumeLayout(False)
         PanelContenido.ResumeLayout(False)
         PanelContenido.PerformLayout()
-        CType(DataGridViewDirectivos, ComponentModel.ISupportInitialize).EndInit()
         PanelTitulo.ResumeLayout(False)
+        CType(DataGridViewDirectivos, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
     End Sub
 
@@ -232,7 +239,6 @@ Partial Class Directivos
     Friend WithEvents PanelTitulo As Panel
     Friend WithEvents LabelTitulo As Label
     Friend WithEvents PanelContenido As Panel
-    Friend WithEvents DataGridViewDirectivos As DataGridView
     Friend WithEvents btnEliminar As Button
     Friend WithEvents btnEditar As Button
     Friend WithEvents btnAgregar As Button
@@ -242,4 +248,5 @@ Partial Class Directivos
     Friend WithEvents txtDni As TextBox
     Friend WithEvents txtApellido As TextBox
     Friend WithEvents txtNombre As TextBox
+    Friend WithEvents DataGridViewDirectivos As DataGridView
 End Class

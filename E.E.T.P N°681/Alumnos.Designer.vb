@@ -22,6 +22,8 @@ Partial Class Alumnos
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
         PanelBase = New Panel()
         PanelContenido = New Panel()
         btnEliminar = New Button()
@@ -34,14 +36,14 @@ Partial Class Alumnos
         txtApellido = New TextBox()
         txtNombre = New TextBox()
         LabelCursos = New Label()
-        DataGridViewAlumnos = New DataGridView()
         ComboBox1 = New ComboBox()
         PanelTitulo = New Panel()
         LabelTitulo = New Label()
+        DataGridViewAlumnos = New DataGridView()
         PanelBase.SuspendLayout()
         PanelContenido.SuspendLayout()
-        CType(DataGridViewAlumnos, ComponentModel.ISupportInitialize).BeginInit()
         PanelTitulo.SuspendLayout()
+        CType(DataGridViewAlumnos, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' PanelBase
@@ -56,6 +58,7 @@ Partial Class Alumnos
         ' 
         ' PanelContenido
         ' 
+        PanelContenido.Controls.Add(DataGridViewAlumnos)
         PanelContenido.Controls.Add(btnEliminar)
         PanelContenido.Controls.Add(btnEditar)
         PanelContenido.Controls.Add(btnAgregar)
@@ -66,7 +69,6 @@ Partial Class Alumnos
         PanelContenido.Controls.Add(txtApellido)
         PanelContenido.Controls.Add(txtNombre)
         PanelContenido.Controls.Add(LabelCursos)
-        PanelContenido.Controls.Add(DataGridViewAlumnos)
         PanelContenido.Controls.Add(ComboBox1)
         PanelContenido.Dock = DockStyle.Fill
         PanelContenido.Location = New Point(0, 100)
@@ -181,16 +183,6 @@ Partial Class Alumnos
         LabelCursos.TabIndex = 6
         LabelCursos.Text = "CURSOS"
         ' 
-        ' DataGridViewAlumnos
-        ' 
-        DataGridViewAlumnos.Anchor = AnchorStyles.None
-        DataGridViewAlumnos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewAlumnos.Location = New Point(124, 164)
-        DataGridViewAlumnos.Name = "DataGridViewAlumnos"
-        DataGridViewAlumnos.RowHeadersWidth = 51
-        DataGridViewAlumnos.Size = New Size(664, 374)
-        DataGridViewAlumnos.TabIndex = 5
-        ' 
         ' ComboBox1
         ' 
         ComboBox1.Anchor = AnchorStyles.None
@@ -222,6 +214,39 @@ Partial Class Alumnos
         LabelTitulo.Text = "ALUMNOS"
         LabelTitulo.TextAlign = ContentAlignment.MiddleCenter
         ' 
+        ' DataGridViewAlumnos
+        ' 
+        DataGridViewAlumnos.Anchor = AnchorStyles.None
+        DataGridViewAlumnos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+        DataGridViewAlumnos.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells
+        DataGridViewAlumnos.BackgroundColor = Color.White
+        DataGridViewAlumnos.BorderStyle = BorderStyle.None
+        DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(0), CByte(51), CByte(102))
+        DataGridViewCellStyle1.Font = New Font("Segoe UI", 10F, FontStyle.Bold)
+        DataGridViewCellStyle1.ForeColor = Color.White
+        DataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = DataGridViewTriState.True
+        DataGridViewAlumnos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewAlumnos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = Color.White
+        DataGridViewCellStyle2.Font = New Font("Segoe UI", 9F)
+        DataGridViewCellStyle2.ForeColor = Color.Black
+        DataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(CByte(230), CByte(240), CByte(255))
+        DataGridViewCellStyle2.SelectionForeColor = Color.Black
+        DataGridViewCellStyle2.WrapMode = DataGridViewTriState.False
+        DataGridViewAlumnos.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewAlumnos.EnableHeadersVisualStyles = False
+        DataGridViewAlumnos.GridColor = SystemColors.ScrollBar
+        DataGridViewAlumnos.Location = New Point(124, 164)
+        DataGridViewAlumnos.Name = "DataGridViewAlumnos"
+        DataGridViewAlumnos.RowHeadersVisible = False
+        DataGridViewAlumnos.SelectionMode = DataGridViewSelectionMode.CellSelect
+        DataGridViewAlumnos.Size = New Size(664, 374)
+        DataGridViewAlumnos.TabIndex = 18
+        ' 
         ' Alumnos
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -234,8 +259,8 @@ Partial Class Alumnos
         PanelBase.ResumeLayout(False)
         PanelContenido.ResumeLayout(False)
         PanelContenido.PerformLayout()
-        CType(DataGridViewAlumnos, ComponentModel.ISupportInitialize).EndInit()
         PanelTitulo.ResumeLayout(False)
+        CType(DataGridViewAlumnos, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
     End Sub
 
@@ -244,7 +269,6 @@ Partial Class Alumnos
     Friend WithEvents LabelTitulo As Label
     Friend WithEvents PanelContenido As Panel
     Friend WithEvents ComboBox1 As ComboBox
-    Friend WithEvents DataGridViewAlumnos As DataGridView
     Friend WithEvents LabelCursos As Label
     Friend WithEvents txtCorreo As TextBox
     Friend WithEvents txtTelefono As TextBox
@@ -255,4 +279,5 @@ Partial Class Alumnos
     Friend WithEvents btnEliminar As Button
     Friend WithEvents btnEditar As Button
     Friend WithEvents btnAgregar As Button
+    Friend WithEvents DataGridViewAlumnos As DataGridView
 End Class

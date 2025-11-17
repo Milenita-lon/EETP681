@@ -123,26 +123,26 @@ Public Class Asistencias
     End Sub
 
     ' === GUARDAR ASISTENCIA ===
-    Private Sub DataGridViewAsistencia_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridViewAsistencia.CellEndEdit
+    Private Sub DataGridViewAsistencia_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs)
         ' Solo guardamos si se editó una columna relevante
-        Dim nombreCol As String = DataGridViewAsistencia.Columns(e.ColumnIndex).Name
+        Dim nombreCol = DataGridViewAsistencia.Columns(e.ColumnIndex).Name
         If nombreCol <> "Asistencia" AndAlso nombreCol <> "Conducta" AndAlso nombreCol <> "Participacion" Then
             Exit Sub
         End If
 
         Try
-            conexion.Open()
+            conexion.Open
 
-            Dim idAlumno As Integer = CInt(DataGridViewAsistencia.Rows(e.RowIndex).Cells("ID_Alumno").Value)
-            Dim idMateria As Integer = CInt(DataGridViewAsistencia.Rows(e.RowIndex).Cells("ID_Materia").Value)
-            Dim fecha As String = DateTimePickerFecha.Value.ToString("yyyy-MM-dd")
+            Dim idAlumno As Integer = DataGridViewAsistencia.Rows(e.RowIndex).Cells("ID_Alumno").Value
+            Dim idMateria As Integer = DataGridViewAsistencia.Rows(e.RowIndex).Cells("ID_Materia").Value
+            Dim fecha = DateTimePickerFecha.Value.ToString("yyyy-MM-dd")
 
             ' Tomamos los valores actuales de la fila (si vienen nulos, los convertimos a "")
-            Dim asistencia As String = If(IsDBNull(DataGridViewAsistencia.Rows(e.RowIndex).Cells("Asistencia").Value), "", DataGridViewAsistencia.Rows(e.RowIndex).Cells("Asistencia").Value.ToString())
-            Dim conducta As String = If(IsDBNull(DataGridViewAsistencia.Rows(e.RowIndex).Cells("Conducta").Value), "", DataGridViewAsistencia.Rows(e.RowIndex).Cells("Conducta").Value.ToString())
-            Dim participacion As String = If(IsDBNull(DataGridViewAsistencia.Rows(e.RowIndex).Cells("Participacion").Value), "", DataGridViewAsistencia.Rows(e.RowIndex).Cells("Participacion").Value.ToString())
+            Dim asistencia = If(IsDBNull(DataGridViewAsistencia.Rows(e.RowIndex).Cells("Asistencia").Value), "", DataGridViewAsistencia.Rows(e.RowIndex).Cells("Asistencia").Value.ToString)
+            Dim conducta = If(IsDBNull(DataGridViewAsistencia.Rows(e.RowIndex).Cells("Conducta").Value), "", DataGridViewAsistencia.Rows(e.RowIndex).Cells("Conducta").Value.ToString)
+            Dim participacion = If(IsDBNull(DataGridViewAsistencia.Rows(e.RowIndex).Cells("Participacion").Value), "", DataGridViewAsistencia.Rows(e.RowIndex).Cells("Participacion").Value.ToString)
 
-            Dim query As String = "
+            Dim query = "
                 INSERT INTO asistencias (id_alumnos, id_materia, fecha, asistencia, conducta, participacion)
                 VALUES (@id_alumnos, @id_materia, @fecha, @asistencia, @conducta, @participacion)
                 ON DUPLICATE KEY UPDATE 
@@ -159,16 +159,15 @@ Public Class Asistencias
             comando.Parameters.AddWithValue("@conducta", conducta)
             comando.Parameters.AddWithValue("@participacion", participacion)
 
-            comando.ExecuteNonQuery()
+            comando.ExecuteNonQuery
 
             ' Opcional: recargar la fila para asegurar coherencia con la BD
-            CargarAlumnosAsistencia(CInt(Cbmnotasalum.SelectedValue), CInt(cmbMateria.SelectedValue))
+            CargarAlumnosAsistencia(Cbmnotasalum.SelectedValue, cmbMateria.SelectedValue)
 
         Catch ex As Exception
             MessageBox.Show("Error al guardar asistencia: " & ex.Message)
         Finally
-            conexion.Close()
+            conexion.Close
         End Try
     End Sub
-
 End Class

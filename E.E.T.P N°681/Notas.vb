@@ -1,6 +1,6 @@
 ﻿Imports MySql.Data.MySqlClient
 
-Public Class notasalum
+Public Class Notas
     Dim conexion As New MySqlConnection("server=localhost; user id=root; password=escuela; database=escuela;")
 
     Private Sub notasalum_Load(sender As Object, e As EventArgs) Handles MyBase.Load

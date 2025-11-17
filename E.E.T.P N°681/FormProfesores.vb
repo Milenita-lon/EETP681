@@ -97,7 +97,7 @@ Public Class FormProfesores
     End Sub
 
     Private Sub botonNotas_Click(sender As Object, e As EventArgs) Handles botonNotas.Click
-        AbrirFormEnPanel(New notasalum())
+        AbrirFormEnPanel(New Notas())
     End Sub
 
     Private Sub botonAsis_Click(sender As Object, e As EventArgs) Handles botonAsis.Click

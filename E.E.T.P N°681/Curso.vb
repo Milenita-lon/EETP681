@@ -120,7 +120,6 @@ Public Class Curso
             conexion.Close()
         End Try
     End Sub
-
 End Class
 
 

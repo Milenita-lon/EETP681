@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class notasalum
+Partial Class Notas
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -45,7 +45,7 @@ Partial Class notasalum
         Panelsuperiornotasalum.Dock = DockStyle.Top
         Panelsuperiornotasalum.Location = New Point(0, 0)
         Panelsuperiornotasalum.Name = "Panelsuperiornotasalum"
-        Panelsuperiornotasalum.Size = New Size(830, 100)
+        Panelsuperiornotasalum.Size = New Size(806, 100)
         Panelsuperiornotasalum.TabIndex = 1
         ' 
         ' titulonotasalum
@@ -54,7 +54,7 @@ Partial Class notasalum
         titulonotasalum.AutoSize = True
         titulonotasalum.Font = New Font("Segoe UI", 32.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         titulonotasalum.ForeColor = Color.White
-        titulonotasalum.Location = New Point(335, 22)
+        titulonotasalum.Location = New Point(323, 22)
         titulonotasalum.Name = "titulonotasalum"
         titulonotasalum.Size = New Size(166, 59)
         titulonotasalum.TabIndex = 0
@@ -70,7 +70,7 @@ Partial Class notasalum
         DataGridViewNotas.BorderStyle = BorderStyle.None
         DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(0), CByte(51), CByte(102))
-        DataGridViewCellStyle1.Font = New Font("Segoe UI", 10.0F, FontStyle.Bold)
+        DataGridViewCellStyle1.Font = New Font("Segoe UI", 10F, FontStyle.Bold)
         DataGridViewCellStyle1.ForeColor = Color.White
         DataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight
         DataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText
@@ -79,7 +79,7 @@ Partial Class notasalum
         DataGridViewNotas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle2.BackColor = Color.White
-        DataGridViewCellStyle2.Font = New Font("Segoe UI", 9.0F)
+        DataGridViewCellStyle2.Font = New Font("Segoe UI", 9F)
         DataGridViewCellStyle2.ForeColor = Color.Black
         DataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(CByte(230), CByte(240), CByte(255))
         DataGridViewCellStyle2.SelectionForeColor = Color.Black
@@ -87,7 +87,7 @@ Partial Class notasalum
         DataGridViewNotas.DefaultCellStyle = DataGridViewCellStyle2
         DataGridViewNotas.EnableHeadersVisualStyles = False
         DataGridViewNotas.GridColor = SystemColors.ScrollBar
-        DataGridViewNotas.Location = New Point(124, 218)
+        DataGridViewNotas.Location = New Point(112, 261)
         DataGridViewNotas.Name = "DataGridViewNotas"
         DataGridViewNotas.RowHeadersVisible = False
         DataGridViewNotas.SelectionMode = DataGridViewSelectionMode.CellSelect
@@ -98,7 +98,7 @@ Partial Class notasalum
         ' 
         Cbmnotasalum.Anchor = AnchorStyles.None
         Cbmnotasalum.FormattingEnabled = True
-        Cbmnotasalum.Location = New Point(412, 126)
+        Cbmnotasalum.Location = New Point(400, 169)
         Cbmnotasalum.Name = "Cbmnotasalum"
         Cbmnotasalum.Size = New Size(121, 23)
         Cbmnotasalum.TabIndex = 3
@@ -116,7 +116,7 @@ Partial Class notasalum
         LabelCursos.Anchor = AnchorStyles.None
         LabelCursos.AutoSize = True
         LabelCursos.Font = New Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        LabelCursos.Location = New Point(331, 124)
+        LabelCursos.Location = New Point(319, 167)
         LabelCursos.Name = "LabelCursos"
         LabelCursos.Size = New Size(75, 25)
         LabelCursos.TabIndex = 7
@@ -127,7 +127,7 @@ Partial Class notasalum
         Label2.Anchor = AnchorStyles.None
         Label2.AutoSize = True
         Label2.Font = New Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label2.Location = New Point(179, 170)
+        Label2.Location = New Point(167, 213)
         Label2.Name = "Label2"
         Label2.Size = New Size(94, 25)
         Label2.TabIndex = 9
@@ -137,7 +137,7 @@ Partial Class notasalum
         ' 
         cmbMateria.Anchor = AnchorStyles.None
         cmbMateria.FormattingEnabled = True
-        cmbMateria.Location = New Point(275, 172)
+        cmbMateria.Location = New Point(263, 215)
         cmbMateria.Name = "cmbMateria"
         cmbMateria.Size = New Size(121, 23)
         cmbMateria.TabIndex = 8
@@ -147,7 +147,7 @@ Partial Class notasalum
         LabelTri.Anchor = AnchorStyles.None
         LabelTri.AutoSize = True
         LabelTri.Font = New Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        LabelTri.Location = New Point(442, 170)
+        LabelTri.Location = New Point(430, 213)
         LabelTri.Name = "LabelTri"
         LabelTri.Size = New Size(113, 25)
         LabelTri.TabIndex = 10
@@ -157,17 +157,17 @@ Partial Class notasalum
         ' 
         cmbTrimestre.Anchor = AnchorStyles.None
         cmbTrimestre.FormattingEnabled = True
-        cmbTrimestre.Location = New Point(561, 170)
+        cmbTrimestre.Location = New Point(549, 213)
         cmbTrimestre.Name = "cmbTrimestre"
         cmbTrimestre.Size = New Size(121, 23)
         cmbTrimestre.TabIndex = 11
         ' 
         ' notasalum
         ' 
-        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackgroundImageLayout = ImageLayout.None
-        ClientSize = New Size(830, 591)
+        ClientSize = New Size(806, 676)
         Controls.Add(cmbTrimestre)
         Controls.Add(LabelTri)
         Controls.Add(Label2)

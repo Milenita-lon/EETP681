@@ -23,6 +23,7 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         PanelCerrar = New Panel()
+        Button1 = New Button()
         LabelBienvenida = New Label()
         BtnCerrar = New Button()
         PanelMenu = New Panel()
@@ -54,7 +55,6 @@ Partial Class Form1
         PictureBox1 = New PictureBox()
         PanelPantalla = New Panel()
         logomenu = New PictureBox()
-        Button1 = New Button()
         PanelCerrar.SuspendLayout()
         PanelMenu.SuspendLayout()
         submenuGA.SuspendLayout()
@@ -82,6 +82,20 @@ Partial Class Form1
         PanelCerrar.Name = "PanelCerrar"
         PanelCerrar.Size = New Size(1080, 40)
         PanelCerrar.TabIndex = 0
+        ' 
+        ' Button1
+        ' 
+        Button1.BackColor = Color.FromArgb(CByte(4), CByte(36), CByte(64))
+        Button1.Dock = DockStyle.Right
+        Button1.FlatAppearance.BorderSize = 0
+        Button1.FlatAppearance.MouseOverBackColor = Color.Silver
+        Button1.FlatStyle = FlatStyle.Flat
+        Button1.Image = My.Resources.Resources.minimizar_ventana
+        Button1.Location = New Point(1000, 0)
+        Button1.Name = "Button1"
+        Button1.Size = New Size(40, 40)
+        Button1.TabIndex = 5
+        Button1.UseVisualStyleBackColor = False
         ' 
         ' LabelBienvenida
         ' 
@@ -124,7 +138,7 @@ Partial Class Form1
         PanelMenu.Dock = DockStyle.Left
         PanelMenu.Location = New Point(0, 40)
         PanelMenu.Name = "PanelMenu"
-        PanelMenu.Size = New Size(234, 680)
+        PanelMenu.Size = New Size(234, 602)
         PanelMenu.TabIndex = 1
         ' 
         ' submenuGA
@@ -512,7 +526,7 @@ Partial Class Form1
         PanelPantalla.Location = New Point(234, 40)
         PanelPantalla.Margin = New Padding(40, 3, 3, 3)
         PanelPantalla.Name = "PanelPantalla"
-        PanelPantalla.Size = New Size(846, 680)
+        PanelPantalla.Size = New Size(846, 602)
         PanelPantalla.TabIndex = 2
         ' 
         ' logomenu
@@ -520,7 +534,7 @@ Partial Class Form1
         logomenu.Anchor = AnchorStyles.None
         logomenu.BackColor = Color.Transparent
         logomenu.Image = My.Resources.Resources.logo_sin_fondo1
-        logomenu.Location = New Point(320, 226)
+        logomenu.Location = New Point(320, 187)
         logomenu.Margin = New Padding(3, 6, 3, 3)
         logomenu.Name = "logomenu"
         logomenu.Size = New Size(229, 229)
@@ -528,25 +542,11 @@ Partial Class Form1
         logomenu.TabIndex = 0
         logomenu.TabStop = False
         ' 
-        ' Button1
-        ' 
-        Button1.BackColor = Color.FromArgb(CByte(4), CByte(36), CByte(64))
-        Button1.Dock = DockStyle.Right
-        Button1.FlatAppearance.BorderSize = 0
-        Button1.FlatAppearance.MouseOverBackColor = Color.Silver
-        Button1.FlatStyle = FlatStyle.Flat
-        Button1.Image = My.Resources.Resources.minimizar_ventana
-        Button1.Location = New Point(1000, 0)
-        Button1.Name = "Button1"
-        Button1.Size = New Size(40, 40)
-        Button1.TabIndex = 5
-        Button1.UseVisualStyleBackColor = False
-        ' 
         ' Form1
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(1080, 720)
+        ClientSize = New Size(1080, 642)
         Controls.Add(PanelPantalla)
         Controls.Add(PanelMenu)
         Controls.Add(PanelCerrar)
