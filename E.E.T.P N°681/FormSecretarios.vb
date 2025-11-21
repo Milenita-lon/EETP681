@@ -1,6 +1,6 @@
 ﻿Imports System.Drawing.Imaging
 
-Public Class Form1
+Public Class FormSecretarios
 
     ' Función que devuelve una nueva imagen con la opacidad ajustada
     Function AjustarOpacidad(logomenu As Image, opacidad As Single) As Image
@@ -27,6 +27,8 @@ Public Class Form1
     End Function
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        LabelBienvenida.Text = "Bienvenido, " & login.secretarioApellido
+
         ' Cargar imagen "logo sin fondo1.png" desde la carpeta de recursos del proyecto
         Dim img As Image = My.Resources.logo_sin_fondo1
 
@@ -44,7 +46,6 @@ Public Class Form1
     Private Sub hideSubMenu()
         submenuAG.Visible = False
         submenuPD.Visible = False
-        submenuAU.Visible = False
         submenuGA.Visible = False
     End Sub
 
@@ -58,21 +59,12 @@ Public Class Form1
         End If
     End Sub
 
-    Private Sub BtnCerrar_Click(sender As Object, e As EventArgs) Handles BtnCerrar.Click
-        login.Close
-        Dispose
-    End Sub
-
-    Private Sub botonAG_Click(sender As Object, e As EventArgs) Handles botonAG.Click
+    Private Sub botonAG_Click(sender As Object, e As EventArgs)
         ShowSubMenu(submenuAG)
     End Sub
 
     Private Sub botonPD_Click(sender As Object, e As EventArgs) Handles botonPD.Click
         ShowSubMenu(submenuPD)
-    End Sub
-
-    Private Sub botonAU_Click(sender As Object, e As EventArgs) Handles botonAU.Click
-        ShowSubMenu(submenuAU)
     End Sub
 
     Private Sub botonGA_Click(sender As Object, e As EventArgs) Handles botonGA.Click
@@ -93,8 +85,9 @@ Public Class Form1
         PanelPantalla.Controls.Add(formHijo)
         formHijo.Show()
     End Sub
-    Private Sub botonSecre_Click(sender As Object, e As EventArgs) Handles botonSecre.Click
-        AbrirFormEnPanel(New Secretarios())
+
+    Private Sub botonSecre_Click(sender As Object, e As EventArgs)
+        AbrirFormEnPanel(New Secretarios)
     End Sub
 
     Private Sub botonProfes_Click(sender As Object, e As EventArgs) Handles botonProfes.Click
@@ -105,27 +98,24 @@ Public Class Form1
         AbrirFormEnPanel(New Preceptores())
     End Sub
 
-    Private Sub botonDirec_Click(sender As Object, e As EventArgs) Handles botonDirec.Click
-        AbrirFormEnPanel(New Directivos())
-    End Sub
-
     Private Sub botonAlum_Click(sender As Object, e As EventArgs) Handles botonAlum.Click
-        AbrirFormEnPanel(New Alumnos)
+        AbrirFormEnPanel(New Alumnos())
     End Sub
 
     Private Sub botonCurs_Click(sender As Object, e As EventArgs) Handles botonCurs.Click
         AbrirFormEnPanel(New Curso())
     End Sub
 
-    Private Sub botonMate_Click(sender As Object, e As EventArgs) Handles botonMate.Click
-        AbrirFormEnPanel(New Materias())
-    End Sub
-
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnNotassalum.Click
+    Private Sub botonNotas_Click(sender As Object, e As EventArgs) Handles botonNotas.Click
         AbrirFormEnPanel(New Notas())
     End Sub
 
-    Private Sub botonMinimizar_Click_1(sender As Object, e As EventArgs) Handles botonMinimizar.Click
+    Private Sub BtnCerrar_Click(sender As Object, e As EventArgs) Handles BtnCerrar.Click
+        login.Close()
+        Dispose()
+    End Sub
+
+    Private Sub botonMinimizar_Click(sender As Object, e As EventArgs) Handles botonMinimizar.Click
         Me.WindowState = FormWindowState.Minimized
     End Sub
 End Class

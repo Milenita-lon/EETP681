@@ -2,8 +2,9 @@
 
 Public Class login
 
-    ' Variable pública para guardar el nombre del profesor logueado
+    ' Variables públicas para guardar datos del login
     Public Shared profesorApellido As String = ""
+    Public Shared secretarioApellido As String = ""
 
     Dim conexion As New MySqlConnection("server=localhost; user id=root; password=escuela; database=escuela;")
 
@@ -65,7 +66,7 @@ Public Class login
             conexion.Close()
             conexion.Open()
 
-            ' Primero verificamos si es administrador
+            ' 1 — Verificar ADMINISTRADOR
             Dim cmdAdmin As New MySqlCommand("SELECT * FROM usuario WHERE usuario=@usuario AND contrasena=@pass", conexion)
             cmdAdmin.Parameters.AddWithValue("@usuario", usuario)
             cmdAdmin.Parameters.AddWithValue("@pass", contrasena)
@@ -75,15 +76,13 @@ Public Class login
             If readerAdmin.HasRows Then
                 readerAdmin.Close()
                 conexion.Close()
-
                 Me.Hide()
                 Form1.Show()
                 Exit Sub
             End If
-
             readerAdmin.Close()
 
-            ' Si no es admin, verificamos si es profesor
+            ' 2 — Verificar PROFESOR
             Dim cmdProf As New MySqlCommand("SELECT apellido, nombre FROM profesores WHERE apellido=@apellido AND dni=@dni", conexion)
             cmdProf.Parameters.AddWithValue("@apellido", usuario)
             cmdProf.Parameters.AddWithValue("@dni", contrasena)
@@ -94,14 +93,32 @@ Public Class login
                 profesorApellido = readerProf("apellido").ToString()
                 readerProf.Close()
                 conexion.Close()
-
                 Me.Hide()
                 FormProfesores.Show()
-            Else
-                readerProf.Close()
-                conexion.Close()
-                MessageBox.Show("Usuario o contraseña incorrectos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Exit Sub
             End If
+            readerProf.Close()
+
+            ' 3 — Verificar SECRETARIO
+            Dim cmdSec As New MySqlCommand("SELECT apellido, nombre FROM secretarios WHERE apellido=@apellido AND dni=@dni", conexion)
+            cmdSec.Parameters.AddWithValue("@apellido", usuario)
+            cmdSec.Parameters.AddWithValue("@dni", contrasena)
+
+            Dim readerSec As MySqlDataReader = cmdSec.ExecuteReader()
+
+            If readerSec.Read() Then
+                secretarioApellido = readerSec("apellido").ToString()
+                readerSec.Close()
+                conexion.Close()
+                Me.Hide()
+                FormSecretarios.Show()
+                Exit Sub
+            End If
+            readerSec.Close()
+
+            ' 4 — Si no coincide con ningún rol
+            conexion.Close()
+            MessageBox.Show("Usuario o contraseña incorrectos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
 
         Catch ex As Exception
             MessageBox.Show("Error al conectar con la base de datos: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
