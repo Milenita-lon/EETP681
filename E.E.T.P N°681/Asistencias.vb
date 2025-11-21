@@ -1,4 +1,5 @@
-﻿Imports MySql.Data.MySqlClient
+﻿
+Imports MySql.Data.MySqlClient
 
 Public Class Asistencias
     Dim conexion As New MySqlConnection("server=localhost; user id=root; password=escuela; database=escuela;")
