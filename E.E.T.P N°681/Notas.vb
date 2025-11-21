@@ -181,4 +181,140 @@ Public Class Notas
         cmbTrimestre.DataSource = tabla
     End Sub
 
+    Private Sub btnPromocionar_MouseHover(sender As Object, e As EventArgs) Handles botonPromocionar.MouseLeave
+        botonPromocionar.BackColor = Color.DodgerBlue
+    End Sub
+
+    Private Sub botonPromocionar_Click(sender As Object, e As EventArgs) Handles botonPromocionar.Click
+
+        ' Evitar doble ejecución
+        botonPromocionar.Enabled = False
+
+        Dim conexion As New MySqlConnection("server=localhost; user id=root; password=escuela; database=escuela;")
+        Dim promovidos As Integer = 0
+        Dim egresados As Integer = 0
+
+        Try
+            conexion.Open()
+
+            ' ==========================================================
+            ' 1️⃣ CONTAR ALUMNOS QUE PROMOCIONAN (1º → 5º)
+            ' ==========================================================
+            Dim sqlContarPromovidos As String =
+            "SELECT COUNT(*) FROM (" &
+            "   SELECT a.id AS idAlumno " &
+            "   FROM alumnos a " &
+            "   JOIN curso c ON a.id_curso = c.id " &
+            "   WHERE c.anio < 6 " &
+            "   AND NOT EXISTS ( " &
+            "       SELECT 1 FROM materia m " &
+            "       WHERE m.id_curso = a.id_curso " &
+            "       AND (SELECT MIN(nota) FROM alumno_materia am " &
+            "            WHERE am.id_alumno = a.id " &
+            "              AND am.id_materia = m.id " &
+            "              AND am.id_trimestre IN (1,2,3)) < 6 " &
+            "   )" &
+            ") AS t;"
+
+            Dim cmdCountProm As New MySqlCommand(sqlContarPromovidos, conexion)
+            promovidos = Convert.ToInt32(cmdCountProm.ExecuteScalar())
+
+            ' ==========================================================
+            ' 2️⃣ CONTAR EGRESADOS (6º)
+            ' ==========================================================
+            Dim sqlContarEgresados As String =
+            "SELECT COUNT(*) FROM (" &
+            "   SELECT a.id AS idAlumno " &
+            "   FROM alumnos a " &
+            "   JOIN curso c ON a.id_curso = c.id " &
+            "   WHERE c.anio = 6 " &
+            "   AND NOT EXISTS ( " &
+            "       SELECT 1 FROM materia m " &
+            "       WHERE m.id_curso = a.id_curso " &
+            "       AND (SELECT MIN(nota) FROM alumno_materia am " &
+            "            WHERE am.id_alumno = a.id " &
+            "              AND am.id_materia = m.id " &
+            "              AND am.id_trimestre IN (1,2,3)) < 6 " &
+            "   )" &
+            ") AS t;"
+
+            Dim cmdCountEgr As New MySqlCommand(sqlContarEgresados, conexion)
+            egresados = Convert.ToInt32(cmdCountEgr.ExecuteScalar())
+
+
+            ' ==========================================================
+            ' 3️⃣ PROMOVER ALUMNOS DE AÑO (1 → 5)
+            ' ==========================================================
+            Dim sqlPromover As String =
+            "UPDATE alumnos al " &
+            "JOIN curso c ON al.id_curso = c.id " &
+            "JOIN ( " &
+            "   SELECT a.id AS idAlumno " &
+            "   FROM alumnos a " &
+            "   WHERE NOT EXISTS ( " &
+            "       SELECT 1 FROM materia m " &
+            "       WHERE m.id_curso = a.id_curso " &
+            "       AND (SELECT MIN(nota) FROM alumno_materia am " &
+            "            WHERE am.id_alumno = a.id " &
+            "              AND am.id_materia = m.id " &
+            "              AND am.id_trimestre IN (1,2,3)) < 6 " &
+            "   )" &
+            ") AS t ON t.idAlumno = al.id " &
+            "SET al.id_curso = ( " &
+            "   SELECT id FROM curso WHERE anio = c.anio + 1 AND division = c.division " &
+            ") " &
+            "WHERE c.anio < 6;"
+
+            Dim cmdPromover As New MySqlCommand(sqlPromover, conexion)
+            cmdPromover.ExecuteNonQuery()
+
+
+            ' ==========================================================
+            ' 4️⃣ ELIMINAR EGRESADOS (6º)
+            ' ==========================================================
+            Dim sqlEliminar As String =
+            "DELETE al FROM alumnos al " &
+            "JOIN curso c ON al.id_curso = c.id " &
+            "JOIN ( " &
+            "   SELECT a.id AS idAlumno " &
+            "   FROM alumnos a " &
+            "   WHERE NOT EXISTS ( " &
+            "       SELECT 1 FROM materia m " &
+            "       WHERE m.id_curso = a.id_curso " &
+            "       AND (SELECT MIN(nota) FROM alumno_materia am " &
+            "            WHERE am.id_alumno = a.id " &
+            "              AND am.id_materia = m.id " &
+            "              AND am.id_trimestre IN (1,2,3)) < 6 " &
+            "   )" &
+            ") AS t ON t.idAlumno = al.id " &
+            "WHERE c.anio = 6;"
+
+            Dim cmdEliminar As New MySqlCommand(sqlEliminar, conexion)
+            cmdEliminar.ExecuteNonQuery()
+
+
+            ' ==========================================================
+            ' 5️⃣ MENSAJE FINAL
+            ' ==========================================================
+            MessageBox.Show(
+            "*PROMOCIÓN COMPLETADA*" & vbCrLf & vbCrLf &
+            "Alumnos promovidos: " & promovidos & vbCrLf &
+            "Egresados eliminados: " & egresados,
+            "Éxito",
+            MessageBoxButtons.OK,
+            MessageBoxIcon.Information
+        )
+
+        Catch ex As Exception
+
+            MessageBox.Show("Error: " & ex.Message)
+            botonPromocionar.Enabled = True 'si falla, lo activo otra vez
+
+        Finally
+            conexion.Close()
+        End Try
+
+    End Sub
+
+
 End Class
