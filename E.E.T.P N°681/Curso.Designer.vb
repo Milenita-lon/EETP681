@@ -22,8 +22,8 @@ Partial Class Curso
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Panelsuperiorcurso = New Panel()
         Label1 = New Label()
         cbmCurso = New ComboBox()
@@ -41,8 +41,9 @@ Partial Class Curso
         Panelsuperiorcurso.Controls.Add(Label1)
         Panelsuperiorcurso.Dock = DockStyle.Top
         Panelsuperiorcurso.Location = New Point(0, 0)
+        Panelsuperiorcurso.Margin = New Padding(3, 4, 3, 4)
         Panelsuperiorcurso.Name = "Panelsuperiorcurso"
-        Panelsuperiorcurso.Size = New Size(830, 100)
+        Panelsuperiorcurso.Size = New Size(949, 133)
         Panelsuperiorcurso.TabIndex = 0
         ' 
         ' Label1
@@ -51,9 +52,9 @@ Partial Class Curso
         Label1.AutoSize = True
         Label1.Font = New Font("Segoe UI", 32.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Label1.ForeColor = Color.White
-        Label1.Location = New Point(326, 20)
+        Label1.Location = New Point(373, 27)
         Label1.Name = "Label1"
-        Label1.Size = New Size(192, 59)
+        Label1.Size = New Size(239, 72)
         Label1.TabIndex = 0
         Label1.Text = "CURSOS"
         Label1.TextAlign = ContentAlignment.MiddleCenter
@@ -62,9 +63,10 @@ Partial Class Curso
         ' 
         cbmCurso.Anchor = AnchorStyles.None
         cbmCurso.FormattingEnabled = True
-        cbmCurso.Location = New Point(112, 161)
+        cbmCurso.Location = New Point(128, 215)
+        cbmCurso.Margin = New Padding(3, 4, 3, 4)
         cbmCurso.Name = "cbmCurso"
-        cbmCurso.Size = New Size(121, 23)
+        cbmCurso.Size = New Size(138, 28)
         cbmCurso.TabIndex = 1
         ' 
         ' lblEspecialidad
@@ -74,9 +76,9 @@ Partial Class Curso
         lblEspecialidad.BackColor = SystemColors.Control
         lblEspecialidad.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lblEspecialidad.ForeColor = Color.Black
-        lblEspecialidad.Location = New Point(357, 159)
+        lblEspecialidad.Location = New Point(408, 212)
         lblEspecialidad.Name = "lblEspecialidad"
-        lblEspecialidad.Size = New Size(112, 21)
+        lblEspecialidad.Size = New Size(139, 28)
         lblEspecialidad.TabIndex = 2
         lblEspecialidad.Text = "ESPECIALIDAD"
         ' 
@@ -85,9 +87,9 @@ Partial Class Curso
         lblPreceptor.Anchor = AnchorStyles.None
         lblPreceptor.AutoSize = True
         lblPreceptor.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        lblPreceptor.Location = New Point(577, 159)
+        lblPreceptor.Location = New Point(659, 212)
         lblPreceptor.Name = "lblPreceptor"
-        lblPreceptor.Size = New Size(93, 21)
+        lblPreceptor.Size = New Size(114, 28)
         lblPreceptor.TabIndex = 3
         lblPreceptor.Text = "PRECEPTOR"
         ' 
@@ -98,9 +100,10 @@ Partial Class Curso
         btndescargapdf.FlatStyle = FlatStyle.Flat
         btndescargapdf.Font = New Font("Segoe UI", 9F, FontStyle.Bold)
         btndescargapdf.ForeColor = Color.White
-        btndescargapdf.Location = New Point(357, 577)
+        btndescargapdf.Location = New Point(408, 769)
+        btndescargapdf.Margin = New Padding(3, 4, 3, 4)
         btndescargapdf.Name = "btndescargapdf"
-        btndescargapdf.Size = New Size(138, 25)
+        btndescargapdf.Size = New Size(158, 33)
         btndescargapdf.TabIndex = 5
         btndescargapdf.Text = "Descargar PDF"
         btndescargapdf.UseVisualStyleBackColor = False
@@ -112,37 +115,39 @@ Partial Class Curso
         DataGridViewCursos.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells
         DataGridViewCursos.BackgroundColor = Color.White
         DataGridViewCursos.BorderStyle = BorderStyle.None
-        DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = Color.FromArgb(CByte(0), CByte(51), CByte(102))
-        DataGridViewCellStyle3.Font = New Font("Segoe UI", 10F, FontStyle.Bold)
-        DataGridViewCellStyle3.ForeColor = Color.White
-        DataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight
-        DataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText
-        DataGridViewCellStyle3.WrapMode = DataGridViewTriState.True
-        DataGridViewCursos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(0), CByte(51), CByte(102))
+        DataGridViewCellStyle1.Font = New Font("Segoe UI", 10F, FontStyle.Bold)
+        DataGridViewCellStyle1.ForeColor = Color.White
+        DataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = DataGridViewTriState.True
+        DataGridViewCursos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         DataGridViewCursos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = Color.White
-        DataGridViewCellStyle4.Font = New Font("Segoe UI", 9F)
-        DataGridViewCellStyle4.ForeColor = Color.Black
-        DataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(CByte(230), CByte(240), CByte(255))
-        DataGridViewCellStyle4.SelectionForeColor = Color.Black
-        DataGridViewCellStyle4.WrapMode = DataGridViewTriState.False
-        DataGridViewCursos.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = Color.White
+        DataGridViewCellStyle2.Font = New Font("Segoe UI", 9F)
+        DataGridViewCellStyle2.ForeColor = Color.Black
+        DataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(CByte(230), CByte(240), CByte(255))
+        DataGridViewCellStyle2.SelectionForeColor = Color.Black
+        DataGridViewCellStyle2.WrapMode = DataGridViewTriState.False
+        DataGridViewCursos.DefaultCellStyle = DataGridViewCellStyle2
         DataGridViewCursos.EnableHeadersVisualStyles = False
         DataGridViewCursos.GridColor = SystemColors.ScrollBar
-        DataGridViewCursos.Location = New Point(88, 205)
+        DataGridViewCursos.Location = New Point(101, 273)
+        DataGridViewCursos.Margin = New Padding(3, 4, 3, 4)
         DataGridViewCursos.Name = "DataGridViewCursos"
         DataGridViewCursos.RowHeadersVisible = False
+        DataGridViewCursos.RowHeadersWidth = 51
         DataGridViewCursos.SelectionMode = DataGridViewSelectionMode.CellSelect
-        DataGridViewCursos.Size = New Size(656, 345)
+        DataGridViewCursos.Size = New Size(750, 460)
         DataGridViewCursos.TabIndex = 6
         ' 
         ' Curso
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(830, 591)
+        ClientSize = New Size(949, 788)
         Controls.Add(DataGridViewCursos)
         Controls.Add(btndescargapdf)
         Controls.Add(lblPreceptor)
@@ -150,6 +155,7 @@ Partial Class Curso
         Controls.Add(cbmCurso)
         Controls.Add(Panelsuperiorcurso)
         FormBorderStyle = FormBorderStyle.None
+        Margin = New Padding(3, 4, 3, 4)
         Name = "Curso"
         Text = "Curso"
         Panelsuperiorcurso.ResumeLayout(False)

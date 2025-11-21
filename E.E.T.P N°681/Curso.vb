@@ -1,5 +1,6 @@
 ﻿Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 Imports MySql.Data.MySqlClient
+
 Public Class Curso
 
     Dim conexion As New MySqlConnection("server=localhost; user id=root; password=escuela; database=escuela;")
@@ -120,6 +121,48 @@ Public Class Curso
             conexion.Close()
         End Try
     End Sub
+
+    Function ExportarDataGridViewAPDF(dgv As DataGridView)
+        Try
+            ' Crear un documento PDF horizontal
+            Dim doc As New iTextSharp.text.Document(iTextSharp.text.PageSize.A4.Rotate(), 10, 10, 10, 10)
+            Dim saveFileDialog As New SaveFileDialog()
+            saveFileDialog.Filter = "Archivos PDF (*.pdf)|*.pdf"
+            If saveFileDialog.ShowDialog() <> DialogResult.OK Then
+                Return False
+            End If
+            Dim writer As iTextSharp.text.pdf.PdfWriter = iTextSharp.text.pdf.PdfWriter.GetInstance(doc, New IO.FileStream(saveFileDialog.FileName, IO.FileMode.Create))
+            doc.Open()
+            ' Crear una tabla PDF con el mismo número de columnas que el DataGridView
+            Dim pdfTable As New iTextSharp.text.pdf.PdfPTable(dgv.Columns.Count)
+            ' Agregar los encabezados de columna
+            For Each column As DataGridViewColumn In dgv.Columns
+                Dim cell As New iTextSharp.text.pdf.PdfPCell(New iTextSharp.text.Phrase(column.HeaderText))
+                pdfTable.AddCell(cell)
+            Next
+            ' Agregar las filas de datos
+            For Each row As DataGridViewRow In dgv.Rows
+                If Not row.IsNewRow Then
+                    For Each cell As DataGridViewCell In row.Cells
+                        pdfTable.AddCell(If(cell.Value IsNot Nothing, cell.Value.ToString(), ""))
+                    Next
+                End If
+            Next
+            ' Agregar la tabla al documento PDF
+            doc.Add(pdfTable)
+            doc.Close()
+            MessageBox.Show("Exportación a PDF exitosa.")
+        Catch ex As Exception
+            MessageBox.Show("Error al exportar a PDF: " & ex.Message)
+        End Try
+        Return True
+    End Function
+
+    Private Sub btndescargapdf_Click(sender As Object, e As EventArgs) Handles btndescargapdf.Click
+        ' Llama a la función para exportar a PDF
+        ExportarDataGridViewAPDF(DataGridViewCursos)
+    End Sub
+
 End Class
 
 

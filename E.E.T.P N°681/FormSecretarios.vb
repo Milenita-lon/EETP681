@@ -44,7 +44,6 @@ Public Class FormSecretarios
     End Sub
 
     Private Sub hideSubMenu()
-        submenuAG.Visible = False
         submenuPD.Visible = False
         submenuGA.Visible = False
     End Sub
@@ -57,10 +56,6 @@ Public Class FormSecretarios
         Else
             submenu.Visible = False
         End If
-    End Sub
-
-    Private Sub botonAG_Click(sender As Object, e As EventArgs)
-        ShowSubMenu(submenuAG)
     End Sub
 
     Private Sub botonPD_Click(sender As Object, e As EventArgs) Handles botonPD.Click
