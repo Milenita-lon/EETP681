@@ -93,9 +93,10 @@ Public Class Asistencias
                 FROM alumnos a
                 INNER JOIN materia m ON m.id_curso = a.id_curso
                 LEFT JOIN asistencias asist 
-                       ON asist.id_alumnos = a.id
-                      AND asist.id_materia = m.id
-                      AND asist.fecha = @fecha
+                    ON asist.id_alumnos = a.id
+                    AND asist.id_materia = m.id
+                    AND DATE(asist.fecha) = @fecha
+
                 WHERE a.id_curso = @idCurso AND m.id = @idMateria
                 ORDER BY a.apellido;
             "
@@ -103,7 +104,8 @@ Public Class Asistencias
             Dim comando As New MySqlCommand(query, conexion)
             comando.Parameters.AddWithValue("@idCurso", idCurso)
             comando.Parameters.AddWithValue("@idMateria", idMateria)
-            comando.Parameters.AddWithValue("@fecha", fecha)
+            comando.Parameters.Add("@fecha", MySqlDbType.Date).Value = DateTimePickerFecha.Value.Date
+
 
             Dim adaptador As New MySqlDataAdapter(comando)
             Dim tabla As New DataTable()
@@ -124,7 +126,7 @@ Public Class Asistencias
     End Sub
 
     ' === GUARDAR ASISTENCIA ===
-    Private Sub DataGridViewAsistencia_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs)
+    Private Sub DataGridViewAsistencias_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs)
         ' Solo guardamos si se editó una columna relevante
         Dim nombreCol = DataGridViewAsistencia.Columns(e.ColumnIndex).Name
         If nombreCol <> "Asistencia" AndAlso nombreCol <> "Conducta" AndAlso nombreCol <> "Participacion" Then
@@ -132,7 +134,7 @@ Public Class Asistencias
         End If
 
         Try
-            conexion.Open
+            conexion.Open()
 
             Dim idAlumno As Integer = DataGridViewAsistencia.Rows(e.RowIndex).Cells("ID_Alumno").Value
             Dim idMateria As Integer = DataGridViewAsistencia.Rows(e.RowIndex).Cells("ID_Materia").Value
@@ -155,12 +157,12 @@ Public Class Asistencias
             Dim comando As New MySqlCommand(query, conexion)
             comando.Parameters.AddWithValue("@id_alumnos", idAlumno)
             comando.Parameters.AddWithValue("@id_materia", idMateria)
-            comando.Parameters.AddWithValue("@fecha", fecha)
+            comando.Parameters.Add("@fecha", MySqlDbType.Date).Value = DateTimePickerFecha.Value.Date
             comando.Parameters.AddWithValue("@asistencia", asistencia)
             comando.Parameters.AddWithValue("@conducta", conducta)
             comando.Parameters.AddWithValue("@participacion", participacion)
 
-            comando.ExecuteNonQuery
+            comando.ExecuteNonQuery()
 
             ' Opcional: recargar la fila para asegurar coherencia con la BD
             CargarAlumnosAsistencia(Cbmnotasalum.SelectedValue, cmbMateria.SelectedValue)
@@ -168,7 +170,57 @@ Public Class Asistencias
         Catch ex As Exception
             MessageBox.Show("Error al guardar asistencia: " & ex.Message)
         Finally
-            conexion.Close
+            conexion.Close()
         End Try
     End Sub
+
+    Private Sub DataGridViewAsistencia_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) _
+    Handles DataGridViewAsistencia.CellEndEdit
+
+        ' Solo guardamos si se editó una columna relevante
+        Dim nombreCol = DataGridViewAsistencia.Columns(e.ColumnIndex).Name
+        If nombreCol <> "Asistencia" AndAlso nombreCol <> "Conducta" AndAlso nombreCol <> "Participacion" Then
+            Exit Sub
+        End If
+
+        Try
+            conexion.Open()
+
+            Dim idAlumno As Integer = DataGridViewAsistencia.Rows(e.RowIndex).Cells("ID_Alumno").Value
+            Dim idMateria As Integer = DataGridViewAsistencia.Rows(e.RowIndex).Cells("ID_Materia").Value
+            Dim fecha = DateTimePickerFecha.Value.ToString("yyyy-MM-dd")
+
+            Dim asistencia = If(IsDBNull(DataGridViewAsistencia.Rows(e.RowIndex).Cells("Asistencia").Value), "", DataGridViewAsistencia.Rows(e.RowIndex).Cells("Asistencia").Value.ToString)
+            Dim conducta = If(IsDBNull(DataGridViewAsistencia.Rows(e.RowIndex).Cells("Conducta").Value), "", DataGridViewAsistencia.Rows(e.RowIndex).Cells("Conducta").Value.ToString)
+            Dim participacion = If(IsDBNull(DataGridViewAsistencia.Rows(e.RowIndex).Cells("Participacion").Value), "", DataGridViewAsistencia.Rows(e.RowIndex).Cells("Participacion").Value.ToString)
+
+            Dim query = "
+            INSERT INTO asistencias (id_alumnos, id_materia, fecha, asistencia, conducta, participacion)
+            VALUES (@id_alumnos, @id_materia, @fecha, @asistencia, @conducta, @participacion)
+            ON DUPLICATE KEY UPDATE 
+                asistencia = @asistencia,
+                conducta = @conducta,
+                participacion = @participacion;
+        "
+
+            Dim comando As New MySqlCommand(query, conexion)
+            comando.Parameters.AddWithValue("@id_alumnos", idAlumno)
+            comando.Parameters.AddWithValue("@id_materia", idMateria)
+            comando.Parameters.Add("@fecha", MySqlDbType.Date).Value = DateTimePickerFecha.Value.Date
+            comando.Parameters.AddWithValue("@asistencia", asistencia)
+            comando.Parameters.AddWithValue("@conducta", conducta)
+            comando.Parameters.AddWithValue("@participacion", participacion)
+
+            comando.ExecuteNonQuery()
+
+            ' Recargar la fila
+            CargarAlumnosAsistencia(CInt(Cbmnotasalum.SelectedValue), CInt(cmbMateria.SelectedValue))
+
+        Catch ex As Exception
+            MessageBox.Show("Error al guardar asistencia: " & ex.Message)
+        Finally
+            conexion.Close()
+        End Try
+    End Sub
+
 End Class
