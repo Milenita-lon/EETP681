@@ -130,51 +130,46 @@ Public Class Alumnos
             Try
                 conexion.Open()
 
-                ' ==========================
-                ' 1 – BORRAR NOTAS
-                ' ==========================
+                ' 1 – BORRAR NOTAS (alumno_materia)
                 Dim sqlNotas As String =
                 "DELETE am FROM alumno_materia am " &
                 "WHERE am.id_alumno = @id;"
-
                 Dim cmdNotas As New MySqlCommand(sqlNotas, conexion)
                 cmdNotas.Parameters.AddWithValue("@id", idAlumno)
                 cmdNotas.ExecuteNonQuery()
 
+                ' 1.5 – BORRAR TRIMESTRES
+                Dim sqlTrim As String =
+                "DELETE t FROM trimestre t " &
+                "WHERE t.id_alumnos = @id;"
+                Dim cmdTrim As New MySqlCommand(sqlTrim, conexion)
+                cmdTrim.Parameters.AddWithValue("@id", idAlumno)
+                cmdTrim.ExecuteNonQuery()
 
-                ' ==========================
                 ' 2 – BORRAR ASISTENCIAS
-                ' ==========================
                 Dim sqlAsist As String =
                 "DELETE asi FROM asistencias asi " &
-                "WHERE asi.id_alumno = @id;"
-
+                "WHERE asi.id_alumnos = @id;"
                 Dim cmdAsist As New MySqlCommand(sqlAsist, conexion)
                 cmdAsist.Parameters.AddWithValue("@id", idAlumno)
                 cmdAsist.ExecuteNonQuery()
 
-
-                ' ==========================
                 ' 3 – BORRAR ALUMNO
-                ' ==========================
-                Dim sqlAlumn As String =
+                Dim sqlAlum As String =
                 "DELETE FROM alumnos WHERE id = @id;"
-
-                Dim cmdAlum As New MySqlCommand(sqlAlumn, conexion)
+                Dim cmdAlum As New MySqlCommand(sqlAlum, conexion)
                 cmdAlum.Parameters.AddWithValue("@id", idAlumno)
                 cmdAlum.ExecuteNonQuery()
 
-
                 MessageBox.Show("Alumno eliminado correctamente.")
-
                 LimpiarCampos()
 
             Catch ex As Exception
                 MessageBox.Show("Error al eliminar alumno: " & ex.Message)
-
             Finally
                 conexion.Close()
             End Try
+
 
             ' Recargar lista
             CargarAlumnos(CInt(ComboBox1.SelectedValue))

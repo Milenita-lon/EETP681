@@ -189,12 +189,14 @@ Public Class Notas
 
         botonPromocionar.Enabled = False 'Evita doble clic
 
-        Dim conexion As New MySqlConnection("server=localhost; user id=root; password=escuela; database=escuela;")
+        Dim conexionLocal As New MySqlConnection("server=localhost; user id=root; password=escuela; database=escuela;")
         Dim promovidos As Integer = 0
         Dim egresados As Integer = 0
+        Dim trans As MySqlTransaction = Nothing
 
         Try
-            conexion.Open()
+            conexionLocal.Open()
+            trans = conexionLocal.BeginTransaction()
 
             ' ======================================================
             ' 1 – CONTAR PROMOVIDOS (1° a 5°)
@@ -212,7 +214,7 @@ Public Class Notas
             "  )" &
             ") AS t;"
 
-            Dim cmdCP As New MySqlCommand(sqlContarProm, conexion)
+            Dim cmdCP As New MySqlCommand(sqlContarProm, conexionLocal, trans)
             promovidos = Convert.ToInt32(cmdCP.ExecuteScalar())
 
 
@@ -232,7 +234,7 @@ Public Class Notas
             "  )" &
             ") AS t;"
 
-            Dim cmdCE As New MySqlCommand(sqlContarEgr, conexion)
+            Dim cmdCE As New MySqlCommand(sqlContarEgr, conexionLocal, trans)
             egresados = Convert.ToInt32(cmdCE.ExecuteScalar())
 
 
@@ -254,7 +256,7 @@ Public Class Notas
             "SET al.id_curso = (SELECT id FROM curso WHERE anio = c.anio + 1 AND division = c.division) " &
             "WHERE c.anio < 6;"
 
-            Dim cmdProm As New MySqlCommand(sqlPromover, conexion)
+            Dim cmdProm As New MySqlCommand(sqlPromover, conexionLocal, trans)
             cmdProm.ExecuteNonQuery()
 
 
@@ -268,21 +270,22 @@ Public Class Notas
             "JOIN curso c ON c.id = a.id_curso " &
             "WHERE c.anio = 6;"
 
-            Dim cmdNotas As New MySqlCommand(sqlDelNotas, conexion)
+            Dim cmdNotas As New MySqlCommand(sqlDelNotas, conexionLocal, trans)
             cmdNotas.ExecuteNonQuery()
 
 
             ' ======================================================
             ' 5 – BORRAR ASISTENCIAS DE EGRESADOS (JOIN DIRECTO)
+            '      <-- CORRECCIÓN: columna en la tabla es id_alumnos (plural)
             ' ======================================================
             Dim sqlDelAsist As String =
             "DELETE asi " &
             "FROM asistencias asi " &
-            "JOIN alumnos a ON a.id = asi.id_alumno " &
+            "JOIN alumnos a ON a.id = asi.id_alumnos " &    ' <<--- corregido aquí
             "JOIN curso c ON c.id = a.id_curso " &
             "WHERE c.anio = 6;"
 
-            Dim cmdAsist As New MySqlCommand(sqlDelAsist, conexion)
+            Dim cmdAsist As New MySqlCommand(sqlDelAsist, conexionLocal, trans)
             cmdAsist.ExecuteNonQuery()
 
 
@@ -295,30 +298,38 @@ Public Class Notas
             "JOIN curso c ON c.id = a.id_curso " &
             "WHERE c.anio = 6;"
 
-            Dim cmdAlumno As New MySqlCommand(sqlDelAlumnos, conexion)
+            Dim cmdAlumno As New MySqlCommand(sqlDelAlumnos, conexionLocal, trans)
             cmdAlumno.ExecuteNonQuery()
 
 
             ' ======================================================
-            ' 7 – MENSAJE FINAL
+            ' 7 – COMMIT Y MENSAJE FINAL
             ' ======================================================
+            trans.Commit()
+
             MessageBox.Show(
-                "✨ PROMOCIÓN COMPLETADA ✨" & vbCrLf & vbCrLf &
-                "📘 Alumnos promovidos: " & promovidos & vbCrLf &
-                "🎓 Egresados eliminados: " & egresados,
+                "PROMOCIÓN COMPLETADA" & vbCrLf & vbCrLf &
+                "Alumnos promovidos: " & promovidos & vbCrLf &
+                "Egresados eliminados: " & egresados,
                 "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information
             )
 
-
         Catch ex As Exception
+            Try
+                If trans IsNot Nothing Then trans.Rollback()
+            Catch ex2 As Exception
+                ' No hacer nada
+            End Try
+
             MessageBox.Show("Error: " & ex.Message)
-            botonPromocionar.Enabled = True
 
         Finally
-            conexion.Close()
+            If conexionLocal.State = ConnectionState.Open Then conexionLocal.Close()
+            botonPromocionar.Enabled = True
         End Try
 
     End Sub
+
 
 
 

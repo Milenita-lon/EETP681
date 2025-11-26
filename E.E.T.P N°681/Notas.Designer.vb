@@ -45,8 +45,9 @@ Partial Class Notas
         Panelsuperiornotasalum.Controls.Add(titulonotasalum)
         Panelsuperiornotasalum.Dock = DockStyle.Top
         Panelsuperiornotasalum.Location = New Point(0, 0)
+        Panelsuperiornotasalum.Margin = New Padding(3, 4, 3, 4)
         Panelsuperiornotasalum.Name = "Panelsuperiornotasalum"
-        Panelsuperiornotasalum.Size = New Size(806, 100)
+        Panelsuperiornotasalum.Size = New Size(921, 133)
         Panelsuperiornotasalum.TabIndex = 1
         ' 
         ' titulonotasalum
@@ -55,9 +56,9 @@ Partial Class Notas
         titulonotasalum.AutoSize = True
         titulonotasalum.Font = New Font("Segoe UI", 32.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         titulonotasalum.ForeColor = Color.White
-        titulonotasalum.Location = New Point(323, 22)
+        titulonotasalum.Location = New Point(369, 29)
         titulonotasalum.Name = "titulonotasalum"
-        titulonotasalum.Size = New Size(166, 59)
+        titulonotasalum.Size = New Size(208, 72)
         titulonotasalum.TabIndex = 0
         titulonotasalum.Text = "NOTAS"
         titulonotasalum.TextAlign = ContentAlignment.MiddleCenter
@@ -88,28 +89,31 @@ Partial Class Notas
         DataGridViewNotas.DefaultCellStyle = DataGridViewCellStyle2
         DataGridViewNotas.EnableHeadersVisualStyles = False
         DataGridViewNotas.GridColor = SystemColors.ScrollBar
-        DataGridViewNotas.Location = New Point(119, 234)
+        DataGridViewNotas.Location = New Point(136, 312)
+        DataGridViewNotas.Margin = New Padding(3, 4, 3, 4)
         DataGridViewNotas.Name = "DataGridViewNotas"
         DataGridViewNotas.RowHeadersVisible = False
-        DataGridViewNotas.SelectionMode = DataGridViewSelectionMode.CellSelect
-        DataGridViewNotas.Size = New Size(594, 374)
+        DataGridViewNotas.RowHeadersWidth = 51
+        DataGridViewNotas.SelectionMode = DataGridViewSelectionMode.FullRowSelect
+        DataGridViewNotas.Size = New Size(679, 499)
         DataGridViewNotas.TabIndex = 2
         ' 
         ' Cbmnotasalum
         ' 
         Cbmnotasalum.Anchor = AnchorStyles.None
         Cbmnotasalum.FormattingEnabled = True
-        Cbmnotasalum.Location = New Point(387, 140)
+        Cbmnotasalum.Location = New Point(442, 187)
+        Cbmnotasalum.Margin = New Padding(3, 4, 3, 4)
         Cbmnotasalum.Name = "Cbmnotasalum"
-        Cbmnotasalum.Size = New Size(121, 23)
+        Cbmnotasalum.Size = New Size(138, 28)
         Cbmnotasalum.TabIndex = 3
         ' 
         ' Label1
         ' 
         Label1.AutoSize = True
-        Label1.Location = New Point(478, 131)
+        Label1.Location = New Point(546, 175)
         Label1.Name = "Label1"
-        Label1.Size = New Size(0, 15)
+        Label1.Size = New Size(0, 20)
         Label1.TabIndex = 4
         ' 
         ' LabelCursos
@@ -117,9 +121,9 @@ Partial Class Notas
         LabelCursos.Anchor = AnchorStyles.None
         LabelCursos.AutoSize = True
         LabelCursos.Font = New Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        LabelCursos.Location = New Point(306, 138)
+        LabelCursos.Location = New Point(350, 184)
         LabelCursos.Name = "LabelCursos"
-        LabelCursos.Size = New Size(75, 25)
+        LabelCursos.Size = New Size(93, 32)
         LabelCursos.TabIndex = 7
         LabelCursos.Text = "CURSO"
         ' 
@@ -128,9 +132,9 @@ Partial Class Notas
         Label2.Anchor = AnchorStyles.None
         Label2.AutoSize = True
         Label2.Font = New Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label2.Location = New Point(154, 184)
+        Label2.Location = New Point(176, 245)
         Label2.Name = "Label2"
-        Label2.Size = New Size(94, 25)
+        Label2.Size = New Size(120, 32)
         Label2.TabIndex = 9
         Label2.Text = "MATERIA"
         ' 
@@ -138,9 +142,10 @@ Partial Class Notas
         ' 
         cmbMateria.Anchor = AnchorStyles.None
         cmbMateria.FormattingEnabled = True
-        cmbMateria.Location = New Point(250, 186)
+        cmbMateria.Location = New Point(286, 248)
+        cmbMateria.Margin = New Padding(3, 4, 3, 4)
         cmbMateria.Name = "cmbMateria"
-        cmbMateria.Size = New Size(121, 23)
+        cmbMateria.Size = New Size(138, 28)
         cmbMateria.TabIndex = 8
         ' 
         ' LabelTri
@@ -148,9 +153,9 @@ Partial Class Notas
         LabelTri.Anchor = AnchorStyles.None
         LabelTri.AutoSize = True
         LabelTri.Font = New Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        LabelTri.Location = New Point(417, 184)
+        LabelTri.Location = New Point(477, 245)
         LabelTri.Name = "LabelTri"
-        LabelTri.Size = New Size(113, 25)
+        LabelTri.Size = New Size(144, 32)
         LabelTri.TabIndex = 10
         LabelTri.Text = "TRIMESTRE"
         ' 
@@ -158,9 +163,10 @@ Partial Class Notas
         ' 
         cmbTrimestre.Anchor = AnchorStyles.None
         cmbTrimestre.FormattingEnabled = True
-        cmbTrimestre.Location = New Point(536, 184)
+        cmbTrimestre.Location = New Point(613, 245)
+        cmbTrimestre.Margin = New Padding(3, 4, 3, 4)
         cmbTrimestre.Name = "cmbTrimestre"
-        cmbTrimestre.Size = New Size(121, 23)
+        cmbTrimestre.Size = New Size(138, 28)
         cmbTrimestre.TabIndex = 11
         ' 
         ' botonPromocionar
@@ -172,19 +178,20 @@ Partial Class Notas
         botonPromocionar.FlatStyle = FlatStyle.Flat
         botonPromocionar.Font = New Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         botonPromocionar.ForeColor = Color.White
-        botonPromocionar.Location = New Point(291, 629)
+        botonPromocionar.Location = New Point(333, 839)
+        botonPromocionar.Margin = New Padding(3, 4, 3, 4)
         botonPromocionar.Name = "botonPromocionar"
-        botonPromocionar.Size = New Size(239, 36)
+        botonPromocionar.Size = New Size(273, 48)
         botonPromocionar.TabIndex = 12
         botonPromocionar.Text = "PROMOCIONAR ALUMNOS"
         botonPromocionar.UseVisualStyleBackColor = False
         ' 
         ' Notas
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         BackgroundImageLayout = ImageLayout.None
-        ClientSize = New Size(806, 761)
+        ClientSize = New Size(921, 1015)
         Controls.Add(botonPromocionar)
         Controls.Add(cmbTrimestre)
         Controls.Add(LabelTri)
@@ -196,6 +203,7 @@ Partial Class Notas
         Controls.Add(DataGridViewNotas)
         Controls.Add(Panelsuperiornotasalum)
         FormBorderStyle = FormBorderStyle.None
+        Margin = New Padding(3, 4, 3, 4)
         Name = "Notas"
         Panelsuperiornotasalum.ResumeLayout(False)
         Panelsuperiornotasalum.PerformLayout()

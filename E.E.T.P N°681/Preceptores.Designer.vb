@@ -19,6 +19,7 @@ Partial Class Preceptores
         Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
         PanelBase = New Panel()
         PanelContenido = New Panel()
+        DataGridViewPreceptores = New DataGridView()
         btnEliminar = New Button()
         btnEditar = New Button()
         btnAgregar = New Button()
@@ -30,11 +31,10 @@ Partial Class Preceptores
         txtNombre = New TextBox()
         PanelTitulo = New Panel()
         LabelTitulo = New Label()
-        DataGridViewPreceptores = New DataGridView()
         PanelBase.SuspendLayout()
         PanelContenido.SuspendLayout()
-        PanelTitulo.SuspendLayout()
         CType(DataGridViewPreceptores, ComponentModel.ISupportInitialize).BeginInit()
+        PanelTitulo.SuspendLayout()
         SuspendLayout()
         ' 
         ' PanelBase
@@ -44,8 +44,9 @@ Partial Class Preceptores
         PanelBase.Controls.Add(PanelTitulo)
         PanelBase.Dock = DockStyle.Fill
         PanelBase.Location = New Point(0, 0)
+        PanelBase.Margin = New Padding(3, 4, 3, 4)
         PanelBase.Name = "PanelBase"
-        PanelBase.Size = New Size(846, 680)
+        PanelBase.Size = New Size(967, 907)
         PanelBase.TabIndex = 0
         ' 
         ' PanelContenido
@@ -62,128 +63,11 @@ Partial Class Preceptores
         PanelContenido.Controls.Add(txtApellido)
         PanelContenido.Controls.Add(txtNombre)
         PanelContenido.Dock = DockStyle.Fill
-        PanelContenido.Location = New Point(0, 100)
+        PanelContenido.Location = New Point(0, 133)
+        PanelContenido.Margin = New Padding(3, 4, 3, 4)
         PanelContenido.Name = "PanelContenido"
-        PanelContenido.Size = New Size(846, 580)
+        PanelContenido.Size = New Size(967, 774)
         PanelContenido.TabIndex = 0
-        ' 
-        ' btnEliminar
-        ' 
-        btnEliminar.Anchor = AnchorStyles.None
-        btnEliminar.BackColor = Color.FromArgb(CByte(4), CByte(36), CByte(64))
-        btnEliminar.FlatStyle = FlatStyle.Flat
-        btnEliminar.Font = New Font("Segoe UI", 9F, FontStyle.Bold)
-        btnEliminar.ForeColor = Color.White
-        btnEliminar.Location = New Point(263, 82)
-        btnEliminar.Name = "btnEliminar"
-        btnEliminar.Size = New Size(75, 25)
-        btnEliminar.TabIndex = 0
-        btnEliminar.Text = "Eliminar"
-        btnEliminar.UseVisualStyleBackColor = False
-        ' 
-        ' btnEditar
-        ' 
-        btnEditar.Anchor = AnchorStyles.None
-        btnEditar.BackColor = Color.FromArgb(CByte(4), CByte(36), CByte(64))
-        btnEditar.FlatStyle = FlatStyle.Flat
-        btnEditar.Font = New Font("Segoe UI", 9F, FontStyle.Bold)
-        btnEditar.ForeColor = Color.White
-        btnEditar.Location = New Point(182, 82)
-        btnEditar.Name = "btnEditar"
-        btnEditar.Size = New Size(75, 25)
-        btnEditar.TabIndex = 1
-        btnEditar.Text = "Editar"
-        btnEditar.UseVisualStyleBackColor = False
-        ' 
-        ' btnAgregar
-        ' 
-        btnAgregar.Anchor = AnchorStyles.None
-        btnAgregar.BackColor = Color.FromArgb(CByte(4), CByte(36), CByte(64))
-        btnAgregar.FlatStyle = FlatStyle.Flat
-        btnAgregar.Font = New Font("Segoe UI", 9F, FontStyle.Bold)
-        btnAgregar.ForeColor = Color.White
-        btnAgregar.Location = New Point(101, 82)
-        btnAgregar.Name = "btnAgregar"
-        btnAgregar.Size = New Size(75, 25)
-        btnAgregar.TabIndex = 2
-        btnAgregar.Text = "Agregar"
-        btnAgregar.UseVisualStyleBackColor = False
-        ' 
-        ' txtCorreo
-        ' 
-        txtCorreo.Anchor = AnchorStyles.None
-        txtCorreo.Location = New Point(631, 45)
-        txtCorreo.Name = "txtCorreo"
-        txtCorreo.PlaceholderText = "Correo"
-        txtCorreo.Size = New Size(115, 23)
-        txtCorreo.TabIndex = 3
-        ' 
-        ' txtTelefono
-        ' 
-        txtTelefono.Anchor = AnchorStyles.None
-        txtTelefono.Location = New Point(525, 45)
-        txtTelefono.Name = "txtTelefono"
-        txtTelefono.PlaceholderText = "Teléfono"
-        txtTelefono.Size = New Size(100, 23)
-        txtTelefono.TabIndex = 4
-        ' 
-        ' txtDireccion
-        ' 
-        txtDireccion.Anchor = AnchorStyles.None
-        txtDireccion.Location = New Point(419, 45)
-        txtDireccion.Name = "txtDireccion"
-        txtDireccion.PlaceholderText = "Dirección"
-        txtDireccion.Size = New Size(100, 23)
-        txtDireccion.TabIndex = 5
-        ' 
-        ' txtDni
-        ' 
-        txtDni.Anchor = AnchorStyles.None
-        txtDni.Location = New Point(313, 45)
-        txtDni.Name = "txtDni"
-        txtDni.PlaceholderText = "DNI"
-        txtDni.Size = New Size(100, 23)
-        txtDni.TabIndex = 6
-        ' 
-        ' txtApellido
-        ' 
-        txtApellido.Anchor = AnchorStyles.None
-        txtApellido.Location = New Point(207, 45)
-        txtApellido.Name = "txtApellido"
-        txtApellido.PlaceholderText = "Apellido"
-        txtApellido.Size = New Size(100, 23)
-        txtApellido.TabIndex = 7
-        ' 
-        ' txtNombre
-        ' 
-        txtNombre.Anchor = AnchorStyles.None
-        txtNombre.Location = New Point(101, 45)
-        txtNombre.Name = "txtNombre"
-        txtNombre.PlaceholderText = "Nombre"
-        txtNombre.Size = New Size(100, 23)
-        txtNombre.TabIndex = 8
-        ' 
-        ' PanelTitulo
-        ' 
-        PanelTitulo.BackColor = Color.FromArgb(CByte(4), CByte(36), CByte(64))
-        PanelTitulo.Controls.Add(LabelTitulo)
-        PanelTitulo.Dock = DockStyle.Top
-        PanelTitulo.Location = New Point(0, 0)
-        PanelTitulo.Name = "PanelTitulo"
-        PanelTitulo.Size = New Size(846, 100)
-        PanelTitulo.TabIndex = 1
-        ' 
-        ' LabelTitulo
-        ' 
-        LabelTitulo.Dock = DockStyle.Fill
-        LabelTitulo.Font = New Font("Segoe UI", 32F, FontStyle.Bold)
-        LabelTitulo.ForeColor = Color.White
-        LabelTitulo.Location = New Point(0, 0)
-        LabelTitulo.Name = "LabelTitulo"
-        LabelTitulo.Size = New Size(846, 100)
-        LabelTitulo.TabIndex = 0
-        LabelTitulo.Text = "PRECEPTORES"
-        LabelTitulo.TextAlign = ContentAlignment.MiddleCenter
         ' 
         ' DataGridViewPreceptores
         ' 
@@ -211,27 +95,158 @@ Partial Class Preceptores
         DataGridViewPreceptores.DefaultCellStyle = DataGridViewCellStyle2
         DataGridViewPreceptores.EnableHeadersVisualStyles = False
         DataGridViewPreceptores.GridColor = SystemColors.ScrollBar
-        DataGridViewPreceptores.Location = New Point(101, 130)
+        DataGridViewPreceptores.Location = New Point(115, 174)
+        DataGridViewPreceptores.Margin = New Padding(3, 4, 3, 4)
         DataGridViewPreceptores.Name = "DataGridViewPreceptores"
         DataGridViewPreceptores.RowHeadersVisible = False
-        DataGridViewPreceptores.SelectionMode = DataGridViewSelectionMode.CellSelect
-        DataGridViewPreceptores.Size = New Size(664, 374)
+        DataGridViewPreceptores.RowHeadersWidth = 51
+        DataGridViewPreceptores.SelectionMode = DataGridViewSelectionMode.FullRowSelect
+        DataGridViewPreceptores.Size = New Size(759, 499)
         DataGridViewPreceptores.TabIndex = 19
+        ' 
+        ' btnEliminar
+        ' 
+        btnEliminar.Anchor = AnchorStyles.None
+        btnEliminar.BackColor = Color.FromArgb(CByte(4), CByte(36), CByte(64))
+        btnEliminar.FlatStyle = FlatStyle.Flat
+        btnEliminar.Font = New Font("Segoe UI", 9F, FontStyle.Bold)
+        btnEliminar.ForeColor = Color.White
+        btnEliminar.Location = New Point(301, 110)
+        btnEliminar.Margin = New Padding(3, 4, 3, 4)
+        btnEliminar.Name = "btnEliminar"
+        btnEliminar.Size = New Size(86, 33)
+        btnEliminar.TabIndex = 0
+        btnEliminar.Text = "Eliminar"
+        btnEliminar.UseVisualStyleBackColor = False
+        ' 
+        ' btnEditar
+        ' 
+        btnEditar.Anchor = AnchorStyles.None
+        btnEditar.BackColor = Color.FromArgb(CByte(4), CByte(36), CByte(64))
+        btnEditar.FlatStyle = FlatStyle.Flat
+        btnEditar.Font = New Font("Segoe UI", 9F, FontStyle.Bold)
+        btnEditar.ForeColor = Color.White
+        btnEditar.Location = New Point(208, 110)
+        btnEditar.Margin = New Padding(3, 4, 3, 4)
+        btnEditar.Name = "btnEditar"
+        btnEditar.Size = New Size(86, 33)
+        btnEditar.TabIndex = 1
+        btnEditar.Text = "Editar"
+        btnEditar.UseVisualStyleBackColor = False
+        ' 
+        ' btnAgregar
+        ' 
+        btnAgregar.Anchor = AnchorStyles.None
+        btnAgregar.BackColor = Color.FromArgb(CByte(4), CByte(36), CByte(64))
+        btnAgregar.FlatStyle = FlatStyle.Flat
+        btnAgregar.Font = New Font("Segoe UI", 9F, FontStyle.Bold)
+        btnAgregar.ForeColor = Color.White
+        btnAgregar.Location = New Point(115, 110)
+        btnAgregar.Margin = New Padding(3, 4, 3, 4)
+        btnAgregar.Name = "btnAgregar"
+        btnAgregar.Size = New Size(86, 33)
+        btnAgregar.TabIndex = 2
+        btnAgregar.Text = "Agregar"
+        btnAgregar.UseVisualStyleBackColor = False
+        ' 
+        ' txtCorreo
+        ' 
+        txtCorreo.Anchor = AnchorStyles.None
+        txtCorreo.Location = New Point(721, 61)
+        txtCorreo.Margin = New Padding(3, 4, 3, 4)
+        txtCorreo.Name = "txtCorreo"
+        txtCorreo.PlaceholderText = "Correo"
+        txtCorreo.Size = New Size(131, 27)
+        txtCorreo.TabIndex = 3
+        ' 
+        ' txtTelefono
+        ' 
+        txtTelefono.Anchor = AnchorStyles.None
+        txtTelefono.Location = New Point(600, 61)
+        txtTelefono.Margin = New Padding(3, 4, 3, 4)
+        txtTelefono.Name = "txtTelefono"
+        txtTelefono.PlaceholderText = "Teléfono"
+        txtTelefono.Size = New Size(114, 27)
+        txtTelefono.TabIndex = 4
+        ' 
+        ' txtDireccion
+        ' 
+        txtDireccion.Anchor = AnchorStyles.None
+        txtDireccion.Location = New Point(479, 61)
+        txtDireccion.Margin = New Padding(3, 4, 3, 4)
+        txtDireccion.Name = "txtDireccion"
+        txtDireccion.PlaceholderText = "Dirección"
+        txtDireccion.Size = New Size(114, 27)
+        txtDireccion.TabIndex = 5
+        ' 
+        ' txtDni
+        ' 
+        txtDni.Anchor = AnchorStyles.None
+        txtDni.Location = New Point(358, 61)
+        txtDni.Margin = New Padding(3, 4, 3, 4)
+        txtDni.Name = "txtDni"
+        txtDni.PlaceholderText = "DNI"
+        txtDni.Size = New Size(114, 27)
+        txtDni.TabIndex = 6
+        ' 
+        ' txtApellido
+        ' 
+        txtApellido.Anchor = AnchorStyles.None
+        txtApellido.Location = New Point(237, 61)
+        txtApellido.Margin = New Padding(3, 4, 3, 4)
+        txtApellido.Name = "txtApellido"
+        txtApellido.PlaceholderText = "Apellido"
+        txtApellido.Size = New Size(114, 27)
+        txtApellido.TabIndex = 7
+        ' 
+        ' txtNombre
+        ' 
+        txtNombre.Anchor = AnchorStyles.None
+        txtNombre.Location = New Point(115, 61)
+        txtNombre.Margin = New Padding(3, 4, 3, 4)
+        txtNombre.Name = "txtNombre"
+        txtNombre.PlaceholderText = "Nombre"
+        txtNombre.Size = New Size(114, 27)
+        txtNombre.TabIndex = 8
+        ' 
+        ' PanelTitulo
+        ' 
+        PanelTitulo.BackColor = Color.FromArgb(CByte(4), CByte(36), CByte(64))
+        PanelTitulo.Controls.Add(LabelTitulo)
+        PanelTitulo.Dock = DockStyle.Top
+        PanelTitulo.Location = New Point(0, 0)
+        PanelTitulo.Margin = New Padding(3, 4, 3, 4)
+        PanelTitulo.Name = "PanelTitulo"
+        PanelTitulo.Size = New Size(967, 133)
+        PanelTitulo.TabIndex = 1
+        ' 
+        ' LabelTitulo
+        ' 
+        LabelTitulo.Dock = DockStyle.Fill
+        LabelTitulo.Font = New Font("Segoe UI", 32F, FontStyle.Bold)
+        LabelTitulo.ForeColor = Color.White
+        LabelTitulo.Location = New Point(0, 0)
+        LabelTitulo.Name = "LabelTitulo"
+        LabelTitulo.Size = New Size(967, 133)
+        LabelTitulo.TabIndex = 0
+        LabelTitulo.Text = "PRECEPTORES"
+        LabelTitulo.TextAlign = ContentAlignment.MiddleCenter
         ' 
         ' Preceptores
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(846, 680)
+        ClientSize = New Size(967, 907)
         Controls.Add(PanelBase)
         FormBorderStyle = FormBorderStyle.None
+        Margin = New Padding(3, 4, 3, 4)
         Name = "Preceptores"
         Text = "Secretarios"
         PanelBase.ResumeLayout(False)
         PanelContenido.ResumeLayout(False)
         PanelContenido.PerformLayout()
-        PanelTitulo.ResumeLayout(False)
         CType(DataGridViewPreceptores, ComponentModel.ISupportInitialize).EndInit()
+        PanelTitulo.ResumeLayout(False)
         ResumeLayout(False)
     End Sub
 

@@ -139,7 +139,7 @@ Partial Class Curso
         DataGridViewCursos.Name = "DataGridViewCursos"
         DataGridViewCursos.RowHeadersVisible = False
         DataGridViewCursos.RowHeadersWidth = 51
-        DataGridViewCursos.SelectionMode = DataGridViewSelectionMode.CellSelect
+        DataGridViewCursos.SelectionMode = DataGridViewSelectionMode.FullRowSelect
         DataGridViewCursos.Size = New Size(750, 460)
         DataGridViewCursos.TabIndex = 6
         ' 

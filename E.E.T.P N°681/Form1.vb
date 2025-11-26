@@ -128,4 +128,8 @@ Public Class Form1
     Private Sub botonMinimizar_Click_1(sender As Object, e As EventArgs) Handles botonMinimizar.Click
         Me.WindowState = FormWindowState.Minimized
     End Sub
+
+    Private Sub botonAsis_Click(sender As Object, e As EventArgs) Handles botonAsis.Click
+        AbrirFormEnPanel(New Asistencias())
+    End Sub
 End Class
