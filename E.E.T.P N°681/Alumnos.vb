@@ -44,7 +44,7 @@ Public Class Alumnos
     Private Sub CargarAlumnos(idCurso As Integer)
         Try
             conexion.Open()
-            Dim query As String = "SELECT nombre, apellido, dni, direccion, telefono, correo 
+            Dim query As String = "SELECT id, nombre, apellido, dni, direccion, telefono, correo 
                                    FROM alumnos 
                                    WHERE id_curso = @idCurso;"
             Dim comando As New MySqlCommand(query, conexion)
@@ -117,27 +117,70 @@ Public Class Alumnos
     End Sub
 
     Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
-        If DataGridViewAlumnos.SelectedRows.Count > 0 Then
-            If MessageBox.Show("¿Está seguro de eliminar este alumno?", "Confirmar", MessageBoxButtons.YesNo) = DialogResult.Yes Then
-                Try
-                    conexion.Open()
-                    Dim consulta As String = "DELETE FROM alumnos WHERE id_curso=@id_curso"
-                    Dim comando As New MySqlCommand(consulta, conexion)
-                    comando.Parameters.AddWithValue("@id_curso", CInt(ComboBox1.SelectedValue))
-                    comando.ExecuteNonQuery()
-                    MessageBox.Show("Alumno eliminado correctamente.")
-                    LimpiarCampos()
-                Catch ex As Exception
-                    MessageBox.Show("Error al eliminar alumno: " & ex.Message)
-                Finally
-                    conexion.Close()
-                End Try
-            End If
-        Else
+
+        If DataGridViewAlumnos.SelectedRows.Count = 0 Then
             MessageBox.Show("Seleccione un alumno para eliminar.")
+            Exit Sub
         End If
 
-        CargarAlumnos(CInt(ComboBox1.SelectedValue))
+        Dim idAlumno As Integer = CInt(DataGridViewAlumnos.SelectedRows(0).Cells("id").Value)
+
+        If MessageBox.Show("¿Está seguro de eliminar este alumno?", "Confirmar", MessageBoxButtons.YesNo) = DialogResult.Yes Then
+
+            Try
+                conexion.Open()
+
+                ' ==========================
+                ' 1 – BORRAR NOTAS
+                ' ==========================
+                Dim sqlNotas As String =
+                "DELETE am FROM alumno_materia am " &
+                "WHERE am.id_alumno = @id;"
+
+                Dim cmdNotas As New MySqlCommand(sqlNotas, conexion)
+                cmdNotas.Parameters.AddWithValue("@id", idAlumno)
+                cmdNotas.ExecuteNonQuery()
+
+
+                ' ==========================
+                ' 2 – BORRAR ASISTENCIAS
+                ' ==========================
+                Dim sqlAsist As String =
+                "DELETE asi FROM asistencias asi " &
+                "WHERE asi.id_alumno = @id;"
+
+                Dim cmdAsist As New MySqlCommand(sqlAsist, conexion)
+                cmdAsist.Parameters.AddWithValue("@id", idAlumno)
+                cmdAsist.ExecuteNonQuery()
+
+
+                ' ==========================
+                ' 3 – BORRAR ALUMNO
+                ' ==========================
+                Dim sqlAlumn As String =
+                "DELETE FROM alumnos WHERE id = @id;"
+
+                Dim cmdAlum As New MySqlCommand(sqlAlumn, conexion)
+                cmdAlum.Parameters.AddWithValue("@id", idAlumno)
+                cmdAlum.ExecuteNonQuery()
+
+
+                MessageBox.Show("Alumno eliminado correctamente.")
+
+                LimpiarCampos()
+
+            Catch ex As Exception
+                MessageBox.Show("Error al eliminar alumno: " & ex.Message)
+
+            Finally
+                conexion.Close()
+            End Try
+
+            ' Recargar lista
+            CargarAlumnos(CInt(ComboBox1.SelectedValue))
+
+        End If
+
     End Sub
 
     Private Sub DataGridViewAlumnos_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridViewAlumnos.CellClick
