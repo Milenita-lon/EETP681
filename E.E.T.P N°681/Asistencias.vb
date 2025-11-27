@@ -223,4 +223,7 @@ Public Class Asistencias
         End Try
     End Sub
 
+    Private Sub Cbmnotasalum_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Cbmnotasalum.SelectedIndexChanged
+
+    End Sub
 End Class

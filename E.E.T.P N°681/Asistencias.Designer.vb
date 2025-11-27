@@ -44,9 +44,8 @@ Partial Class Asistencias
         Panelsuperiornotasalum.Controls.Add(titulonotasalum)
         Panelsuperiornotasalum.Dock = DockStyle.Top
         Panelsuperiornotasalum.Location = New Point(0, 0)
-        Panelsuperiornotasalum.Margin = New Padding(3, 4, 3, 4)
         Panelsuperiornotasalum.Name = "Panelsuperiornotasalum"
-        Panelsuperiornotasalum.Size = New Size(949, 133)
+        Panelsuperiornotasalum.Size = New Size(830, 100)
         Panelsuperiornotasalum.TabIndex = 1
         ' 
         ' titulonotasalum
@@ -55,9 +54,9 @@ Partial Class Asistencias
         titulonotasalum.AutoSize = True
         titulonotasalum.Font = New Font("Segoe UI", 32.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         titulonotasalum.ForeColor = Color.White
-        titulonotasalum.Location = New Point(303, 25)
+        titulonotasalum.Location = New Point(265, 19)
         titulonotasalum.Name = "titulonotasalum"
-        titulonotasalum.Size = New Size(368, 72)
+        titulonotasalum.Size = New Size(294, 59)
         titulonotasalum.TabIndex = 0
         titulonotasalum.Text = "ASISTENCIAS"
         titulonotasalum.TextAlign = ContentAlignment.MiddleCenter
@@ -66,18 +65,17 @@ Partial Class Asistencias
         ' 
         Cbmnotasalum.Anchor = AnchorStyles.None
         Cbmnotasalum.FormattingEnabled = True
-        Cbmnotasalum.Location = New Point(471, 199)
-        Cbmnotasalum.Margin = New Padding(3, 4, 3, 4)
+        Cbmnotasalum.Location = New Point(412, 149)
         Cbmnotasalum.Name = "Cbmnotasalum"
-        Cbmnotasalum.Size = New Size(138, 28)
+        Cbmnotasalum.Size = New Size(121, 23)
         Cbmnotasalum.TabIndex = 3
         ' 
         ' Label1
         ' 
         Label1.AutoSize = True
-        Label1.Location = New Point(546, 175)
+        Label1.Location = New Point(478, 131)
         Label1.Name = "Label1"
-        Label1.Size = New Size(0, 20)
+        Label1.Size = New Size(0, 15)
         Label1.TabIndex = 4
         ' 
         ' LabelCursos
@@ -85,9 +83,9 @@ Partial Class Asistencias
         LabelCursos.Anchor = AnchorStyles.None
         LabelCursos.AutoSize = True
         LabelCursos.Font = New Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        LabelCursos.Location = New Point(378, 196)
+        LabelCursos.Location = New Point(331, 147)
         LabelCursos.Name = "LabelCursos"
-        LabelCursos.Size = New Size(93, 32)
+        LabelCursos.Size = New Size(75, 25)
         LabelCursos.TabIndex = 7
         LabelCursos.Text = "CURSO"
         ' 
@@ -96,9 +94,9 @@ Partial Class Asistencias
         Label2.Anchor = AnchorStyles.None
         Label2.AutoSize = True
         Label2.Font = New Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label2.Location = New Point(205, 257)
+        Label2.Location = New Point(179, 193)
         Label2.Name = "Label2"
-        Label2.Size = New Size(120, 32)
+        Label2.Size = New Size(94, 25)
         Label2.TabIndex = 9
         Label2.Text = "MATERIA"
         ' 
@@ -106,10 +104,9 @@ Partial Class Asistencias
         ' 
         cmbMateria.Anchor = AnchorStyles.None
         cmbMateria.FormattingEnabled = True
-        cmbMateria.Location = New Point(314, 260)
-        cmbMateria.Margin = New Padding(3, 4, 3, 4)
+        cmbMateria.Location = New Point(275, 195)
         cmbMateria.Name = "cmbMateria"
-        cmbMateria.Size = New Size(138, 28)
+        cmbMateria.Size = New Size(121, 23)
         cmbMateria.TabIndex = 8
         ' 
         ' LabelTri
@@ -117,9 +114,9 @@ Partial Class Asistencias
         LabelTri.Anchor = AnchorStyles.None
         LabelTri.AutoSize = True
         LabelTri.Font = New Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        LabelTri.Location = New Point(505, 257)
+        LabelTri.Location = New Point(442, 193)
         LabelTri.Name = "LabelTri"
-        LabelTri.Size = New Size(89, 32)
+        LabelTri.Size = New Size(72, 25)
         LabelTri.TabIndex = 10
         LabelTri.Text = "FECHA"
         ' 
@@ -127,10 +124,9 @@ Partial Class Asistencias
         ' 
         DateTimePickerFecha.Anchor = AnchorStyles.None
         DateTimePickerFecha.Format = DateTimePickerFormat.Short
-        DateTimePickerFecha.Location = New Point(605, 260)
-        DateTimePickerFecha.Margin = New Padding(3, 4, 3, 4)
+        DateTimePickerFecha.Location = New Point(529, 195)
         DateTimePickerFecha.Name = "DateTimePickerFecha"
-        DateTimePickerFecha.Size = New Size(141, 27)
+        DateTimePickerFecha.Size = New Size(124, 23)
         DateTimePickerFecha.TabIndex = 11
         ' 
         ' DataGridViewAsistencia
@@ -159,21 +155,20 @@ Partial Class Asistencias
         DataGridViewAsistencia.DefaultCellStyle = DataGridViewCellStyle2
         DataGridViewAsistencia.EnableHeadersVisualStyles = False
         DataGridViewAsistencia.GridColor = SystemColors.ScrollBar
-        DataGridViewAsistencia.Location = New Point(135, 325)
-        DataGridViewAsistencia.Margin = New Padding(3, 4, 3, 4)
+        DataGridViewAsistencia.Location = New Point(118, 244)
         DataGridViewAsistencia.Name = "DataGridViewAsistencia"
         DataGridViewAsistencia.RowHeadersVisible = False
         DataGridViewAsistencia.RowHeadersWidth = 51
         DataGridViewAsistencia.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        DataGridViewAsistencia.Size = New Size(679, 499)
+        DataGridViewAsistencia.Size = New Size(594, 374)
         DataGridViewAsistencia.TabIndex = 12
         ' 
         ' Asistencias
         ' 
-        AutoScaleDimensions = New SizeF(8F, 20F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackgroundImageLayout = ImageLayout.None
-        ClientSize = New Size(949, 849)
+        ClientSize = New Size(830, 637)
         Controls.Add(DataGridViewAsistencia)
         Controls.Add(DateTimePickerFecha)
         Controls.Add(LabelTri)
@@ -184,7 +179,6 @@ Partial Class Asistencias
         Controls.Add(Cbmnotasalum)
         Controls.Add(Panelsuperiornotasalum)
         FormBorderStyle = FormBorderStyle.None
-        Margin = New Padding(3, 4, 3, 4)
         Name = "Asistencias"
         Panelsuperiornotasalum.ResumeLayout(False)
         Panelsuperiornotasalum.PerformLayout()
