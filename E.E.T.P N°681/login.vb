@@ -1,12 +1,14 @@
-﻿Imports MySql.Data.MySqlClient
+﻿Imports System.Data.SQLite
 
 Public Class login
 
-    ' Variables públicas para guardar datos del login
+    ' Variables públicas
     Public Shared profesorApellido As String = ""
     Public Shared secretarioApellido As String = ""
 
-    Dim conexion As New MySqlConnection("server=localhost; user id=root; password=escuela; database=escuela;")
+    ' CONEXIÓN A SQLITE
+    ' Asegurate que escuela.db esté en la carpeta de la app
+    Dim conexion As New SQLiteConnection("Data Source=escuela.db;Version=3;")
 
     Private Sub login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         usuariologin.Text = "USUARIO"
@@ -15,7 +17,7 @@ Public Class login
         passwordlogin.ForeColor = Color.DimGray
     End Sub
 
-    ' Placeholder para usuario
+    ' Placeholder usuario
     Private Sub usuariologin_Click(sender As Object, e As EventArgs) Handles usuariologin.Click
         If usuariologin.Text = "USUARIO" Then
             usuariologin.Text = ""
@@ -30,7 +32,7 @@ Public Class login
         End If
     End Sub
 
-    ' Placeholder para contraseña
+    ' Placeholder contraseña
     Private Sub passwordlogin_Click(sender As Object, e As EventArgs) Handles passwordlogin.Click
         If passwordlogin.Text = "CONTRASEÑA" Then
             passwordlogin.Text = ""
@@ -52,7 +54,7 @@ Public Class login
         Me.Close()
     End Sub
 
-    ' Botón acceder
+    ' ACCEDER
     Private Sub accederlogin_Click(sender As Object, e As EventArgs) Handles accederlogin.Click
         Dim usuario As String = usuariologin.Text.Trim()
         Dim contrasena As String = passwordlogin.Text.Trim()
@@ -66,12 +68,12 @@ Public Class login
             conexion.Close()
             conexion.Open()
 
-            ' 1 — Verificar ADMINISTRADOR
-            Dim cmdAdmin As New MySqlCommand("SELECT * FROM usuario WHERE usuario=@usuario AND contrasena=@pass", conexion)
+            ' ADMINISTRADOR
+            Dim cmdAdmin As New SQLiteCommand("SELECT * FROM usuario WHERE usuario=@usuario AND contrasena=@pass", conexion)
             cmdAdmin.Parameters.AddWithValue("@usuario", usuario)
             cmdAdmin.Parameters.AddWithValue("@pass", contrasena)
 
-            Dim readerAdmin As MySqlDataReader = cmdAdmin.ExecuteReader()
+            Dim readerAdmin As SQLiteDataReader = cmdAdmin.ExecuteReader()
 
             If readerAdmin.HasRows Then
                 readerAdmin.Close()
@@ -82,12 +84,12 @@ Public Class login
             End If
             readerAdmin.Close()
 
-            ' 2 — Verificar PROFESOR
-            Dim cmdProf As New MySqlCommand("SELECT apellido, nombre FROM profesores WHERE apellido=@apellido AND dni=@dni", conexion)
+            ' PROFESOR
+            Dim cmdProf As New SQLiteCommand("SELECT apellido, nombre FROM profesores WHERE apellido=@apellido AND dni=@dni", conexion)
             cmdProf.Parameters.AddWithValue("@apellido", usuario)
             cmdProf.Parameters.AddWithValue("@dni", contrasena)
 
-            Dim readerProf As MySqlDataReader = cmdProf.ExecuteReader()
+            Dim readerProf As SQLiteDataReader = cmdProf.ExecuteReader()
 
             If readerProf.Read() Then
                 profesorApellido = readerProf("apellido").ToString()
@@ -99,12 +101,12 @@ Public Class login
             End If
             readerProf.Close()
 
-            ' 3 — Verificar SECRETARIO
-            Dim cmdSec As New MySqlCommand("SELECT apellido, nombre FROM secretarios WHERE apellido=@apellido AND dni=@dni", conexion)
+            ' SECRETARIO
+            Dim cmdSec As New SQLiteCommand("SELECT apellido, nombre FROM secretarios WHERE apellido=@apellido AND dni=@dni", conexion)
             cmdSec.Parameters.AddWithValue("@apellido", usuario)
             cmdSec.Parameters.AddWithValue("@dni", contrasena)
 
-            Dim readerSec As MySqlDataReader = cmdSec.ExecuteReader()
+            Dim readerSec As SQLiteDataReader = cmdSec.ExecuteReader()
 
             If readerSec.Read() Then
                 secretarioApellido = readerSec("apellido").ToString()
@@ -116,7 +118,7 @@ Public Class login
             End If
             readerSec.Close()
 
-            ' 4 — Si no coincide con ningún rol
+            ' Ningún rol coincide
             conexion.Close()
             MessageBox.Show("Usuario o contraseña incorrectos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
 

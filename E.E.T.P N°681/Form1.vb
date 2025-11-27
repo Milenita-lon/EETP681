@@ -132,4 +132,5 @@ Public Class Form1
     Private Sub botonAsis_Click(sender As Object, e As EventArgs) Handles botonAsis.Click
         AbrirFormEnPanel(New Asistencias())
     End Sub
+
 End Class

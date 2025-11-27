@@ -1,7 +1,8 @@
-﻿Imports MySql.Data.MySqlClient
+﻿Imports System.Data.SQLite
 
 Public Class Notas
-    Dim conexion As New MySqlConnection("server=localhost; user id=root; password=escuela; database=escuela;")
+
+    Dim conexion As New SQLiteConnection("Data Source=escuela.db;Version=3;")
 
     Private Sub notasalum_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         CargarCursos()
@@ -14,8 +15,8 @@ Public Class Notas
     Private Sub CargarCursos()
         Try
             conexion.Open()
-            Dim query As String = "SELECT id, CONCAT(anio, '° Año ', division) AS curso_completo FROM curso;"
-            Dim adaptador As New MySqlDataAdapter(query, conexion)
+            Dim query As String = "SELECT id, (anio || '° Año ' || division) AS curso_completo FROM curso;"
+            Dim adaptador As New SQLiteDataAdapter(query, conexion)
             Dim tablaCursos As New DataTable()
             adaptador.Fill(tablaCursos)
 
@@ -42,10 +43,10 @@ Public Class Notas
         Try
             conexion.Open()
             Dim query As String = "SELECT id, nombre FROM materia WHERE id_curso = @idCurso ORDER BY nombre;"
-            Dim comando As New MySqlCommand(query, conexion)
+            Dim comando As New SQLiteCommand(query, conexion)
             comando.Parameters.AddWithValue("@idCurso", idCurso)
 
-            Dim adaptador As New MySqlDataAdapter(comando)
+            Dim adaptador As New SQLiteDataAdapter(comando)
             Dim tablaMaterias As New DataTable()
             adaptador.Fill(tablaMaterias)
 
@@ -54,7 +55,6 @@ Public Class Notas
             cmbMateria.ValueMember = "id"
             cmbMateria.DataSource = tablaMaterias
 
-            ' Limpia el grid cuando se cambia de curso
             DataGridViewNotas.DataSource = Nothing
 
         Catch ex As Exception
@@ -64,7 +64,7 @@ Public Class Notas
         End Try
     End Sub
 
-    ' === CARGA DE ALUMNOS Y NOTAS SEGÚN CURSO Y MATERIA ===
+    ' === CARGA DE ALUMNOS Y NOTAS ===
     Private Sub cmbMateria_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles cmbMateria.SelectionChangeCommitted
         If Cbmnotasalum.SelectedValue IsNot Nothing AndAlso cmbMateria.SelectedValue IsNot Nothing Then
             CargarAlumnosYNotas(CInt(Cbmnotasalum.SelectedValue), CInt(cmbMateria.SelectedValue))
@@ -79,12 +79,13 @@ Public Class Notas
         Try
             conexion.Open()
 
-            Dim query As String = "
+            Dim query As String =
+            "
             SELECT a.id AS ID_Alumno,
                    m.id AS ID_Materia,
-                   CONCAT(a.apellido, ', ', a.nombre) AS Alumno,
+                   (a.apellido || ', ' || a.nombre) AS Alumno,
                    m.nombre AS Materia,
-                   IFNULL(am.nota, '') AS Nota
+                   COALESCE(am.nota, '') AS Nota
             FROM alumnos a
             INNER JOIN materia m ON m.id_curso = a.id_curso
             LEFT JOIN alumno_materia am 
@@ -93,14 +94,14 @@ Public Class Notas
                   AND am.id_trimestre = @id_trimestre
             WHERE a.id_curso = @idCurso AND m.id = @idMateria
             ORDER BY a.apellido;
-        "
+            "
 
-            Dim comando As New MySqlCommand(query, conexion)
+            Dim comando As New SQLiteCommand(query, conexion)
             comando.Parameters.AddWithValue("@idCurso", idCurso)
             comando.Parameters.AddWithValue("@idMateria", idMateria)
             comando.Parameters.AddWithValue("@id_trimestre", idtrimestre)
 
-            Dim adaptador As New MySqlDataAdapter(comando)
+            Dim adaptador As New SQLiteDataAdapter(comando)
             Dim tabla As New DataTable()
             adaptador.Fill(tabla)
 
@@ -117,7 +118,6 @@ Public Class Notas
             conexion.Close()
         End Try
     End Sub
-
 
     ' === GUARDAR NOTA EDITADA ===
     Private Sub DataGridViewNotas_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridViewNotas.CellEndEdit
@@ -137,13 +137,15 @@ Public Class Notas
                     Exit Sub
                 End If
 
-                Dim query As String = "
-                INSERT INTO alumno_materia (id_alumno, id_materia, id_trimestre, nota)
-                VALUES (@id_alumno, @id_materia, @id_trimestre, @nota)
-                ON DUPLICATE KEY UPDATE nota = @nota;
-            "
+                ' SQLite no tiene ON DUPLICATE KEY
+                ' → Usamos INSERT OR REPLACE
+                Dim query As String =
+                "
+                INSERT OR REPLACE INTO alumno_materia (id_alumno, id_materia, id_trimestre, nota)
+                VALUES (@id_alumno, @id_materia, @id_trimestre, @nota);
+                "
 
-                Dim comando As New MySqlCommand(query, conexion)
+                Dim comando As New SQLiteCommand(query, conexion)
                 comando.Parameters.AddWithValue("@id_alumno", idAlumno)
                 comando.Parameters.AddWithValue("@id_materia", idMateria)
                 comando.Parameters.AddWithValue("@id_trimestre", idtrimestre)
@@ -157,7 +159,6 @@ Public Class Notas
             End Try
         End If
     End Sub
-
 
     Private Sub cmbTrimestre_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles cmbTrimestre.SelectionChangeCommitted
         If Cbmnotasalum.SelectedValue IsNot Nothing AndAlso cmbMateria.SelectedValue IsNot Nothing Then
@@ -181,134 +182,155 @@ Public Class Notas
         cmbTrimestre.DataSource = tabla
     End Sub
 
-    Private Sub btnPromocionar_MouseHover(sender As Object, e As EventArgs) Handles botonPromocionar.MouseLeave
+    ' === BOTÓN PROMOCIONAR ===
+
+    Private Sub botonPromocionar_MouseHover(sender As Object, e As EventArgs) Handles botonPromocionar.MouseLeave
         botonPromocionar.BackColor = Color.DodgerBlue
     End Sub
 
     Private Sub botonPromocionar_Click(sender As Object, e As EventArgs) Handles botonPromocionar.Click
 
-        botonPromocionar.Enabled = False 'Evita doble clic
-
-        Dim conexionLocal As New MySqlConnection("server=localhost; user id=root; password=escuela; database=escuela;")
+        botonPromocionar.Enabled = False
+        Dim conexionLocal As New SQLiteConnection("Data Source=escuela.db;Version=3;")
         Dim promovidos As Integer = 0
         Dim egresados As Integer = 0
-        Dim trans As MySqlTransaction = Nothing
+        Dim trans As SQLiteTransaction = Nothing
 
         Try
             conexionLocal.Open()
             trans = conexionLocal.BeginTransaction()
 
-            ' ======================================================
-            ' 1 – CONTAR PROMOVIDOS (1° a 5°)
-            ' ======================================================
-            Dim sqlContarProm As String =
-            "SELECT COUNT(*) FROM (" &
-            "  SELECT a.id FROM alumnos a " &
-            "  JOIN curso c ON a.id_curso = c.id " &
-            "  WHERE c.anio < 6 " &
-            "  AND NOT EXISTS (" &
-            "     SELECT 1 FROM materia m WHERE m.id_curso = a.id_curso " &
-            "     AND (SELECT MIN(nota) FROM alumno_materia am " &
-            "          WHERE am.id_alumno = a.id AND am.id_materia = m.id " &
-            "            AND am.id_trimestre IN (1,2,3)) < 6" &
-            "  )" &
-            ") AS t;"
+            ' SQLite NO permite DELETE ... JOIN → lo adapté con subconsultas
+            ' El resto se mantiene TAL CUAL
 
-            Dim cmdCP As New MySqlCommand(sqlContarProm, conexionLocal, trans)
+            Dim sqlContarProm As String =
+            "
+            SELECT COUNT(*) FROM (
+              SELECT a.id
+              FROM alumnos a
+              JOIN curso c ON a.id_curso = c.id
+              WHERE c.anio < 6
+              AND NOT EXISTS (
+                 SELECT 1 FROM materia m 
+                 WHERE m.id_curso = a.id_curso
+                 AND (
+                     SELECT MIN(nota)
+                     FROM alumno_materia am
+                     WHERE am.id_alumno = a.id 
+                       AND am.id_materia = m.id
+                       AND am.id_trimestre IN (1,2,3)
+                 ) < 6
+              )
+            ) AS t;
+            "
+
+            Dim cmdCP As New SQLiteCommand(sqlContarProm, conexionLocal, trans)
             promovidos = Convert.ToInt32(cmdCP.ExecuteScalar())
 
-
-            ' ======================================================
-            ' 2 – CONTAR EGRESADOS (6°)
-            ' ======================================================
+            ' EGRESADOS
             Dim sqlContarEgr As String =
-            "SELECT COUNT(*) FROM (" &
-            "  SELECT a.id FROM alumnos a " &
-            "  JOIN curso c ON a.id_curso = c.id " &
-            "  WHERE c.anio = 6 " &
-            "  AND NOT EXISTS (" &
-            "     SELECT 1 FROM materia m WHERE m.id_curso = a.id_curso " &
-            "     AND (SELECT MIN(nota) FROM alumno_materia am " &
-            "          WHERE am.id_alumno = a.id AND am.id_materia = m.id " &
-            "            AND am.id_trimestre IN (1,2,3)) < 6" &
-            "  )" &
-            ") AS t;"
+            "
+            SELECT COUNT(*) FROM (
+              SELECT a.id
+              FROM alumnos a
+              JOIN curso c ON a.id_curso = c.id
+              WHERE c.anio = 6
+              AND NOT EXISTS (
+                 SELECT 1 FROM materia m 
+                 WHERE m.id_curso = a.id_curso
+                 AND (
+                     SELECT MIN(nota)
+                     FROM alumno_materia am
+                     WHERE am.id_alumno = a.id 
+                       AND am.id_materia = m.id
+                       AND am.id_trimestre IN (1,2,3)
+                 ) < 6
+              )
+            ) AS t;
+            "
 
-            Dim cmdCE As New MySqlCommand(sqlContarEgr, conexionLocal, trans)
+            Dim cmdCE As New SQLiteCommand(sqlContarEgr, conexionLocal, trans)
             egresados = Convert.ToInt32(cmdCE.ExecuteScalar())
 
-
-            ' ======================================================
-            ' 3 – PROMOVER (1° a 5°)
-            ' ======================================================
+            ' PROMOVER
             Dim sqlPromover As String =
-            "UPDATE alumnos al " &
-            "JOIN curso c ON al.id_curso = c.id " &
-            "JOIN (" &
-            "  SELECT a.id AS idAlumno FROM alumnos a " &
-            "  WHERE NOT EXISTS (" &
-            "     SELECT 1 FROM materia m WHERE m.id_curso = a.id_curso " &
-            "     AND (SELECT MIN(nota) FROM alumno_materia am " &
-            "          WHERE am.id_alumno = a.id AND am.id_materia = m.id " &
-            "            AND am.id_trimestre IN (1,2,3)) < 6" &
-            "  )" &
-            ") t ON t.idAlumno = al.id " &
-            "SET al.id_curso = (SELECT id FROM curso WHERE anio = c.anio + 1 AND division = c.division) " &
-            "WHERE c.anio < 6;"
+            "
+            UPDATE alumnos
+            SET id_curso = (
+                SELECT id FROM curso 
+                WHERE anio = (SELECT anio FROM curso WHERE id = alumnos.id_curso) + 1
+                AND division = (SELECT division FROM curso WHERE id = alumnos.id_curso)
+            )
+            WHERE id IN (
+                SELECT a.id
+                FROM alumnos a
+                JOIN curso c ON a.id_curso = c.id
+                WHERE c.anio < 6
+                AND NOT EXISTS (
+                    SELECT 1 FROM materia m 
+                    WHERE m.id_curso = a.id_curso
+                    AND (
+                        SELECT MIN(nota)
+                        FROM alumno_materia am
+                        WHERE am.id_alumno = a.id 
+                        AND am.id_materia = m.id
+                        AND am.id_trimestre IN (1,2,3)
+                    ) < 6
+                )
+            );
+            "
 
-            Dim cmdProm As New MySqlCommand(sqlPromover, conexionLocal, trans)
+            Dim cmdProm As New SQLiteCommand(sqlPromover, conexionLocal, trans)
             cmdProm.ExecuteNonQuery()
 
-
-            ' ======================================================
-            ' 4 – BORRAR NOTAS DE EGRESADOS (JOIN DIRECTO)
-            ' ======================================================
+            ' BORRAR NOTAS EGRESADOS (SQLite no permite JOIN DELETE)
             Dim sqlDelNotas As String =
-            "DELETE am " &
-            "FROM alumno_materia am " &
-            "JOIN alumnos a ON a.id = am.id_alumno " &
-            "JOIN curso c ON c.id = a.id_curso " &
-            "WHERE c.anio = 6;"
+            "
+            DELETE FROM alumno_materia
+            WHERE id_alumno IN (
+                SELECT a.id
+                FROM alumnos a
+                JOIN curso c ON c.id = a.id_curso
+                WHERE c.anio = 6
+            );
+            "
 
-            Dim cmdNotas As New MySqlCommand(sqlDelNotas, conexionLocal, trans)
+            Dim cmdNotas As New SQLiteCommand(sqlDelNotas, conexionLocal, trans)
             cmdNotas.ExecuteNonQuery()
 
-
-            ' ======================================================
-            ' 5 – BORRAR ASISTENCIAS DE EGRESADOS (JOIN DIRECTO)
-            '      <-- CORRECCIÓN: columna en la tabla es id_alumnos (plural)
-            ' ======================================================
+            ' BORRAR ASISTENCIAS EGRESADOS
             Dim sqlDelAsist As String =
-            "DELETE asi " &
-            "FROM asistencias asi " &
-            "JOIN alumnos a ON a.id = asi.id_alumnos " &    ' <<--- corregido aquí
-            "JOIN curso c ON c.id = a.id_curso " &
-            "WHERE c.anio = 6;"
+            "
+            DELETE FROM asistencias
+            WHERE id_alumnos IN (
+                SELECT a.id
+                FROM alumnos a
+                JOIN curso c ON c.id = a.id_curso
+                WHERE c.anio = 6
+            );
+            "
 
-            Dim cmdAsist As New MySqlCommand(sqlDelAsist, conexionLocal, trans)
+            Dim cmdAsist As New SQLiteCommand(sqlDelAsist, conexionLocal, trans)
             cmdAsist.ExecuteNonQuery()
 
-
-            ' ======================================================
-            ' 6 – BORRAR ALUMNOS EGRESADOS
-            ' ======================================================
+            ' BORRAR ALUMNOS EGRESADOS
             Dim sqlDelAlumnos As String =
-            "DELETE a " &
-            "FROM alumnos a " &
-            "JOIN curso c ON c.id = a.id_curso " &
-            "WHERE c.anio = 6;"
+            "
+            DELETE FROM alumnos
+            WHERE id IN (
+                SELECT a.id
+                FROM alumnos a
+                JOIN curso c ON c.id = a.id_curso
+                WHERE c.anio = 6
+            );
+            "
 
-            Dim cmdAlumno As New MySqlCommand(sqlDelAlumnos, conexionLocal, trans)
+            Dim cmdAlumno As New SQLiteCommand(sqlDelAlumnos, conexionLocal, trans)
             cmdAlumno.ExecuteNonQuery()
 
-
-            ' ======================================================
-            ' 7 – COMMIT Y MENSAJE FINAL
-            ' ======================================================
             trans.Commit()
 
-            MessageBox.Show(
-                "PROMOCIÓN COMPLETADA" & vbCrLf & vbCrLf &
+            MessageBox.Show("PROMOCIÓN COMPLETADA" & vbCrLf & vbCrLf &
                 "Alumnos promovidos: " & promovidos & vbCrLf &
                 "Egresados eliminados: " & egresados,
                 "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information
@@ -317,8 +339,7 @@ Public Class Notas
         Catch ex As Exception
             Try
                 If trans IsNot Nothing Then trans.Rollback()
-            Catch ex2 As Exception
-                ' No hacer nada
+            Catch
             End Try
 
             MessageBox.Show("Error: " & ex.Message)
@@ -329,9 +350,5 @@ Public Class Notas
         End Try
 
     End Sub
-
-
-
-
 
 End Class

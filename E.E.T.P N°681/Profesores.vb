@@ -1,10 +1,9 @@
-
-Imports MySql.Data.MySqlClient
+Imports System.Data.SQLite
 
 Partial Class Profesores
     Inherits System.Windows.Forms.Form
 
-    Dim conexion As New MySqlConnection("server=localhost;user id=root;password=escuela;database=escuela")
+    Dim conexion As New SQLiteConnection("Data Source=escuela.db;Version=3;")
 
     Private Sub Profesores_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         CargarProfesores()
@@ -15,7 +14,7 @@ Partial Class Profesores
             conexion.Close()
             conexion.Open()
             Dim consulta As String = "SELECT id, nombre, apellido, dni, direccion, telefono, correo FROM profesores"
-            Dim adaptador As New MySqlDataAdapter(consulta, conexion)
+            Dim adaptador As New SQLiteDataAdapter(consulta, conexion)
             Dim tabla As New DataTable()
             adaptador.Fill(tabla)
             DataGridViewProfesores.DataSource = tabla
@@ -31,7 +30,7 @@ Partial Class Profesores
             conexion.Close()
             conexion.Open()
             Dim consulta As String = "INSERT INTO profesores (nombre, apellido, dni, direccion, telefono, correo) VALUES (@nombre, @apellido, @dni, @direccion, @telefono, @correo)"
-            Dim comando As New MySqlCommand(consulta, conexion)
+            Dim comando As New SQLiteCommand(consulta, conexion)
             comando.Parameters.AddWithValue("@nombre", txtNombre.Text)
             comando.Parameters.AddWithValue("@apellido", txtApellido.Text)
             comando.Parameters.AddWithValue("@dni", txtDni.Text)
@@ -57,7 +56,7 @@ Partial Class Profesores
                 conexion.Close()
                 conexion.Open()
                 Dim consulta As String = "UPDATE profesores SET nombre=@nombre, apellido=@apellido, dni=@dni, direccion=@direccion, telefono=@telefono, correo=@correo WHERE id=@id"
-                Dim comando As New MySqlCommand(consulta, conexion)
+                Dim comando As New SQLiteCommand(consulta, conexion)
                 comando.Parameters.AddWithValue("@nombre", txtNombre.Text)
                 comando.Parameters.AddWithValue("@apellido", txtApellido.Text)
                 comando.Parameters.AddWithValue("@dni", txtDni.Text)
@@ -88,7 +87,7 @@ Partial Class Profesores
                     conexion.Close()
                     conexion.Open()
                     Dim consulta As String = "DELETE FROM profesores WHERE id=@id"
-                    Dim comando As New MySqlCommand(consulta, conexion)
+                    Dim comando As New SQLiteCommand(consulta, conexion)
                     comando.Parameters.AddWithValue("@id", id)
                     comando.ExecuteNonQuery()
                     MessageBox.Show("Profesor eliminado correctamente.")
@@ -127,4 +126,7 @@ Partial Class Profesores
         txtCorreo.Clear()
     End Sub
 
+    Private Sub PanelContenido_Paint(sender As Object, e As PaintEventArgs) Handles PanelContenido.Paint
+
+    End Sub
 End Class

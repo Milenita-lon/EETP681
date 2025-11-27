@@ -1,29 +1,28 @@
-﻿
-Imports MySql.Data.MySqlClient
+﻿Imports System.Data.SQLite
 
 Public Class Asistencias
-    Dim conexion As New MySqlConnection("server=localhost; user id=root; password=escuela; database=escuela;")
+
+    Dim conexion As New SQLiteConnection("Data Source=escuela.db;Version=3;")
 
     Private Sub Asistencias_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         CargarCursos()
         CargarMateriasPorCurso(1)
-        ' Asegurarse de que el DateTimePicker tenga un valor válido
         DateTimePickerFecha.Value = DateTime.Now
         CargarAlumnosAsistencia(1, 1)
     End Sub
 
-    ' === CARGA DE CURSOS ===
+    ' === CARGA CURSOS ===
     Private Sub CargarCursos()
         Try
             conexion.Open()
-            Dim query As String = "SELECT id, CONCAT(anio, '° Año ', division) AS curso_completo FROM curso;"
-            Dim adaptador As New MySqlDataAdapter(query, conexion)
-            Dim tablaCursos As New DataTable()
-            adaptador.Fill(tablaCursos)
+            Dim query As String = "SELECT id, (anio || '° Año ' || division) AS curso_completo FROM curso;"
+            Dim adaptador As New SQLiteDataAdapter(query, conexion)
+            Dim tabla As New DataTable()
+            adaptador.Fill(tabla)
 
             Cbmnotasalum.DisplayMember = "curso_completo"
             Cbmnotasalum.ValueMember = "id"
-            Cbmnotasalum.DataSource = tablaCursos
+            Cbmnotasalum.DataSource = tabla
 
         Catch ex As Exception
             MessageBox.Show("Error al cargar cursos: " & ex.Message)
@@ -32,27 +31,27 @@ Public Class Asistencias
         End Try
     End Sub
 
-    ' === CARGA DE MATERIAS SEGÚN CURSO ===
-    Private Sub Cbmnotasalum_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles Cbmnotasalum.SelectionChangeCommitted
-        If Cbmnotasalum.SelectedValue IsNot Nothing Then
-            CargarMateriasPorCurso(CInt(Cbmnotasalum.SelectedValue))
-        End If
-    End Sub
-
+    ' === CARGA MATERIAS ===
     Private Sub CargarMateriasPorCurso(idCurso As Integer)
         Try
             conexion.Open()
-            Dim query As String = "SELECT id, nombre FROM materia WHERE id_curso = @idCurso ORDER BY nombre;"
-            Dim comando As New MySqlCommand(query, conexion)
+
+            Dim query As String =
+                "SELECT id, nombre 
+                 FROM materia 
+                 WHERE id_curso = @idCurso 
+                 ORDER BY nombre;"
+
+            Dim comando As New SQLiteCommand(query, conexion)
             comando.Parameters.AddWithValue("@idCurso", idCurso)
 
-            Dim adaptador As New MySqlDataAdapter(comando)
-            Dim tablaMaterias As New DataTable()
-            adaptador.Fill(tablaMaterias)
+            Dim adaptador As New SQLiteDataAdapter(comando)
+            Dim tabla As New DataTable()
+            adaptador.Fill(tabla)
 
             cmbMateria.DisplayMember = "nombre"
             cmbMateria.ValueMember = "id"
-            cmbMateria.DataSource = tablaMaterias
+            cmbMateria.DataSource = tabla
 
             DataGridViewAsistencia.DataSource = Nothing
 
@@ -63,123 +62,59 @@ Public Class Asistencias
         End Try
     End Sub
 
-    ' === CARGA DE ASISTENCIA ===
-    Private Sub cmbMateria_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles cmbMateria.SelectionChangeCommitted
-        If Cbmnotasalum.SelectedValue IsNot Nothing AndAlso cmbMateria.SelectedValue IsNot Nothing Then
-            CargarAlumnosAsistencia(CInt(Cbmnotasalum.SelectedValue), CInt(cmbMateria.SelectedValue))
-        End If
-    End Sub
-
-    Private Sub DateTimePickerFecha_ValueChanged(sender As Object, e As EventArgs) Handles DateTimePickerFecha.ValueChanged
-        If Cbmnotasalum.SelectedValue IsNot Nothing AndAlso cmbMateria.SelectedValue IsNot Nothing Then
-            CargarAlumnosAsistencia(CInt(Cbmnotasalum.SelectedValue), CInt(cmbMateria.SelectedValue))
-        End If
-    End Sub
-
+    ' === CARGA ASISTENCIA ===
     Private Sub CargarAlumnosAsistencia(idCurso As Integer, idMateria As Integer)
         Try
             conexion.Open()
 
-            Dim fecha As String = DateTimePickerFecha.Value.ToString("yyyy-MM-dd")
+            Dim fecha = DateTimePickerFecha.Value.ToString("yyyy-MM-dd")
 
-            Dim query As String = "
-                SELECT a.id AS ID_Alumno,
-                       m.id AS ID_Materia,
-                       CONCAT(a.apellido, ', ', a.nombre) AS Alumno,
-                       IFNULL(asist.asistencia, '') AS Asistencia,
-                       IFNULL(asist.conducta, '') AS Conducta,
-                       IFNULL(asist.participacion, '') AS Participacion,
-                       @fecha AS Fecha
-                FROM alumnos a
-                INNER JOIN materia m ON m.id_curso = a.id_curso
-                LEFT JOIN asistencias asist 
-                    ON asist.id_alumnos = a.id
-                    AND asist.id_materia = m.id
-                    AND DATE(asist.fecha) = @fecha
+            Dim query As String =
+                "SELECT a.id AS ID_Alumno,
+                        m.id AS ID_Materia,
+                        (a.apellido || ', ' || a.nombre) AS Alumno,
+                        IFNULL(asist.asistencia, '') AS Asistencia,
+                        IFNULL(asist.conducta, '') AS Conducta,
+                        IFNULL(asist.participacion, '') AS Participacion,
+                        @fecha AS Fecha
+                 FROM alumnos a
+                 INNER JOIN materia m ON m.id_curso = a.id_curso
+                 LEFT JOIN asistencias asist
+                       ON asist.id_alumnos = a.id
+                      AND asist.id_materia = m.id
+                      AND asist.fecha = @fecha
+                 WHERE a.id_curso = @idCurso
+                   AND m.id = @idMateria
+                 ORDER BY a.apellido;"
 
-                WHERE a.id_curso = @idCurso AND m.id = @idMateria
-                ORDER BY a.apellido;
-            "
-
-            Dim comando As New MySqlCommand(query, conexion)
+            Dim comando As New SQLiteCommand(query, conexion)
             comando.Parameters.AddWithValue("@idCurso", idCurso)
             comando.Parameters.AddWithValue("@idMateria", idMateria)
-            comando.Parameters.Add("@fecha", MySqlDbType.Date).Value = DateTimePickerFecha.Value.Date
+            comando.Parameters.AddWithValue("@fecha", fecha)
 
-
-            Dim adaptador As New MySqlDataAdapter(comando)
+            Dim adaptador As New SQLiteDataAdapter(comando)
             Dim tabla As New DataTable()
             adaptador.Fill(tabla)
 
             DataGridViewAsistencia.DataSource = tabla
 
-            ' Ajustes visuales
             If DataGridViewAsistencia.Columns.Contains("ID_Alumno") Then DataGridViewAsistencia.Columns("ID_Alumno").Visible = False
             If DataGridViewAsistencia.Columns.Contains("ID_Materia") Then DataGridViewAsistencia.Columns("ID_Materia").Visible = False
             If DataGridViewAsistencia.Columns.Contains("Fecha") Then DataGridViewAsistencia.Columns("Fecha").Visible = False
-            If DataGridViewAsistencia.Columns.Contains("Alumno") Then DataGridViewAsistencia.Columns("Alumno").Width = 250
 
         Catch ex As Exception
+            MessageBox.Show("Error al cargar asistencia: " & ex.Message)
         Finally
             conexion.Close()
         End Try
     End Sub
 
-    ' === GUARDAR ASISTENCIA ===
-    Private Sub DataGridViewAsistencias_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs)
-        ' Solo guardamos si se editó una columna relevante
-        Dim nombreCol = DataGridViewAsistencia.Columns(e.ColumnIndex).Name
-        If nombreCol <> "Asistencia" AndAlso nombreCol <> "Conducta" AndAlso nombreCol <> "Participacion" Then
-            Exit Sub
-        End If
-
-        Try
-            conexion.Open()
-
-            Dim idAlumno As Integer = DataGridViewAsistencia.Rows(e.RowIndex).Cells("ID_Alumno").Value
-            Dim idMateria As Integer = DataGridViewAsistencia.Rows(e.RowIndex).Cells("ID_Materia").Value
-            Dim fecha = DateTimePickerFecha.Value.ToString("yyyy-MM-dd")
-
-            ' Tomamos los valores actuales de la fila (si vienen nulos, los convertimos a "")
-            Dim asistencia = If(IsDBNull(DataGridViewAsistencia.Rows(e.RowIndex).Cells("Asistencia").Value), "", DataGridViewAsistencia.Rows(e.RowIndex).Cells("Asistencia").Value.ToString)
-            Dim conducta = If(IsDBNull(DataGridViewAsistencia.Rows(e.RowIndex).Cells("Conducta").Value), "", DataGridViewAsistencia.Rows(e.RowIndex).Cells("Conducta").Value.ToString)
-            Dim participacion = If(IsDBNull(DataGridViewAsistencia.Rows(e.RowIndex).Cells("Participacion").Value), "", DataGridViewAsistencia.Rows(e.RowIndex).Cells("Participacion").Value.ToString)
-
-            Dim query = "
-                INSERT INTO asistencias (id_alumnos, id_materia, fecha, asistencia, conducta, participacion)
-                VALUES (@id_alumnos, @id_materia, @fecha, @asistencia, @conducta, @participacion)
-                ON DUPLICATE KEY UPDATE 
-                    asistencia = @asistencia,
-                    conducta = @conducta,
-                    participacion = @participacion;
-            "
-
-            Dim comando As New MySqlCommand(query, conexion)
-            comando.Parameters.AddWithValue("@id_alumnos", idAlumno)
-            comando.Parameters.AddWithValue("@id_materia", idMateria)
-            comando.Parameters.Add("@fecha", MySqlDbType.Date).Value = DateTimePickerFecha.Value.Date
-            comando.Parameters.AddWithValue("@asistencia", asistencia)
-            comando.Parameters.AddWithValue("@conducta", conducta)
-            comando.Parameters.AddWithValue("@participacion", participacion)
-
-            comando.ExecuteNonQuery()
-
-            ' Opcional: recargar la fila para asegurar coherencia con la BD
-            CargarAlumnosAsistencia(Cbmnotasalum.SelectedValue, cmbMateria.SelectedValue)
-
-        Catch ex As Exception
-            MessageBox.Show("Error al guardar asistencia: " & ex.Message)
-        Finally
-            conexion.Close()
-        End Try
-    End Sub
-
+    ' === GUARDAR ASISTENCIA (SQLite no tiene ON DUPLICATE) ===
     Private Sub DataGridViewAsistencia_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) _
-    Handles DataGridViewAsistencia.CellEndEdit
+        Handles DataGridViewAsistencia.CellEndEdit
 
-        ' Solo guardamos si se editó una columna relevante
-        Dim nombreCol = DataGridViewAsistencia.Columns(e.ColumnIndex).Name
-        If nombreCol <> "Asistencia" AndAlso nombreCol <> "Conducta" AndAlso nombreCol <> "Participacion" Then
+        Dim col = DataGridViewAsistencia.Columns(e.ColumnIndex).Name
+        If col <> "Asistencia" AndAlso col <> "Conducta" AndAlso col <> "Participacion" Then
             Exit Sub
         End If
 
@@ -188,32 +123,32 @@ Public Class Asistencias
 
             Dim idAlumno As Integer = DataGridViewAsistencia.Rows(e.RowIndex).Cells("ID_Alumno").Value
             Dim idMateria As Integer = DataGridViewAsistencia.Rows(e.RowIndex).Cells("ID_Materia").Value
-            Dim fecha = DateTimePickerFecha.Value.ToString("yyyy-MM-dd")
+            Dim fecha As String = DateTimePickerFecha.Value.ToString("yyyy-MM-dd")
 
-            Dim asistencia = If(IsDBNull(DataGridViewAsistencia.Rows(e.RowIndex).Cells("Asistencia").Value), "", DataGridViewAsistencia.Rows(e.RowIndex).Cells("Asistencia").Value.ToString)
-            Dim conducta = If(IsDBNull(DataGridViewAsistencia.Rows(e.RowIndex).Cells("Conducta").Value), "", DataGridViewAsistencia.Rows(e.RowIndex).Cells("Conducta").Value.ToString)
-            Dim participacion = If(IsDBNull(DataGridViewAsistencia.Rows(e.RowIndex).Cells("Participacion").Value), "", DataGridViewAsistencia.Rows(e.RowIndex).Cells("Participacion").Value.ToString)
+            Dim asistencia = DataGridViewAsistencia.Rows(e.RowIndex).Cells("Asistencia").Value?.ToString()
+            Dim conducta = DataGridViewAsistencia.Rows(e.RowIndex).Cells("Conducta").Value?.ToString()
+            Dim participacion = DataGridViewAsistencia.Rows(e.RowIndex).Cells("Participacion").Value?.ToString()
 
-            Dim query = "
-            INSERT INTO asistencias (id_alumnos, id_materia, fecha, asistencia, conducta, participacion)
-            VALUES (@id_alumnos, @id_materia, @fecha, @asistencia, @conducta, @participacion)
-            ON DUPLICATE KEY UPDATE 
-                asistencia = @asistencia,
-                conducta = @conducta,
-                participacion = @participacion;
-        "
+            ' =====================================
+            '   INSERT OR REPLACE → funciona como
+            '   ON DUPLICATE KEY UPDATE
+            ' =====================================
+            Dim query As String =
+                "INSERT OR REPLACE INTO asistencias
+                (id_alumnos, id_materia, fecha, asistencia, conducta, participacion)
+                 VALUES
+                (@id_alumnos, @id_materia, @fecha, @asistencia, @conducta, @participacion);"
 
-            Dim comando As New MySqlCommand(query, conexion)
+            Dim comando As New SQLiteCommand(query, conexion)
             comando.Parameters.AddWithValue("@id_alumnos", idAlumno)
             comando.Parameters.AddWithValue("@id_materia", idMateria)
-            comando.Parameters.Add("@fecha", MySqlDbType.Date).Value = DateTimePickerFecha.Value.Date
+            comando.Parameters.AddWithValue("@fecha", fecha)
             comando.Parameters.AddWithValue("@asistencia", asistencia)
             comando.Parameters.AddWithValue("@conducta", conducta)
             comando.Parameters.AddWithValue("@participacion", participacion)
 
             comando.ExecuteNonQuery()
 
-            ' Recargar la fila
             CargarAlumnosAsistencia(CInt(Cbmnotasalum.SelectedValue), CInt(cmbMateria.SelectedValue))
 
         Catch ex As Exception
@@ -221,9 +156,7 @@ Public Class Asistencias
         Finally
             conexion.Close()
         End Try
-    End Sub
-
-    Private Sub Cbmnotasalum_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Cbmnotasalum.SelectedIndexChanged
 
     End Sub
+
 End Class

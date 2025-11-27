@@ -1,28 +1,28 @@
-﻿Imports System.Windows.Forms.VisualStyles.VisualStyleElement
-Imports MySql.Data.MySqlClient
+﻿Imports System.Data.SQLite
 
 Public Class Alumnos
 
-    Dim conexion As New MySqlConnection("server=localhost; user id=root; password=escuela; database=escuela;")
+    ' Cambiar la conexión a SQLite ↓↓↓
+    Dim conexion As New SQLiteConnection("Data Source=escuela.db;Version=3;")
 
     Private Sub Alumnos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
             conexion.Close()
             conexion.Open()
 
-            ' Construimos el texto del curso como "3° Año A"
-            Dim query As String = "SELECT id, 
-                                          CONCAT(anio, '° Año ', division) AS curso_completo 
-                                   FROM curso;"
-            Dim comando As New MySqlCommand(query, conexion)
-            Dim lector As MySqlDataReader = comando.ExecuteReader()
+            Dim query As String =
+                "SELECT id,
+                        (anio || '° Año ' || division) AS curso_completo
+                 FROM curso;"
+
+            Dim comando As New SQLiteCommand(query, conexion)
+            Dim lector As SQLiteDataReader = comando.ExecuteReader()
             Dim tablaCursos As New DataTable()
             tablaCursos.Load(lector)
 
-            ' Configuración del ComboBox
             ComboBox1.DropDownStyle = ComboBoxStyle.DropDownList
-            ComboBox1.DisplayMember = "curso_completo" ' lo que se ve (ej: "3° Año A")
-            ComboBox1.ValueMember = "id"        ' valor real (id_curso)
+            ComboBox1.DisplayMember = "curso_completo"
+            ComboBox1.ValueMember = "id"
             ComboBox1.DataSource = tablaCursos
 
             lector.Close()
@@ -34,7 +34,6 @@ Public Class Alumnos
         End Try
     End Sub
 
-    ' Cuando cambia el curso seleccionado → mostramos alumnos
     Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
         If ComboBox1.SelectedValue IsNot Nothing AndAlso IsNumeric(ComboBox1.SelectedValue) Then
             CargarAlumnos(CInt(ComboBox1.SelectedValue))
@@ -44,13 +43,15 @@ Public Class Alumnos
     Private Sub CargarAlumnos(idCurso As Integer)
         Try
             conexion.Open()
-            Dim query As String = "SELECT id, nombre, apellido, dni, direccion, telefono, correo 
-                                   FROM alumnos 
-                                   WHERE id_curso = @idCurso;"
-            Dim comando As New MySqlCommand(query, conexion)
+            Dim query As String =
+                "SELECT id, nombre, apellido, dni, direccion, telefono, correo
+                 FROM alumnos
+                 WHERE id_curso = @idCurso;"
+
+            Dim comando As New SQLiteCommand(query, conexion)
             comando.Parameters.AddWithValue("@idCurso", idCurso)
 
-            Dim adaptador As New MySqlDataAdapter(comando)
+            Dim adaptador As New SQLiteDataAdapter(comando)
             Dim tablaAlumnos As New DataTable()
             adaptador.Fill(tablaAlumnos)
 
@@ -67,8 +68,12 @@ Public Class Alumnos
         Try
             conexion.Close()
             conexion.Open()
-            Dim consulta As String = "INSERT INTO alumnos (nombre, apellido, dni, direccion, telefono, correo, id_curso) VALUES (@nombre, @apellido, @dni, @direccion, @telefono, @correo, @id_curso)"
-            Dim comando As New MySqlCommand(consulta, conexion)
+
+            Dim consulta As String =
+                "INSERT INTO alumnos (nombre, apellido, dni, direccion, telefono, correo, id_curso)
+                 VALUES (@nombre, @apellido, @dni, @direccion, @telefono, @correo, @id_curso)"
+
+            Dim comando As New SQLiteCommand(consulta, conexion)
             comando.Parameters.AddWithValue("@nombre", txtNombre.Text)
             comando.Parameters.AddWithValue("@apellido", txtApellido.Text)
             comando.Parameters.AddWithValue("@dni", txtDni.Text)
@@ -76,9 +81,11 @@ Public Class Alumnos
             comando.Parameters.AddWithValue("@telefono", txtTelefono.Text)
             comando.Parameters.AddWithValue("@correo", txtCorreo.Text)
             comando.Parameters.AddWithValue("@id_curso", CInt(ComboBox1.SelectedValue))
+
             comando.ExecuteNonQuery()
             MessageBox.Show("Alumno agregado correctamente.")
             LimpiarCampos()
+
         Catch ex As Exception
             MessageBox.Show("Error al agregar alumno: " & ex.Message)
         Finally
@@ -89,29 +96,41 @@ Public Class Alumnos
     End Sub
 
     Private Sub btnEditar_Click(sender As Object, e As EventArgs) Handles btnEditar.Click
-        If DataGridViewAlumnos.SelectedRows.Count > 0 Then
-            Try
-                conexion.Open()
-                Dim consulta As String = "UPDATE alumnos SET nombre=@nombre, apellido=@apellido, dni=@dni, direccion=@direccion, telefono=@telefono, correo=@correo WHERE id_curso=@id_curso"
-                Dim comando As New MySqlCommand(consulta, conexion)
-                comando.Parameters.AddWithValue("@nombre", txtNombre.Text)
-                comando.Parameters.AddWithValue("@apellido", txtApellido.Text)
-                comando.Parameters.AddWithValue("@dni", txtDni.Text)
-                comando.Parameters.AddWithValue("@direccion", txtDireccion.Text)
-                comando.Parameters.AddWithValue("@telefono", txtTelefono.Text)
-                comando.Parameters.AddWithValue("@correo", txtCorreo.Text)
-                comando.Parameters.AddWithValue("@id_curso", CInt(ComboBox1.SelectedValue))
-                comando.ExecuteNonQuery()
-                MessageBox.Show("Alumno actualizado correctamente.")
-                LimpiarCampos()
-            Catch ex As Exception
-                MessageBox.Show("Error al actualizar alumno: " & ex.Message)
-            Finally
-                conexion.Close()
-            End Try
-        Else
+
+        If DataGridViewAlumnos.SelectedRows.Count = 0 Then
             MessageBox.Show("Seleccione un alumno para editar.")
+            Exit Sub
         End If
+
+        Dim idAlumno As Integer = CInt(DataGridViewAlumnos.SelectedRows(0).Cells("id").Value)
+
+        Try
+            conexion.Open()
+
+            Dim consulta As String =
+                "UPDATE alumnos
+                 SET nombre=@nombre, apellido=@apellido, dni=@dni, direccion=@direccion,
+                     telefono=@telefono, correo=@correo
+                 WHERE id = @id"
+
+            Dim comando As New SQLiteCommand(consulta, conexion)
+            comando.Parameters.AddWithValue("@nombre", txtNombre.Text)
+            comando.Parameters.AddWithValue("@apellido", txtApellido.Text)
+            comando.Parameters.AddWithValue("@dni", txtDni.Text)
+            comando.Parameters.AddWithValue("@direccion", txtDireccion.Text)
+            comando.Parameters.AddWithValue("@telefono", txtTelefono.Text)
+            comando.Parameters.AddWithValue("@correo", txtCorreo.Text)
+            comando.Parameters.AddWithValue("@id", idAlumno)
+
+            comando.ExecuteNonQuery()
+            MessageBox.Show("Alumno actualizado correctamente.")
+            LimpiarCampos()
+
+        Catch ex As Exception
+            MessageBox.Show("Error al actualizar alumno: " & ex.Message)
+        Finally
+            conexion.Close()
+        End Try
 
         CargarAlumnos(CInt(ComboBox1.SelectedValue))
     End Sub
@@ -126,38 +145,34 @@ Public Class Alumnos
         Dim idAlumno As Integer = CInt(DataGridViewAlumnos.SelectedRows(0).Cells("id").Value)
 
         If MessageBox.Show("¿Está seguro de eliminar este alumno?", "Confirmar", MessageBoxButtons.YesNo) = DialogResult.Yes Then
-
             Try
                 conexion.Open()
 
-                ' 1 – BORRAR NOTAS (alumno_materia)
+                ' 1 – BORRAR NOTAS
                 Dim sqlNotas As String =
-                "DELETE am FROM alumno_materia am " &
-                "WHERE am.id_alumno = @id;"
-                Dim cmdNotas As New MySqlCommand(sqlNotas, conexion)
+                    "DELETE FROM alumno_materia WHERE id_alumno = @id;"
+                Dim cmdNotas As New SQLiteCommand(sqlNotas, conexion)
                 cmdNotas.Parameters.AddWithValue("@id", idAlumno)
                 cmdNotas.ExecuteNonQuery()
 
                 ' 1.5 – BORRAR TRIMESTRES
                 Dim sqlTrim As String =
-                "DELETE t FROM trimestre t " &
-                "WHERE t.id_alumnos = @id;"
-                Dim cmdTrim As New MySqlCommand(sqlTrim, conexion)
+                    "DELETE FROM trimestre WHERE id_alumnos = @id;"
+                Dim cmdTrim As New SQLiteCommand(sqlTrim, conexion)
                 cmdTrim.Parameters.AddWithValue("@id", idAlumno)
                 cmdTrim.ExecuteNonQuery()
 
                 ' 2 – BORRAR ASISTENCIAS
                 Dim sqlAsist As String =
-                "DELETE asi FROM asistencias asi " &
-                "WHERE asi.id_alumnos = @id;"
-                Dim cmdAsist As New MySqlCommand(sqlAsist, conexion)
+                    "DELETE FROM asistencias WHERE id_alumnos = @id;"
+                Dim cmdAsist As New SQLiteCommand(sqlAsist, conexion)
                 cmdAsist.Parameters.AddWithValue("@id", idAlumno)
                 cmdAsist.ExecuteNonQuery()
 
                 ' 3 – BORRAR ALUMNO
                 Dim sqlAlum As String =
-                "DELETE FROM alumnos WHERE id = @id;"
-                Dim cmdAlum As New MySqlCommand(sqlAlum, conexion)
+                    "DELETE FROM alumnos WHERE id = @id;"
+                Dim cmdAlum As New SQLiteCommand(sqlAlum, conexion)
                 cmdAlum.Parameters.AddWithValue("@id", idAlumno)
                 cmdAlum.ExecuteNonQuery()
 
@@ -170,12 +185,8 @@ Public Class Alumnos
                 conexion.Close()
             End Try
 
-
-            ' Recargar lista
             CargarAlumnos(CInt(ComboBox1.SelectedValue))
-
         End If
-
     End Sub
 
     Private Sub DataGridViewAlumnos_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridViewAlumnos.CellClick
@@ -199,7 +210,4 @@ Public Class Alumnos
         txtCorreo.Clear()
     End Sub
 
-    Private Sub LabelTitulo_Click(sender As Object, e As EventArgs) Handles LabelTitulo.Click
-
-    End Sub
 End Class

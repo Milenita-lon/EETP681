@@ -1,10 +1,9 @@
-
-Imports MySql.Data.MySqlClient
+Imports System.Data.SQLite
 
 Partial Class Preceptores
     Inherits System.Windows.Forms.Form
 
-    Dim conexion As New MySqlConnection("server=localhost;user id=root;password=escuela;database=escuela")
+    Dim conexion As New SQLiteConnection("Data Source=escuela.db;Version=3;")
 
     Private Sub Preceptores_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         CargarPreceptores()
@@ -15,7 +14,7 @@ Partial Class Preceptores
             conexion.Close()
             conexion.Open()
             Dim consulta As String = "SELECT id, nombre, apellido, dni, direccion, telefono, correo FROM preceptores"
-            Dim adaptador As New MySqlDataAdapter(consulta, conexion)
+            Dim adaptador As New SQLiteDataAdapter(consulta, conexion)
             Dim tabla As New DataTable()
             adaptador.Fill(tabla)
             DataGridViewPreceptores.DataSource = tabla
@@ -31,7 +30,7 @@ Partial Class Preceptores
             conexion.Close()
             conexion.Open()
             Dim consulta As String = "INSERT INTO preceptores (nombre, apellido, dni, direccion, telefono, correo) VALUES (@nombre, @apellido, @dni, @direccion, @telefono, @correo)"
-            Dim comando As New MySqlCommand(consulta, conexion)
+            Dim comando As New SQLiteCommand(consulta, conexion)
             comando.Parameters.AddWithValue("@nombre", txtNombre.Text)
             comando.Parameters.AddWithValue("@apellido", txtApellido.Text)
             comando.Parameters.AddWithValue("@dni", txtDni.Text)
@@ -56,7 +55,7 @@ Partial Class Preceptores
                 conexion.Close()
                 conexion.Open()
                 Dim consulta As String = "UPDATE preceptores SET nombre=@nombre, apellido=@apellido, dni=@dni, direccion=@direccion, telefono=@telefono, correo=@correo WHERE id=@id"
-                Dim comando As New MySqlCommand(consulta, conexion)
+                Dim comando As New SQLiteCommand(consulta, conexion)
                 comando.Parameters.AddWithValue("@nombre", txtNombre.Text)
                 comando.Parameters.AddWithValue("@apellido", txtApellido.Text)
                 comando.Parameters.AddWithValue("@dni", txtDni.Text)
@@ -86,7 +85,7 @@ Partial Class Preceptores
                     conexion.Close()
                     conexion.Open()
                     Dim consulta As String = "DELETE FROM preceptores WHERE id=@id"
-                    Dim comando As New MySqlCommand(consulta, conexion)
+                    Dim comando As New SQLiteCommand(consulta, conexion)
                     comando.Parameters.AddWithValue("@id", id)
                     comando.ExecuteNonQuery()
                     MessageBox.Show("Preceptor eliminado correctamente.")
@@ -122,5 +121,9 @@ Partial Class Preceptores
         txtDireccion.Clear()
         txtTelefono.Clear()
         txtCorreo.Clear()
+    End Sub
+
+    Private Sub PanelContenido_Paint(sender As Object, e As PaintEventArgs) Handles PanelContenido.Paint
+
     End Sub
 End Class

@@ -1,10 +1,10 @@
 ﻿Imports System.Windows.Forms.VisualStyles.VisualStyleElement
-Imports MySql.Data.MySqlClient
+Imports System.Data.SQLite
 
 Public Class Curso
 
-    Dim conexion As New MySqlConnection("server=localhost; user id=root; password=escuela; database=escuela;")
-
+    ' 🔹 Conexión a SQLite (archivo local)
+    Dim conexion As New SQLiteConnection("Data Source=escuela.db;Version=3;")
 
     ' Diccionario de especialidades por curso
     Dim especialidades As New Dictionary(Of String, String) From {
@@ -22,7 +22,7 @@ Public Class Curso
         {"6° B", "MECÁNICA"}
     }
 
-    ' Diccionario de preceptores por curso
+    ' Diccionario de preceptores
     Dim preceptores As New Dictionary(Of String, String) From {
         {"1° A", "IVO TROD"},
         {"1° B", "IVO TROD"},
@@ -38,23 +38,18 @@ Public Class Curso
         {"6° B", "CAROLINA RODRIGUEZ"}
     }
 
-    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ' Cargar cursos en el ComboBox
-        cbmCurso.Items.AddRange(especialidades.Keys.ToArray())
-
-    End Sub
-
     Private Sub Curso_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         CargarCursos()
     End Sub
 
-    ' 🔹 Carga los cursos en el ComboBox
+    ' 🔹 Carga cursos desde SQLite
     Private Sub CargarCursos()
         Try
-            conexion.Close()
+            cbmCurso.Items.Clear()
             conexion.Open()
-            Dim cmd As New MySqlCommand("SELECT id_curso, nombre_curso FROM curso", conexion)
-            Dim reader As MySqlDataReader = cmd.ExecuteReader()
+
+            Dim cmd As New SQLiteCommand("SELECT nombre_curso FROM curso", conexion)
+            Dim reader As SQLiteDataReader = cmd.ExecuteReader()
 
             While reader.Read()
                 cbmCurso.Items.Add(reader("nombre_curso").ToString())
@@ -67,52 +62,41 @@ Public Class Curso
         End Try
     End Sub
 
-
     Private Sub cbmCurso_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbmCurso.SelectedIndexChanged
         Dim cursoSeleccionado As String = cbmCurso.SelectedItem.ToString()
 
         ' Mostrar especialidad
-        If especialidades.ContainsKey(cursoSeleccionado) Then
-            lblEspecialidad.Text = especialidades(cursoSeleccionado)
-        Else
-            lblEspecialidad.Text = "Sin especialidad"
-        End If
+        lblEspecialidad.Text = If(especialidades.ContainsKey(cursoSeleccionado),
+                                  especialidades(cursoSeleccionado),
+                                  "Sin especialidad")
 
         ' Mostrar preceptor
-        If preceptores.ContainsKey(cursoSeleccionado) Then
-            lblPreceptor.Text = preceptores(cursoSeleccionado)
-        Else
-            lblPreceptor.Text = "Sin preceptor"
-        End If
+        lblPreceptor.Text = If(preceptores.ContainsKey(cursoSeleccionado),
+                               preceptores(cursoSeleccionado),
+                               "Sin preceptor")
 
         CargarAlumnosDelCurso()
-
     End Sub
 
-    Private Sub DataGridViewCursos_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridViewCursos.CellClick
-        If e.RowIndex >= 0 Then
-            Dim fila As DataGridViewRow = DataGridViewCursos.Rows(e.RowIndex)
-        End If
-    End Sub
-
-    ' 🔹 Carga los alumnos del curso seleccionado en el DataGridView
+    ' 🔹 Cargar alumnos desde SQLite
     Private Sub CargarAlumnosDelCurso()
         Try
             conexion.Open()
 
-            ' Obtener el ID del curso seleccionado
-            Dim cursoSeleccionado = cbmCurso.SelectedItem
-            Dim nombreCurso As String = cbmCurso.SelectedItem.ToString()
-            Dim consulta As String = "SELECT a.id, a.nombre, a.apellido , a.dni, a.direccion, a.telefono, a.correo
-                          FROM alumnos a
-                          INNER JOIN curso c ON a.id_curso = c.id
-                          WHERE c.anio = @nombreCurso"
+            Dim cursoSeleccionado As String = cbmCurso.SelectedItem.ToString()
 
-            Dim adaptador As New MySqlDataAdapter(consulta, conexion)
-            adaptador.SelectCommand.Parameters.AddWithValue("@nombreCurso", nombreCurso)
+            Dim consulta As String =
+                "SELECT a.id, a.nombre, a.apellido, a.dni, a.direccion, a.telefono, a.correo
+                 FROM alumnos a
+                 INNER JOIN curso c ON a.id_curso = c.id_curso
+                 WHERE c.nombre_curso = @curso"
+
+            Dim adaptador As New SQLiteDataAdapter(consulta, conexion)
+            adaptador.SelectCommand.Parameters.AddWithValue("@curso", cursoSeleccionado)
 
             Dim tabla As New DataTable()
             adaptador.Fill(tabla)
+
             DataGridViewCursos.DataSource = tabla
 
         Catch ex As Exception
@@ -122,25 +106,28 @@ Public Class Curso
         End Try
     End Sub
 
+    ' 🔹 Exportar a PDF (sin cambios, funciona igual)
     Function ExportarDataGridViewAPDF(dgv As DataGridView)
         Try
-            ' Crear un documento PDF horizontal
             Dim doc As New iTextSharp.text.Document(iTextSharp.text.PageSize.A4.Rotate(), 10, 10, 10, 10)
             Dim saveFileDialog As New SaveFileDialog()
             saveFileDialog.Filter = "Archivos PDF (*.pdf)|*.pdf"
+
             If saveFileDialog.ShowDialog() <> DialogResult.OK Then
                 Return False
             End If
-            Dim writer As iTextSharp.text.pdf.PdfWriter = iTextSharp.text.pdf.PdfWriter.GetInstance(doc, New IO.FileStream(saveFileDialog.FileName, IO.FileMode.Create))
+
+            Dim writer = iTextSharp.text.pdf.PdfWriter.GetInstance(
+                doc, New IO.FileStream(saveFileDialog.FileName, IO.FileMode.Create))
+
             doc.Open()
-            ' Crear una tabla PDF con el mismo número de columnas que el DataGridView
+
             Dim pdfTable As New iTextSharp.text.pdf.PdfPTable(dgv.Columns.Count)
-            ' Agregar los encabezados de columna
+
             For Each column As DataGridViewColumn In dgv.Columns
-                Dim cell As New iTextSharp.text.pdf.PdfPCell(New iTextSharp.text.Phrase(column.HeaderText))
-                pdfTable.AddCell(cell)
+                pdfTable.AddCell(New iTextSharp.text.pdf.PdfPCell(New iTextSharp.text.Phrase(column.HeaderText)))
             Next
-            ' Agregar las filas de datos
+
             For Each row As DataGridViewRow In dgv.Rows
                 If Not row.IsNewRow Then
                     For Each cell As DataGridViewCell In row.Cells
@@ -148,23 +135,20 @@ Public Class Curso
                     Next
                 End If
             Next
-            ' Agregar la tabla al documento PDF
+
             doc.Add(pdfTable)
             doc.Close()
-            MessageBox.Show("Exportación a PDF exitosa.")
+            MessageBox.Show("PDF generado con éxito.")
+
         Catch ex As Exception
             MessageBox.Show("Error al exportar a PDF: " & ex.Message)
         End Try
+
         Return True
     End Function
 
     Private Sub btndescargapdf_Click(sender As Object, e As EventArgs) Handles btndescargapdf.Click
-        ' Llama a la función para exportar a PDF
         ExportarDataGridViewAPDF(DataGridViewCursos)
     End Sub
 
 End Class
-
-
-
-
