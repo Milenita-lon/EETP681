@@ -7,7 +7,12 @@
     <StartupObject>Sub Main</StartupObject>
     <UseWindowsForms>true</UseWindowsForms>
     <MyType>WindowsForms</MyType>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="logo.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <Import Include="System.Data" />
@@ -36,9 +41,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Update="Asistencias.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Update="Asistencias.vb" />
   </ItemGroup>
 
   <ItemGroup>

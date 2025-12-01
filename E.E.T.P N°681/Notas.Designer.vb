@@ -103,7 +103,7 @@ Partial Class Notas
         Cbmnotasalum.Location = New Point(387, 140)
         Cbmnotasalum.Name = "Cbmnotasalum"
         Cbmnotasalum.Size = New Size(121, 23)
-        Cbmnotasalum.TabIndex = 3
+        Cbmnotasalum.TabIndex = 1
         ' 
         ' Label1
         ' 
@@ -142,7 +142,7 @@ Partial Class Notas
         cmbMateria.Location = New Point(250, 186)
         cmbMateria.Name = "cmbMateria"
         cmbMateria.Size = New Size(121, 23)
-        cmbMateria.TabIndex = 8
+        cmbMateria.TabIndex = 2
         ' 
         ' LabelTri
         ' 
@@ -162,7 +162,7 @@ Partial Class Notas
         cmbTrimestre.Location = New Point(536, 184)
         cmbTrimestre.Name = "cmbTrimestre"
         cmbTrimestre.Size = New Size(121, 23)
-        cmbTrimestre.TabIndex = 11
+        cmbTrimestre.TabIndex = 3
         ' 
         ' botonPromocionar
         ' 

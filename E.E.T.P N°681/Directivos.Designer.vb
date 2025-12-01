@@ -111,7 +111,7 @@ Partial Class Directivos
         btnEliminar.Location = New Point(263, 37)
         btnEliminar.Name = "btnEliminar"
         btnEliminar.Size = New Size(75, 25)
-        btnEliminar.TabIndex = 0
+        btnEliminar.TabIndex = 9
         btnEliminar.Text = "Eliminar"
         btnEliminar.UseVisualStyleBackColor = False
         ' 
@@ -125,7 +125,7 @@ Partial Class Directivos
         btnEditar.Location = New Point(182, 37)
         btnEditar.Name = "btnEditar"
         btnEditar.Size = New Size(75, 25)
-        btnEditar.TabIndex = 1
+        btnEditar.TabIndex = 8
         btnEditar.Text = "Editar"
         btnEditar.UseVisualStyleBackColor = False
         ' 
@@ -139,7 +139,7 @@ Partial Class Directivos
         btnAgregar.Location = New Point(101, 37)
         btnAgregar.Name = "btnAgregar"
         btnAgregar.Size = New Size(75, 25)
-        btnAgregar.TabIndex = 2
+        btnAgregar.TabIndex = 7
         btnAgregar.Text = "Agregar"
         btnAgregar.UseVisualStyleBackColor = False
         ' 
@@ -150,7 +150,7 @@ Partial Class Directivos
         txtCorreo.Name = "txtCorreo"
         txtCorreo.PlaceholderText = "Correo"
         txtCorreo.Size = New Size(115, 23)
-        txtCorreo.TabIndex = 3
+        txtCorreo.TabIndex = 6
         ' 
         ' txtTelefono
         ' 
@@ -159,7 +159,7 @@ Partial Class Directivos
         txtTelefono.Name = "txtTelefono"
         txtTelefono.PlaceholderText = "Teléfono"
         txtTelefono.Size = New Size(100, 23)
-        txtTelefono.TabIndex = 4
+        txtTelefono.TabIndex = 5
         ' 
         ' txtDireccion
         ' 
@@ -168,7 +168,7 @@ Partial Class Directivos
         txtDireccion.Name = "txtDireccion"
         txtDireccion.PlaceholderText = "Dirección"
         txtDireccion.Size = New Size(100, 23)
-        txtDireccion.TabIndex = 5
+        txtDireccion.TabIndex = 4
         ' 
         ' txtDni
         ' 
@@ -177,7 +177,7 @@ Partial Class Directivos
         txtDni.Name = "txtDni"
         txtDni.PlaceholderText = "DNI"
         txtDni.Size = New Size(100, 23)
-        txtDni.TabIndex = 6
+        txtDni.TabIndex = 3
         ' 
         ' txtApellido
         ' 
@@ -186,7 +186,7 @@ Partial Class Directivos
         txtApellido.Name = "txtApellido"
         txtApellido.PlaceholderText = "Apellido"
         txtApellido.Size = New Size(100, 23)
-        txtApellido.TabIndex = 7
+        txtApellido.TabIndex = 2
         ' 
         ' txtNombre
         ' 
@@ -195,7 +195,7 @@ Partial Class Directivos
         txtNombre.Name = "txtNombre"
         txtNombre.PlaceholderText = "Nombre"
         txtNombre.Size = New Size(100, 23)
-        txtNombre.TabIndex = 8
+        txtNombre.TabIndex = 1
         ' 
         ' PanelTitulo
         ' 

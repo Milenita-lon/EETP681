@@ -68,7 +68,7 @@ Partial Class Asistencias
         Cbmnotasalum.Location = New Point(412, 149)
         Cbmnotasalum.Name = "Cbmnotasalum"
         Cbmnotasalum.Size = New Size(121, 23)
-        Cbmnotasalum.TabIndex = 3
+        Cbmnotasalum.TabIndex = 1
         ' 
         ' Label1
         ' 
@@ -107,7 +107,7 @@ Partial Class Asistencias
         cmbMateria.Location = New Point(275, 195)
         cmbMateria.Name = "cmbMateria"
         cmbMateria.Size = New Size(121, 23)
-        cmbMateria.TabIndex = 8
+        cmbMateria.TabIndex = 2
         ' 
         ' LabelTri
         ' 
@@ -127,7 +127,7 @@ Partial Class Asistencias
         DateTimePickerFecha.Location = New Point(529, 195)
         DateTimePickerFecha.Name = "DateTimePickerFecha"
         DateTimePickerFecha.Size = New Size(124, 23)
-        DateTimePickerFecha.TabIndex = 11
+        DateTimePickerFecha.TabIndex = 3
         ' 
         ' DataGridViewAsistencia
         ' 
