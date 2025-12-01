@@ -1,9 +1,8 @@
-﻿Imports System.Windows.Forms.VisualStyles.VisualStyleElement
-Imports System.Data.SQLite
+﻿Imports System.Data.SQLite
 
 Public Class Curso
 
-    ' 🔹 Conexión a SQLite (archivo local)
+    ' Conexión SQLite
     Dim conexion As New SQLiteConnection("Data Source=escuela.db;Version=3;")
 
     ' Diccionario de especialidades por curso
@@ -42,13 +41,19 @@ Public Class Curso
         CargarCursos()
     End Sub
 
-    ' 🔹 Carga cursos desde SQLite
+    ' 🔹 Cargar cursos desde SQLite
     Private Sub CargarCursos()
         Try
             cbmCurso.Items.Clear()
             conexion.Open()
 
-            Dim cmd As New SQLiteCommand("SELECT nombre_curso FROM curso", conexion)
+            ' Construimos nombre como “1° A”, “3° B”, etc.
+            Dim cmd As New SQLiteCommand("
+                SELECT id, (anio || '° ' || division) AS nombre_curso
+                FROM curso
+                ORDER BY anio, division;
+            ", conexion)
+
             Dim reader As SQLiteDataReader = cmd.ExecuteReader()
 
             While reader.Read()
@@ -63,36 +68,47 @@ Public Class Curso
     End Sub
 
     Private Sub cbmCurso_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbmCurso.SelectedIndexChanged
+
         Dim cursoSeleccionado As String = cbmCurso.SelectedItem.ToString()
 
-        ' Mostrar especialidad
+        ' Especialidad
         lblEspecialidad.Text = If(especialidades.ContainsKey(cursoSeleccionado),
                                   especialidades(cursoSeleccionado),
                                   "Sin especialidad")
 
-        ' Mostrar preceptor
+        ' Preceptor
         lblPreceptor.Text = If(preceptores.ContainsKey(cursoSeleccionado),
                                preceptores(cursoSeleccionado),
                                "Sin preceptor")
 
+        ' Cargar alumnos del curso
         CargarAlumnosDelCurso()
     End Sub
 
-    ' 🔹 Cargar alumnos desde SQLite
+    ' 🔹 Cargar alumnos según el curso seleccionado
     Private Sub CargarAlumnosDelCurso()
         Try
             conexion.Open()
 
             Dim cursoSeleccionado As String = cbmCurso.SelectedItem.ToString()
 
+            ' Separar el texto “3° A” → anio=3, division="A"
+            Dim partes() As String = cursoSeleccionado.Split(" "c)
+            Dim anio As Integer = CInt(partes(0).Replace("°", ""))
+            Dim division As String = partes(1)
+
             Dim consulta As String =
-                "SELECT a.id, a.nombre, a.apellido, a.dni, a.direccion, a.telefono, a.correo
-                 FROM alumnos a
-                 INNER JOIN curso c ON a.id_curso = c.id_curso
-                 WHERE c.nombre_curso = @curso"
+                "
+                SELECT a.id, a.nombre, a.apellido, a.dni, a.direccion, a.telefono, a.correo
+                FROM alumnos a
+                INNER JOIN curso c ON a.id_curso = c.id
+                WHERE c.anio = @anio AND c.division = @division
+                ORDER BY a.apellido, a.nombre;
+                "
 
             Dim adaptador As New SQLiteDataAdapter(consulta, conexion)
-            adaptador.SelectCommand.Parameters.AddWithValue("@curso", cursoSeleccionado)
+            adaptador.SelectCommand.Parameters.AddWithValue("@anio", anio)
+            adaptador.SelectCommand.Parameters.AddWithValue("@division", division)
 
             Dim tabla As New DataTable()
             adaptador.Fill(tabla)
@@ -106,7 +122,7 @@ Public Class Curso
         End Try
     End Sub
 
-    ' 🔹 Exportar a PDF (sin cambios, funciona igual)
+    ' 🔹 Exportar a PDF (no requiere cambios)
     Function ExportarDataGridViewAPDF(dgv As DataGridView)
         Try
             Dim doc As New iTextSharp.text.Document(iTextSharp.text.PageSize.A4.Rotate(), 10, 10, 10, 10)

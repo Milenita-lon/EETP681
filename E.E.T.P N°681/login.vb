@@ -8,7 +8,8 @@ Public Class login
 
     ' CONEXIÓN A SQLITE
     ' Asegurate que escuela.db esté en la carpeta de la app
-    Dim conexion As New SQLiteConnection("Data Source=escuela.db;Version=3;")
+    Dim rutaDB As String = Application.StartupPath & "\escuela.db"
+    Dim conexion As New SQLiteConnection("Data Source=" & rutaDB & ";Version=3;")
 
     Private Sub login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         usuariologin.Text = "USUARIO"

@@ -28,10 +28,18 @@ Public Class Alumnos
             lector.Close()
 
         Catch ex As Exception
+            ' Errores benignos que no deben mostrarse
+            If ex.Message.Contains("state of the object") Then
+                Debug.WriteLine("Aviso ignorado: " & ex.Message)
+                Return
+            End If
+
+            ' Otros errores sí se muestran
             MessageBox.Show("Error al cargar cursos: " & ex.Message)
         Finally
             conexion.Close()
         End Try
+
     End Sub
 
     Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
@@ -58,7 +66,14 @@ Public Class Alumnos
             DataGridViewAlumnos.DataSource = tablaAlumnos
 
         Catch ex As Exception
-            MessageBox.Show("Error al cargar alumnos: " & ex.Message)
+            ' Errores benignos que no deben mostrarse
+            If ex.Message.Contains("state of the object") Then
+                Debug.WriteLine("Aviso ignorado: " & ex.Message)
+                Return
+            End If
+
+            ' Otros errores sí se muestran
+            MessageBox.Show("Error al cargar asistencia: " & ex.Message)
         Finally
             conexion.Close()
         End Try

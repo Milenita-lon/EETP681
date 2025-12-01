@@ -44,8 +44,6 @@ Public Class FormProfesores
     End Sub
 
     Private Sub hideSubMenu()
-        submenuAG.Visible = False
-        submenuPD.Visible = False
         submenuGA.Visible = False
     End Sub
 
@@ -57,14 +55,6 @@ Public Class FormProfesores
         Else
             submenu.Visible = False
         End If
-    End Sub
-
-    Private Sub botonAG_Click(sender As Object, e As EventArgs) Handles botonAG.Click
-        ShowSubMenu(submenuAG)
-    End Sub
-
-    Private Sub botonPD_Click(sender As Object, e As EventArgs) Handles botonPD.Click
-        ShowSubMenu(submenuPD)
     End Sub
 
     Private Sub botonGA_Click(sender As Object, e As EventArgs) Handles botonGA.Click
@@ -87,8 +77,8 @@ Public Class FormProfesores
     End Sub
 
 
-    Private Sub botonSecre_Click(sender As Object, e As EventArgs) Handles botonSecre.Click
-        AbrirFormEnPanel(New Secretarios())
+    Private Sub botonSecre_Click(sender As Object, e As EventArgs)
+        AbrirFormEnPanel(New Secretarios)
     End Sub
 
     Private Sub BtnCerrar_Click(sender As Object, e As EventArgs) Handles BtnCerrar.Click

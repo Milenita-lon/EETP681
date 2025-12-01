@@ -34,17 +34,6 @@ Partial Class FormProfesores
         PanelGA = New Panel()
         Panel8 = New Panel()
         botonGA = New Button()
-        submenuPD = New Panel()
-        botonPrecep = New Button()
-        botonProfes = New Button()
-        PanelPD = New Panel()
-        Panel6 = New Panel()
-        botonPD = New Button()
-        submenuAG = New Panel()
-        botonSecre = New Button()
-        PanelAG = New Panel()
-        Panel4 = New Panel()
-        botonAG = New Button()
         Panel2 = New Panel()
         PictureBox1 = New PictureBox()
         PanelPantalla = New Panel()
@@ -53,10 +42,6 @@ Partial Class FormProfesores
         PanelMenu.SuspendLayout()
         submenuGA.SuspendLayout()
         PanelGA.SuspendLayout()
-        submenuPD.SuspendLayout()
-        PanelPD.SuspendLayout()
-        submenuAG.SuspendLayout()
-        PanelAG.SuspendLayout()
         Panel2.SuspendLayout()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         PanelPantalla.SuspendLayout()
@@ -105,10 +90,6 @@ Partial Class FormProfesores
         PanelMenu.BackColor = Color.FromArgb(CByte(4), CByte(36), CByte(64))
         PanelMenu.Controls.Add(submenuGA)
         PanelMenu.Controls.Add(PanelGA)
-        PanelMenu.Controls.Add(submenuPD)
-        PanelMenu.Controls.Add(PanelPD)
-        PanelMenu.Controls.Add(submenuAG)
-        PanelMenu.Controls.Add(PanelAG)
         PanelMenu.Controls.Add(Panel2)
         PanelMenu.Dock = DockStyle.Left
         PanelMenu.Location = New Point(0, 40)
@@ -123,7 +104,7 @@ Partial Class FormProfesores
         submenuGA.Controls.Add(botonCurs)
         submenuGA.Controls.Add(botonAsis)
         submenuGA.Dock = DockStyle.Top
-        submenuGA.Location = New Point(0, 365)
+        submenuGA.Location = New Point(0, 160)
         submenuGA.Name = "submenuGA"
         submenuGA.Size = New Size(234, 105)
         submenuGA.TabIndex = 9
@@ -194,7 +175,7 @@ Partial Class FormProfesores
         PanelGA.Controls.Add(Panel8)
         PanelGA.Controls.Add(botonGA)
         PanelGA.Dock = DockStyle.Top
-        PanelGA.Location = New Point(0, 315)
+        PanelGA.Location = New Point(0, 110)
         PanelGA.Name = "PanelGA"
         PanelGA.Padding = New Padding(0, 0, 0, 5)
         PanelGA.Size = New Size(234, 50)
@@ -225,164 +206,6 @@ Partial Class FormProfesores
         botonGA.Text = "  GESTIÓN ACADÉMICA"
         botonGA.TextAlign = ContentAlignment.MiddleLeft
         botonGA.UseVisualStyleBackColor = False
-        ' 
-        ' submenuPD
-        ' 
-        submenuPD.BackColor = Color.FromArgb(CByte(6), CByte(46), CByte(98))
-        submenuPD.Controls.Add(botonPrecep)
-        submenuPD.Controls.Add(botonProfes)
-        submenuPD.Dock = DockStyle.Top
-        submenuPD.Location = New Point(0, 245)
-        submenuPD.Name = "submenuPD"
-        submenuPD.Size = New Size(234, 70)
-        submenuPD.TabIndex = 5
-        ' 
-        ' botonPrecep
-        ' 
-        botonPrecep.BackColor = Color.Transparent
-        botonPrecep.Dock = DockStyle.Top
-        botonPrecep.FlatAppearance.BorderSize = 0
-        botonPrecep.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(22), CByte(71), CByte(115))
-        botonPrecep.FlatStyle = FlatStyle.Flat
-        botonPrecep.Font = New Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        botonPrecep.ForeColor = SystemColors.Control
-        botonPrecep.ImageAlign = ContentAlignment.MiddleRight
-        botonPrecep.Location = New Point(0, 35)
-        botonPrecep.Margin = New Padding(0)
-        botonPrecep.Name = "botonPrecep"
-        botonPrecep.Padding = New Padding(30, 0, 0, 0)
-        botonPrecep.Size = New Size(234, 35)
-        botonPrecep.TabIndex = 5
-        botonPrecep.Text = "PRECEPTORES"
-        botonPrecep.TextAlign = ContentAlignment.MiddleLeft
-        botonPrecep.UseVisualStyleBackColor = False
-        ' 
-        ' botonProfes
-        ' 
-        botonProfes.BackColor = Color.Transparent
-        botonProfes.Dock = DockStyle.Top
-        botonProfes.FlatAppearance.BorderSize = 0
-        botonProfes.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(22), CByte(71), CByte(115))
-        botonProfes.FlatStyle = FlatStyle.Flat
-        botonProfes.Font = New Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        botonProfes.ForeColor = SystemColors.Control
-        botonProfes.ImageAlign = ContentAlignment.MiddleRight
-        botonProfes.Location = New Point(0, 0)
-        botonProfes.Margin = New Padding(0)
-        botonProfes.Name = "botonProfes"
-        botonProfes.Padding = New Padding(30, 0, 0, 0)
-        botonProfes.Size = New Size(234, 35)
-        botonProfes.TabIndex = 4
-        botonProfes.Text = "PROFESORES"
-        botonProfes.TextAlign = ContentAlignment.MiddleLeft
-        botonProfes.UseVisualStyleBackColor = False
-        ' 
-        ' PanelPD
-        ' 
-        PanelPD.BackColor = Color.FromArgb(CByte(4), CByte(36), CByte(64))
-        PanelPD.Controls.Add(Panel6)
-        PanelPD.Controls.Add(botonPD)
-        PanelPD.Dock = DockStyle.Top
-        PanelPD.Location = New Point(0, 195)
-        PanelPD.Name = "PanelPD"
-        PanelPD.Padding = New Padding(0, 0, 0, 5)
-        PanelPD.Size = New Size(234, 50)
-        PanelPD.TabIndex = 4
-        ' 
-        ' Panel6
-        ' 
-        Panel6.BackColor = Color.Blue
-        Panel6.Dock = DockStyle.Left
-        Panel6.Location = New Point(0, 0)
-        Panel6.Name = "Panel6"
-        Panel6.Size = New Size(8, 45)
-        Panel6.TabIndex = 3
-        ' 
-        ' botonPD
-        ' 
-        botonPD.BackColor = Color.FromArgb(CByte(4), CByte(36), CByte(64))
-        botonPD.Dock = DockStyle.Fill
-        botonPD.FlatAppearance.BorderSize = 0
-        botonPD.FlatStyle = FlatStyle.Flat
-        botonPD.Font = New Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        botonPD.ForeColor = SystemColors.Control
-        botonPD.Location = New Point(0, 0)
-        botonPD.Margin = New Padding(0)
-        botonPD.Name = "botonPD"
-        botonPD.Size = New Size(234, 45)
-        botonPD.TabIndex = 2
-        botonPD.Text = "  PERSONAL DOCENTE"
-        botonPD.TextAlign = ContentAlignment.MiddleLeft
-        botonPD.UseVisualStyleBackColor = False
-        ' 
-        ' submenuAG
-        ' 
-        submenuAG.BackColor = Color.FromArgb(CByte(6), CByte(46), CByte(98))
-        submenuAG.Controls.Add(botonSecre)
-        submenuAG.Dock = DockStyle.Top
-        submenuAG.Location = New Point(0, 160)
-        submenuAG.Name = "submenuAG"
-        submenuAG.Size = New Size(234, 35)
-        submenuAG.TabIndex = 3
-        ' 
-        ' botonSecre
-        ' 
-        botonSecre.BackColor = Color.Transparent
-        botonSecre.Dock = DockStyle.Top
-        botonSecre.FlatAppearance.BorderSize = 0
-        botonSecre.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(22), CByte(71), CByte(115))
-        botonSecre.FlatStyle = FlatStyle.Flat
-        botonSecre.Font = New Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        botonSecre.ForeColor = SystemColors.Control
-        botonSecre.ImageAlign = ContentAlignment.MiddleRight
-        botonSecre.Location = New Point(0, 0)
-        botonSecre.Margin = New Padding(0)
-        botonSecre.Name = "botonSecre"
-        botonSecre.Padding = New Padding(30, 0, 0, 0)
-        botonSecre.Size = New Size(234, 35)
-        botonSecre.TabIndex = 4
-        botonSecre.Text = "SECRETARIOS"
-        botonSecre.TextAlign = ContentAlignment.MiddleLeft
-        botonSecre.UseVisualStyleBackColor = False
-        ' 
-        ' PanelAG
-        ' 
-        PanelAG.BackColor = Color.FromArgb(CByte(4), CByte(36), CByte(64))
-        PanelAG.Controls.Add(Panel4)
-        PanelAG.Controls.Add(botonAG)
-        PanelAG.Dock = DockStyle.Top
-        PanelAG.ForeColor = SystemColors.Control
-        PanelAG.Location = New Point(0, 110)
-        PanelAG.Name = "PanelAG"
-        PanelAG.Padding = New Padding(0, 0, 0, 5)
-        PanelAG.Size = New Size(234, 50)
-        PanelAG.TabIndex = 2
-        ' 
-        ' Panel4
-        ' 
-        Panel4.BackColor = Color.Blue
-        Panel4.Dock = DockStyle.Left
-        Panel4.Location = New Point(0, 0)
-        Panel4.Name = "Panel4"
-        Panel4.Size = New Size(8, 45)
-        Panel4.TabIndex = 3
-        ' 
-        ' botonAG
-        ' 
-        botonAG.BackColor = Color.FromArgb(CByte(4), CByte(36), CByte(64))
-        botonAG.Dock = DockStyle.Fill
-        botonAG.FlatAppearance.BorderSize = 0
-        botonAG.FlatStyle = FlatStyle.Flat
-        botonAG.Font = New Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        botonAG.ForeColor = SystemColors.Control
-        botonAG.Location = New Point(0, 0)
-        botonAG.Margin = New Padding(0)
-        botonAG.Name = "botonAG"
-        botonAG.Size = New Size(234, 45)
-        botonAG.TabIndex = 2
-        botonAG.Text = "  ADMINISTRACIÓN GENERAL"
-        botonAG.TextAlign = ContentAlignment.MiddleLeft
-        botonAG.UseVisualStyleBackColor = False
         ' 
         ' Panel2
         ' 
@@ -446,10 +269,6 @@ Partial Class FormProfesores
         PanelMenu.ResumeLayout(False)
         submenuGA.ResumeLayout(False)
         PanelGA.ResumeLayout(False)
-        submenuPD.ResumeLayout(False)
-        PanelPD.ResumeLayout(False)
-        submenuAG.ResumeLayout(False)
-        PanelAG.ResumeLayout(False)
         Panel2.ResumeLayout(False)
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
         PanelPantalla.ResumeLayout(False)
@@ -462,24 +281,13 @@ Partial Class FormProfesores
     Friend WithEvents PanelPantalla As Panel
     Friend WithEvents logomenu As PictureBox
     Friend WithEvents Panel2 As Panel
-    Friend WithEvents botonAG As Button
-    Friend WithEvents PanelAG As Panel
-    Friend WithEvents Panel4 As Panel
-    Friend WithEvents submenuPD As Panel
-    Friend WithEvents PanelPD As Panel
-    Friend WithEvents Panel6 As Panel
-    Friend WithEvents botonPD As Button
-    Friend WithEvents submenuAG As Panel
     Friend WithEvents submenuGA As Panel
     Friend WithEvents PanelGA As Panel
     Friend WithEvents Panel8 As Panel
     Friend WithEvents botonGA As Button
-    Friend WithEvents botonProfes As Button
-    Friend WithEvents botonSecre As Button
     Friend WithEvents botonNotas As Button
     Friend WithEvents botonCurs As Button
     Friend WithEvents botonAsis As Button
-    Friend WithEvents botonPrecep As Button
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents BtnCerrar As Button
     Friend WithEvents LabelBienvenida As Label
