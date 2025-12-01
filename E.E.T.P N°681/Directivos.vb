@@ -3,14 +3,14 @@ Imports System.Data.SQLite
 Partial Class Directivos
     Inherits System.Windows.Forms.Form
 
-    ' 🔹 Conexión a base SQLite
+    'Conexión a base SQLite
     Dim conexion As New SQLiteConnection("Data Source=escuela.db;Version=3;")
 
     Private Sub Directivos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         CargarDirectivos()
     End Sub
 
-    ' 🔹 Cargar directivos en el DataGridView
+    'Cargar directivos en el DataGridView
     Private Sub CargarDirectivos()
         Try
             conexion.Open()
@@ -26,7 +26,7 @@ Partial Class Directivos
         End Try
     End Sub
 
-    ' 🔹 Agregar directivo
+    'Agregar directivo
     Private Sub btnAgregar_Click(sender As Object, e As EventArgs) Handles btnAgregar.Click
         Try
             conexion.Open()
@@ -56,7 +56,7 @@ Partial Class Directivos
         CargarDirectivos()
     End Sub
 
-    ' 🔹 Editar directivo
+    'Editar directivo
     Private Sub btnEditar_Click(sender As Object, e As EventArgs) Handles btnEditar.Click
         If DataGridViewDirectivos.SelectedRows.Count > 0 Then
             Dim id As Integer = DataGridViewDirectivos.CurrentRow.Cells("id").Value
@@ -95,7 +95,7 @@ Partial Class Directivos
         End If
     End Sub
 
-    ' 🔹 Eliminar directivo
+    'Eliminar directivo
     Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
         If DataGridViewDirectivos.SelectedRows.Count > 0 Then
 
@@ -128,7 +128,7 @@ Partial Class Directivos
         End If
     End Sub
 
-    ' 🔹 Seleccionar directivo del DataGridView
+    'Seleccionar directivo del DataGridView
     Private Sub DataGridViewDirectivos_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridViewDirectivos.CellClick
         If e.RowIndex >= 0 Then
             Dim fila As DataGridViewRow = DataGridViewDirectivos.Rows(e.RowIndex)
@@ -142,7 +142,7 @@ Partial Class Directivos
         End If
     End Sub
 
-    ' 🔹 Limpiar campos
+    'Limpiar campos
     Private Sub LimpiarCampos()
         txtNombre.Clear()
         txtApellido.Clear()

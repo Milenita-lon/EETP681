@@ -14,7 +14,6 @@ Public Class Alumnos
                 "SELECT id,
                         (anio || '° Año ' || division) AS curso_completo
                  FROM curso;"
-
             Dim comando As New SQLiteCommand(query, conexion)
             Dim lector As SQLiteDataReader = comando.ExecuteReader()
             Dim tablaCursos As New DataTable()
@@ -24,7 +23,6 @@ Public Class Alumnos
             ComboBox1.DisplayMember = "curso_completo"
             ComboBox1.ValueMember = "id"
             ComboBox1.DataSource = tablaCursos
-
             lector.Close()
 
         Catch ex As Exception
@@ -224,5 +222,4 @@ Public Class Alumnos
         txtTelefono.Clear()
         txtCorreo.Clear()
     End Sub
-
 End Class
